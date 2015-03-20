@@ -1,5 +1,7 @@
 An elegant, accessible toggle component for React. Also a glorified checkbox.
 
+See [example](http://instructure-react.github.io/react-toggle/).
+
 ## Usage
 
 ```javascript
