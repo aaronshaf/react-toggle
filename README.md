@@ -12,7 +12,7 @@ npm install react-toggle
 import Toggle from 'react-toggle'
 ```
 
-Don't forget to include the component's CSS somewhere.
+Don't forget to include the component's [CSS](https://raw.githubusercontent.com/instructure-react/react-toggle/master/example/styles.css).
 
 ## Development
 
