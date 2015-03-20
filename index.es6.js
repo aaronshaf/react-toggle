@@ -57,7 +57,6 @@ export default React.createClass({
         </div>
         <div className="react-toggle-thumb"></div>
 
-
         <input
           name={this.props.name}
           value={this.props.value}
