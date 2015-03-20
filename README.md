@@ -4,7 +4,7 @@ See [example](http://instructure-react.github.io/react-toggle/).
 
 ## Usage
 
-```javascript
+```bash
 npm install react-toggle
 ```
 
