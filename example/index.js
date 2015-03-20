@@ -35,12 +35,12 @@ var App = React.createClass({
         </div>
         <div>
           <label>
-          Works with labels
-          <Toggle
-            checked={this.state.baconIsReady}
-            name="baconIsReady" // Optional
-            value="true" // Optional
-            onChange={this.handleBaconChange} />
+            Works with labels
+            <Toggle
+              checked={this.state.baconIsReady}
+              name="baconIsReady" // Optional
+              value="true" // Optional
+              onChange={this.handleBaconChange} />
           </label>
         </div>
       </form>
