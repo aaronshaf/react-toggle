@@ -14,6 +14,8 @@ import Toggle from 'react-toggle'
 
 Don't forget to include the component's [CSS](https://raw.githubusercontent.com/instructure-react/react-toggle/master/example/styles.css).
 
+Wrap the component in a label for accessibility.
+
 ## Development
 
 ```javascript
