@@ -10,7 +10,8 @@ var App = React.createClass({
   getInitialState() {
     return {
       cheeseIsReady: false,
-      baconIsReady: false
+      baconIsReady: false,
+      eggsAreReady: false
     }
   },
 
@@ -22,27 +23,42 @@ var App = React.createClass({
     this.setState({baconIsReady: event.target.checked})
   },
 
+  handleEggsChange(event) {
+    this.setState({eggsAreReady: event.target.checked})
+  },
+
   render() {
     return (
       <form>
         <h1>react-toggle</h1>
-        <div>
-          <Toggle
-            checked={this.state.cheeseIsReady}
-            name="cheeseIsReady" // Optional
-            value="true" // Optional
-            onChange={this.handleCheeseChange} />
-        </div>
+        <h2>With a &lt;label&gt; wrapper tag</h2>
         <div>
           <label>
-            Works with labels
+            Wrapper label
             <Toggle
               checked={this.state.baconIsReady}
-              name="baconIsReady" // Optional
-              value="true" // Optional
               onChange={this.handleBaconChange} />
           </label>
         </div>
+
+        <h2>Without an adjacent &lt;label&gt; tag</h2>
+        <div>
+          <label htmlFor="cheese-status">Adjacent label</label>
+          <Toggle
+            id="cheese-status"
+            checked={this.state.cheeseIsReady}
+            ariaLabelledBy="cheese-label"
+            onChange={this.handleCheeseChange} />
+        </div>
+
+        <h2>Without a &lt;label&gt; tag</h2>
+        <div>
+          <Toggle
+            checked={this.state.eggsAreReady}
+            ariaLabel="Eggs"
+            onChange={this.handleEggsChange} />
+        </div>
+
       </form>
     )
   }

@@ -10,7 +10,10 @@ export default React.createClass({
     checked: React.PropTypes.bool,
     onChange: React.PropTypes.func,
     name: React.PropTypes.string,
-    value: React.PropTypes.string
+    value: React.PropTypes.string,
+    id: React.PropTypes.string,
+    ariaLabelledBy: React.PropTypes.string,
+    ariaLabel: React.PropTypes.string
   },
 
   getDefaultProps() {
@@ -66,6 +69,9 @@ export default React.createClass({
           defaultChecked={this.props.checked}
           className="screenreader-only"
           type="checkbox"
+          id={this.props.id}
+          aria-labelledby={this.props.ariaLabelledBy}
+          aria-label={this.props.ariaLabel}
           onChange={this.props.onChange} />
       </div>
     )
