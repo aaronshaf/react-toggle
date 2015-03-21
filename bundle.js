@@ -107,7 +107,7 @@
 	      React.createElement(
 	        "h2",
 	        null,
-	        "Without an adjacent <label> tag"
+	        "With an adjacent <label> tag"
 	      ),
 	      React.createElement(
 	        "div",
