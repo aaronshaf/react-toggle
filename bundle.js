@@ -142,7 +142,7 @@
 	          onChange: this.handleBiscuitChange }),
 	        React.createElement(
 	          "span",
-	          { id: "biscuit-label" },
+	          { id: "biscuit-label", className: "label-text" },
 	          "Adjacent label, but not standard tag"
 	        ),
 	        React.createElement(
@@ -160,7 +160,7 @@
 	          onChange: this.handleEggsChange }),
 	        React.createElement(
 	          "span",
-	          null,
+	          { className: "label-text" },
 	          "No label tag"
 	        ),
 	        React.createElement(
