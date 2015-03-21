@@ -112,6 +112,32 @@ var App = React.createClass({
 <span>No label tag</span>`}
           </pre>
         </div>
+
+        {/* Handle change */}
+
+        <div className="example">
+          <div>Handle change</div>
+          <pre>
+{`handleChange(event) {
+  // do something with event.target.checked
+}`}
+          </pre>
+        </div>
+
+        {/* Using form data */}
+
+        <div className="example">
+          <div>Using form data</div>
+          <pre>
+{`<Toggle
+  checked={this.state.myBoolean}
+  name="baconIsReady"
+  value="yes"
+  onChange={this.handleChange} />`}
+          </pre>
+        </div>
+
+
       </form>
     )
   }
