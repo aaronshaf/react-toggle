@@ -41,7 +41,7 @@ var App = React.createClass({
           </label>
         </div>
 
-        <h2>Without an adjacent &lt;label&gt; tag</h2>
+        <h2>With an adjacent &lt;label&gt; tag</h2>
         <div>
           <label htmlFor="cheese-status">Adjacent label</label>
           <Toggle
