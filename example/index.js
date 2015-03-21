@@ -37,6 +37,19 @@ var App = React.createClass({
       <form>
         <h1>react-toggle</h1>
 
+        {/* Installation */}
+
+        <div className="example">
+          <div>Installation</div>
+          <pre>
+{`npm install react-toggle`}
+          </pre>
+          <pre>
+{`import Toggle from 'react-toggle'`}
+          </pre>
+
+        </div>
+
         {/* Bacon */}
 
         <div className="example">
@@ -136,7 +149,6 @@ var App = React.createClass({
   onChange={this.handleChange} />`}
           </pre>
         </div>
-
 
       </form>
     )
