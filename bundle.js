@@ -148,7 +148,7 @@
 	        React.createElement(
 	          "pre",
 	          null,
-	          "<Toggle\n  id=\"biscuit-status\"\n  checked={this.state.biscuitIsReady}\n  aria-labelledby=\"biscuit-label\"\n  onChange={this.handleBiscuitChange} />\n  <span id=\"biscuit-label\">Adjacent label, but not standard tag</span>"
+	          "<Toggle\n  id=\"biscuit-status\"\n  checked={this.state.biscuitIsReady}\n  aria-labelledby=\"biscuit-label\"\n  onChange={this.handleBiscuitChange} />\n<span id=\"biscuit-label\">Adjacent label, but not standard tag</span>"
 	        )
 	      ),
 	      React.createElement(
