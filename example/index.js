@@ -12,16 +12,18 @@ var App = React.createClass({
       cheeseIsReady: false,
       baconIsReady: false,
       biscuitIsReady: false,
-      eggsAreReady: false
+      milkIsReady: false,
+      eggsAreReady: false,
+      formData: {}
     }
-  },
-
-  handleCheeseChange(event) {
-    this.setState({cheeseIsReady: event.target.checked})
   },
 
   handleBaconChange(event) {
     this.setState({baconIsReady: event.target.checked})
+  },
+
+  handleCheeseChange(event) {
+    this.setState({cheeseIsReady: event.target.checked})
   },
 
   handleBiscuitChange(event) {
@@ -32,9 +34,14 @@ var App = React.createClass({
     this.setState({eggsAreReady: event.target.checked})
   },
 
+  handleMilkChange(event) {
+    var form = this.refs.breakfastForm.getDOMNode()
+    this.setState({formData: form.milkIsReady.checked ? {milkIsReady: form.milkIsReady.value} : {}})
+  },
+
   render() {
     return (
-      <form>
+      <form ref="breakfastForm">
         <h1>react-toggle</h1>
 
         {/* Installation */}
@@ -55,7 +62,7 @@ var App = React.createClass({
         <div className="example">
           <label>
             <Toggle
-              checked={this.state.baconIsReady}
+              defaultChecked={this.state.baconIsReady}
               onChange={this.handleBaconChange} />
             <span className="label-text">Wrapper label tag</span>
           </label>
@@ -63,10 +70,13 @@ var App = React.createClass({
           <pre>
 {`<label>
   <Toggle
-    checked={this.state.baconIsReady}
+    defaultChecked={this.state.baconIsReady}
     onChange={this.handleBaconChange} />
   <span>Wrapper label tag</span>
 </label>`}
+          </pre>
+          <pre>
+            this.state.baconIsReady: {JSON.stringify(this.state.baconIsReady)}
           </pre>
         </div>
 
@@ -75,18 +85,21 @@ var App = React.createClass({
         <div className="example">
           <Toggle
             id="cheese-status"
-            checked={this.state.cheeseIsReady}
-            /* ariaLabelledBy="cheese-label" */
+            defaultChecked={this.state.cheeseIsReady}
             onChange={this.handleCheeseChange} />
           <label htmlFor="cheese-status">Adjacent label tag</label>
 
           <pre>
 {`<Toggle
   id="cheese-status"
-  checked={this.state.cheeseIsReady}
+  defaultChecked={this.state.cheeseIsReady}
   onChange={this.handleCheeseChange} />
 <label htmlFor="cheese-status">Adjacent label tag</label>`}
           </pre>
+          <pre>
+            this.state.cheeseIsReady: {JSON.stringify(this.state.cheeseIsReady)}
+          </pre>
+
         </div>
 
         {/* Biscuit */}
@@ -94,7 +107,7 @@ var App = React.createClass({
         <div className="example">
           <Toggle
             id="biscuit-status"
-            checked={this.state.biscuitIsReady}
+            defaultChecked={this.state.biscuitIsReady}
             aria-labelledby="biscuit-label"
             onChange={this.handleBiscuitChange} />
           <span id="biscuit-label" className="label-text">Adjacent label, but not standard tag</span>
@@ -102,10 +115,13 @@ var App = React.createClass({
           <pre>
 {`<Toggle
   id="biscuit-status"
-  checked={this.state.biscuitIsReady}
+  defaultChecked={this.state.biscuitIsReady}
   aria-labelledby="biscuit-label"
   onChange={this.handleBiscuitChange} />
 <span id="biscuit-label">Adjacent label, but not standard tag</span>`}
+          </pre>
+          <pre>
+            this.state.biscuitIsReady: {JSON.stringify(this.state.biscuitIsReady)}
           </pre>
         </div>
 
@@ -113,16 +129,19 @@ var App = React.createClass({
 
         <div className="example">
           <Toggle
-            checked={this.state.eggsAreReady}
+            defaultChecked={this.state.eggsAreReady}
             aria-label="No label"
             onChange={this.handleEggsChange} />
           <span className="label-text">No label tag</span>
           <pre>
 {`<Toggle
-  checked={this.state.eggsAreReady}
+  defaultChecked={this.state.eggsAreReady}
   aria-label="No label tag"
   onChange={this.handleEggsChange} />
 <span>No label tag</span>`}
+          </pre>
+          <pre>
+            this.state.eggsAreReady: {JSON.stringify(this.state.eggsAreReady)}
           </pre>
         </div>
 
@@ -140,13 +159,23 @@ var App = React.createClass({
         {/* Using form data */}
 
         <div className="example">
-          <div>Using form data</div>
+          <label>
+            <Toggle
+              defaultChecked={this.state.milkIsReady}
+              name="milkIsReady"
+              value="yes"
+              onChange={this.handleMilkChange} />
+            <span className="label-text">Using form data</span>
+          </label>
+
           <pre>
 {`<Toggle
-  checked={this.state.myBoolean}
-  name="baconIsReady"
-  value="yes"
-  onChange={this.handleChange} />`}
+  defaultChecked={this.state.milkIsReady}
+  name="milkIsReady"
+  value="yes" />`}
+          </pre>
+          <pre>
+            formData: {JSON.stringify(this.state.formData)}
           </pre>
         </div>
 

@@ -7,7 +7,7 @@ export default React.createClass({
   displayName: 'Toggle',
 
   propTypes: {
-    checked: React.PropTypes.bool,
+    defaulChecked: React.PropTypes.bool,
     onChange: React.PropTypes.func,
     name: React.PropTypes.string,
     value: React.PropTypes.string,
@@ -24,13 +24,16 @@ export default React.createClass({
 
   getInitialState() {
     return {
+      checked: !!this.props.checked,
       hasFocus: false
     }
   },
 
   handleClick(event) {
     var checkbox = this.refs.input.getDOMNode()
-    if(event.target === checkbox) {
+    var checkboxWasDirectlyClicked = event.target === checkbox
+    this.setState({checked: checkbox.checked})
+    if(checkboxWasDirectlyClicked) {
       return
     }
     event.preventDefault()
@@ -48,7 +51,7 @@ export default React.createClass({
 
   render() {
     var classes = classNames('react-toggle', {
-      'react-toggle--checked': this.props.checked,
+      'react-toggle--checked': this.state.checked,
       'react-toggle--focus': this.state.hasFocus
     })
 
@@ -70,7 +73,7 @@ export default React.createClass({
           ref="input"
           onFocus={this.handleFocus}
           onBlur={this.handleBlur}
-          defaultChecked={this.props.checked}
+          defaultChecked={this.props.defaultChecked}
           className="screenreader-only"
           type="checkbox"
           id={this.props.id}
