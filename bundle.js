@@ -96,6 +96,25 @@
 	        "div",
 	        { className: "example" },
 	        React.createElement(
+	          "div",
+	          null,
+	          "Installation"
+	        ),
+	        React.createElement(
+	          "pre",
+	          null,
+	          "npm install react-toggle"
+	        ),
+	        React.createElement(
+	          "pre",
+	          null,
+	          "import Toggle from 'react-toggle'"
+	        )
+	      ),
+	      React.createElement(
+	        "div",
+	        { className: "example" },
+	        React.createElement(
 	          "label",
 	          null,
 	          React.createElement(Toggle, {
@@ -202,7 +221,7 @@
 	});
 
 	React.render(React.createElement(App, null), document.getElementById("application"));
-	/* Bacon */ /* Cheese */ /* ariaLabelledBy="cheese-label" */ /* Biscuit */ /* Eggs */ /* Handle change */ /* Using form data */
+	/* Installation */ /* Bacon */ /* Cheese */ /* ariaLabelledBy="cheese-label" */ /* Biscuit */ /* Eggs */ /* Handle change */ /* Using form data */
 
 /***/ },
 /* 1 */
