@@ -52,7 +52,7 @@ var App = React.createClass({
   <Toggle
     checked={this.state.baconIsReady}
     onChange={this.handleBaconChange} />
-  <span className="label-text">Wrapper label tag</span>
+  <span>Wrapper label tag</span>
 </label>`}
           </pre>
         </div>
