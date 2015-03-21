@@ -154,9 +154,9 @@
 
 	var classNames = _interopRequire(__webpack_require__(5));
 
-	var check = _interopRequire(__webpack_require__(3));
+	var Check = _interopRequire(__webpack_require__(3));
 
-	var x = _interopRequire(__webpack_require__(4));
+	var X = _interopRequire(__webpack_require__(4));
 
 	module.exports = React.createClass({
 	  displayName: "Toggle",
@@ -213,8 +213,16 @@
 	      React.createElement(
 	        "div",
 	        { className: "react-toggle-track" },
-	        React.createElement("div", { className: "react-toggle-track-check", dangerouslySetInnerHTML: { __html: check } }),
-	        React.createElement("div", { className: "react-toggle-track-x", dangerouslySetInnerHTML: { __html: x } })
+	        React.createElement(
+	          "div",
+	          { className: "react-toggle-track-check" },
+	          React.createElement(Check, null)
+	        ),
+	        React.createElement(
+	          "div",
+	          { className: "react-toggle-track-x" },
+	          React.createElement(X, null)
+	        )
 	      ),
 	      React.createElement("div", { className: "react-toggle-thumb" }),
 	      React.createElement("input", {
@@ -247,7 +255,19 @@
 
 	"use strict";
 
-	module.exports = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>\n<svg width=\"14px\" height=\"11px\" viewBox=\"0 0 14 11\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns:sketch=\"http://www.bohemiancoding.com/sketch/ns\">\n    <title>switch-check</title>\n    <g id=\"Admin-Views\" stroke=\"none\" stroke-width=\"1\" fill=\"none\" fill-rule=\"evenodd\" sketch:type=\"MSPage\">\n        <g id=\"Edit-Catalog-03a\" sketch:type=\"MSArtboardGroup\" transform=\"translate(-1153.000000, -967.000000)\" fill=\"#FFFFFF\">\n            <g id=\"switch-on\" sketch:type=\"MSLayerGroup\" transform=\"translate(1145.000000, 960.000000)\">\n                <path d=\"M19.2635591,7 L13.2598977,13.0036615 L10.1033641,9.84712786 L8,11.9504919 L13.2598977,17.2103896 L21.3684107,9.10336405 L19.2635591,7\" id=\"switch-check\" sketch:type=\"MSShapeGroup\"></path>\n            </g>\n        </g>\n    </g>\n</svg>";
+	var _interopRequire = function _interopRequire(obj) {
+	  return obj && obj.__esModule ? obj["default"] : obj;
+	};
+
+	var React = _interopRequire(__webpack_require__(2));
+
+	module.exports = React.createClass({
+	  displayName: "check.es6",
+
+	  render: function render() {
+	    return React.createElement("svg", { width: "14", height: "11", viewBox: "0 0 14 11", xmlns: "http://www.w3.org/2000/svg" }, React.createElement("title", null, "switch-check"), React.createElement("path", { d: "M11.264 0L5.26 6.004 2.103 2.847 0 4.95l5.26 5.26 8.108-8.107L11.264 0", fill: "#fff", "fill-rule": "evenodd" }));
+	  }
+	});
 
 /***/ },
 /* 4 */
@@ -255,7 +275,19 @@
 
 	"use strict";
 
-	module.exports = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>\n<svg width=\"10px\" height=\"10px\" viewBox=\"0 0 10 10\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns:sketch=\"http://www.bohemiancoding.com/sketch/ns\">\n    <title>switch-x</title>\n    <g id=\"Admin-Views\" stroke=\"none\" stroke-width=\"1\" fill=\"none\" fill-rule=\"evenodd\" sketch:type=\"MSPage\">\n        <g id=\"Edit-Catalog-03a\" sketch:type=\"MSArtboardGroup\" transform=\"translate(-1176.000000, -1033.000000)\" fill=\"#FFFFFF\">\n            <g id=\"switch-on\" sketch:type=\"MSLayerGroup\" transform=\"translate(1145.000000, 1026.000000)\">\n                <path d=\"M40.9,9.121 L38.779,7 L35.951,9.828 L33.121,7 L31,9.121 L33.83,11.949 L31,14.777 L33.123,16.899 L35.951,14.07 L38.779,16.899 L40.9,14.777 L38.072,11.949 L40.9,9.121\" id=\"switch-x\" sketch:type=\"MSShapeGroup\"></path>\n            </g>\n        </g>\n    </g>\n</svg>";
+	var _interopRequire = function _interopRequire(obj) {
+	  return obj && obj.__esModule ? obj["default"] : obj;
+	};
+
+	var React = _interopRequire(__webpack_require__(2));
+
+	module.exports = React.createClass({
+	  displayName: "x.es6",
+
+	  render: function render() {
+	    return React.createElement("svg", { width: "10", height: "10", viewBox: "0 0 10 10", xmlns: "http://www.w3.org/2000/svg" }, React.createElement("title", null, "switch-x"), React.createElement("path", { d: "M9.9 2.12L7.78 0 4.95 2.828 2.12 0 0 2.12l2.83 2.83L0 7.776 2.123 9.9 4.95 7.07 7.78 9.9 9.9 7.776 7.072 4.95 9.9 2.12", fill: "#fff", "fill-rule": "evenodd" }));
+	  }
+	});
 
 /***/ },
 /* 5 */
