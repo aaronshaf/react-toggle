@@ -103,7 +103,7 @@ var App = React.createClass({
             checked={this.state.eggsAreReady}
             aria-label="No label"
             onChange={this.handleEggsChange} />
-          <span className="label-text" className="label-text">No label tag</span>
+          <span className="label-text">No label tag</span>
           <pre>
 {`<Toggle
   checked={this.state.eggsAreReady}
