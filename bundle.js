@@ -168,13 +168,41 @@
 	          null,
 	          "<Toggle\n  checked={this.state.eggsAreReady}\n  aria-label=\"No label tag\"\n  onChange={this.handleEggsChange} />\n<span>No label tag</span>"
 	        )
+	      ),
+	      React.createElement(
+	        "div",
+	        { className: "example" },
+	        React.createElement(
+	          "div",
+	          null,
+	          "Handle change"
+	        ),
+	        React.createElement(
+	          "pre",
+	          null,
+	          "handleChange(event) {\n  // do something with event.target.checked\n}"
+	        )
+	      ),
+	      React.createElement(
+	        "div",
+	        { className: "example" },
+	        React.createElement(
+	          "div",
+	          null,
+	          "Using form data"
+	        ),
+	        React.createElement(
+	          "pre",
+	          null,
+	          "<Toggle\n  checked={this.state.myBoolean}\n  name=\"baconIsReady\"\n  value=\"yes\"\n  onChange={this.handleChange} />"
+	        )
 	      )
 	    );
 	  }
 	});
 
 	React.render(React.createElement(App, null), document.getElementById("application"));
-	/* Bacon */ /* Cheese */ /* ariaLabelledBy="cheese-label" */ /* Biscuit */ /* Eggs */
+	/* Bacon */ /* Cheese */ /* ariaLabelledBy="cheese-label" */ /* Biscuit */ /* Eggs */ /* Handle change */ /* Using form data */
 
 /***/ },
 /* 1 */
