@@ -19,8 +19,8 @@ module.exports = React.createClass({
     name: React.PropTypes.string,
     value: React.PropTypes.string,
     id: React.PropTypes.string,
-    ariaLabelledBy: React.PropTypes.string,
-    ariaLabel: React.PropTypes.string
+    "aria-labelledby": React.PropTypes.string,
+    "aria-label": React.PropTypes.string
   },
 
   getDefaultProps: function getDefaultProps() {
@@ -87,8 +87,8 @@ module.exports = React.createClass({
         className: "screenreader-only",
         type: "checkbox",
         id: this.props.id,
-        "aria-labelledby": this.props.ariaLabelledBy,
-        "aria-label": this.props.ariaLabel,
+        "aria-labelledby": this.props["aria-labelledby"],
+        "aria-label": this.props["aria-label"],
         onChange: this.props.onChange })
     );
   }

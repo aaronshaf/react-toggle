@@ -11,6 +11,7 @@ var App = React.createClass({
     return {
       cheeseIsReady: false,
       baconIsReady: false,
+      biscuitIsReady: false,
       eggsAreReady: false
     }
   },
@@ -23,6 +24,10 @@ var App = React.createClass({
     this.setState({baconIsReady: event.target.checked})
   },
 
+  handleBiscuitChange(event) {
+    this.setState({biscuitIsReady: event.target.checked})
+  },
+
   handleEggsChange(event) {
     this.setState({eggsAreReady: event.target.checked})
   },
@@ -31,34 +36,82 @@ var App = React.createClass({
     return (
       <form>
         <h1>react-toggle</h1>
-        <h2>With a &lt;label&gt; wrapper tag</h2>
-        <div>
+
+        {/* Bacon */}
+
+        <div className="example">
           <label>
-            Wrapper label
             <Toggle
               checked={this.state.baconIsReady}
               onChange={this.handleBaconChange} />
+            <span className="label-text">Wrapper label tag</span>
           </label>
+
+          <pre>
+{`<label>
+  <Toggle
+    checked={this.state.baconIsReady}
+    onChange={this.handleBaconChange} />
+  <span className="label-text">Wrapper label tag</span>
+</label>`}
+          </pre>
         </div>
 
-        <h2>With an adjacent &lt;label&gt; tag</h2>
-        <div>
-          <label htmlFor="cheese-status">Adjacent label</label>
+        {/* Cheese */}
+
+        <div className="example">
           <Toggle
             id="cheese-status"
             checked={this.state.cheeseIsReady}
-            ariaLabelledBy="cheese-label"
+            /* ariaLabelledBy="cheese-label" */
             onChange={this.handleCheeseChange} />
+          <label htmlFor="cheese-status">Adjacent label tag</label>
+
+          <pre>
+{`<Toggle
+  id="cheese-status"
+  checked={this.state.cheeseIsReady}
+  onChange={this.handleCheeseChange} />
+<label htmlFor="cheese-status">Adjacent label tag</label>`}
+          </pre>
         </div>
 
-        <h2>Without a &lt;label&gt; tag</h2>
-        <div>
+        {/* Biscuit */}
+
+        <div className="example">
+          <Toggle
+            id="biscuit-status"
+            checked={this.state.biscuitIsReady}
+            aria-labelledby="biscuit-label"
+            onChange={this.handleBiscuitChange} />
+          <span id="biscuit-label">Adjacent label, but not standard tag</span>
+
+          <pre>
+{`<Toggle
+  id="biscuit-status"
+  checked={this.state.biscuitIsReady}
+  aria-labelledby="biscuit-label"
+  onChange={this.handleBiscuitChange} />
+  <span id="biscuit-label">Adjacent label, but not standard tag</span>`}
+          </pre>
+        </div>
+
+        {/* Eggs */}
+
+        <div className="example">
           <Toggle
             checked={this.state.eggsAreReady}
-            ariaLabel="Eggs"
+            aria-label="No label"
             onChange={this.handleEggsChange} />
+          <span>No label tag</span>
+          <pre>
+{`<Toggle
+  checked={this.state.eggsAreReady}
+  aria-label="No label"
+  onChange={this.handleEggsChange} />
+<span>No label tag</span>`}
+          </pre>
         </div>
-
       </form>
     )
   }
