@@ -84,7 +84,7 @@ var App = React.createClass({
             checked={this.state.biscuitIsReady}
             aria-labelledby="biscuit-label"
             onChange={this.handleBiscuitChange} />
-          <span id="biscuit-label">Adjacent label, but not standard tag</span>
+          <span id="biscuit-label" className="label-text">Adjacent label, but not standard tag</span>
 
           <pre>
 {`<Toggle
@@ -103,7 +103,7 @@ var App = React.createClass({
             checked={this.state.eggsAreReady}
             aria-label="No label"
             onChange={this.handleEggsChange} />
-          <span>No label tag</span>
+          <span className="label-text" className="label-text">No label tag</span>
           <pre>
 {`<Toggle
   checked={this.state.eggsAreReady}
