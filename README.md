@@ -1,6 +1,6 @@
 An elegant, accessible toggle component for React. Also a glorified checkbox.
 
-<img src="http://i.imgur.com/qNV79rp.png" height="30px" />
+<img src="http://i.imgur.com/qNV79rp.png" height="28px" />
 
 See [usage and examples](http://instructure-react.github.io/react-toggle/).
 
