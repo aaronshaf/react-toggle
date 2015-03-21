@@ -6,9 +6,9 @@ var React = _interopRequire(require("react"));
 
 var classNames = _interopRequire(require("classnames"));
 
-var check = _interopRequire(require("./check"));
+var Check = _interopRequire(require("./check"));
 
-var x = _interopRequire(require("./x"));
+var X = _interopRequire(require("./x"));
 
 module.exports = React.createClass({
   displayName: "Toggle",
@@ -17,7 +17,10 @@ module.exports = React.createClass({
     checked: React.PropTypes.bool,
     onChange: React.PropTypes.func,
     name: React.PropTypes.string,
-    value: React.PropTypes.string
+    value: React.PropTypes.string,
+    id: React.PropTypes.string,
+    ariaLabelledBy: React.PropTypes.string,
+    ariaLabel: React.PropTypes.string
   },
 
   getDefaultProps: function getDefaultProps() {
@@ -62,8 +65,16 @@ module.exports = React.createClass({
       React.createElement(
         "div",
         { className: "react-toggle-track" },
-        React.createElement("div", { className: "react-toggle-track-check", dangerouslySetInnerHTML: { __html: check } }),
-        React.createElement("div", { className: "react-toggle-track-x", dangerouslySetInnerHTML: { __html: x } })
+        React.createElement(
+          "div",
+          { className: "react-toggle-track-check" },
+          React.createElement(Check, null)
+        ),
+        React.createElement(
+          "div",
+          { className: "react-toggle-track-x" },
+          React.createElement(X, null)
+        )
       ),
       React.createElement("div", { className: "react-toggle-thumb" }),
       React.createElement("input", {
@@ -75,6 +86,9 @@ module.exports = React.createClass({
         defaultChecked: this.props.checked,
         className: "screenreader-only",
         type: "checkbox",
+        id: this.props.id,
+        "aria-labelledby": this.props.ariaLabelledBy,
+        "aria-label": this.props.ariaLabel,
         onChange: this.props.onChange })
     );
   }

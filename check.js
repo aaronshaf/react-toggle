@@ -1,3 +1,22 @@
 "use strict";
 
-module.exports = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>\n<svg width=\"14px\" height=\"11px\" viewBox=\"0 0 14 11\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns:sketch=\"http://www.bohemiancoding.com/sketch/ns\">\n    <title>switch-check</title>\n    <g id=\"Admin-Views\" stroke=\"none\" stroke-width=\"1\" fill=\"none\" fill-rule=\"evenodd\" sketch:type=\"MSPage\">\n        <g id=\"Edit-Catalog-03a\" sketch:type=\"MSArtboardGroup\" transform=\"translate(-1153.000000, -967.000000)\" fill=\"#FFFFFF\">\n            <g id=\"switch-on\" sketch:type=\"MSLayerGroup\" transform=\"translate(1145.000000, 960.000000)\">\n                <path d=\"M19.2635591,7 L13.2598977,13.0036615 L10.1033641,9.84712786 L8,11.9504919 L13.2598977,17.2103896 L21.3684107,9.10336405 L19.2635591,7\" id=\"switch-check\" sketch:type=\"MSShapeGroup\"></path>\n            </g>\n        </g>\n    </g>\n</svg>";
+var _interopRequire = function (obj) { return obj && obj.__esModule ? obj["default"] : obj; };
+
+var React = _interopRequire(require("react"));
+
+module.exports = React.createClass({
+  displayName: "check.es6",
+
+  render: function render() {
+    return React.createElement(
+      "svg",
+      { width: "14", height: "11", viewBox: "0 0 14 11", xmlns: "http://www.w3.org/2000/svg" },
+      React.createElement(
+        "title",
+        null,
+        "switch-check"
+      ),
+      React.createElement("path", { d: "M11.264 0L5.26 6.004 2.103 2.847 0 4.95l5.26 5.26 8.108-8.107L11.264 0", fill: "#fff", "fill-rule": "evenodd" })
+    );
+  }
+});

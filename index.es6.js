@@ -1,7 +1,7 @@
 import React from 'react'
 import classNames from 'classnames'
-import check from './check'
-import x from './x'
+import Check from './check'
+import X from './x'
 
 export default React.createClass({
   displayName: 'Toggle',
@@ -55,8 +55,12 @@ export default React.createClass({
     return (
       <div className={classes} onClick={this.handleClick}>
         <div className="react-toggle-track">
-          <div className="react-toggle-track-check" dangerouslySetInnerHTML={{__html: check}} />
-          <div className="react-toggle-track-x" dangerouslySetInnerHTML={{__html: x}} />
+          <div className="react-toggle-track-check">
+            <Check />
+          </div>
+          <div className="react-toggle-track-x">
+            <X />
+          </div>
         </div>
         <div className="react-toggle-thumb"></div>
 
