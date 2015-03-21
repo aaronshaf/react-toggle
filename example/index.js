@@ -92,7 +92,7 @@ var App = React.createClass({
   checked={this.state.biscuitIsReady}
   aria-labelledby="biscuit-label"
   onChange={this.handleBiscuitChange} />
-  <span id="biscuit-label">Adjacent label, but not standard tag</span>`}
+<span id="biscuit-label">Adjacent label, but not standard tag</span>`}
           </pre>
         </div>
 
