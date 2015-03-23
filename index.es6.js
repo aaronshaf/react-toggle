@@ -74,7 +74,7 @@ export default React.createClass({
           onFocus={this.handleFocus}
           onBlur={this.handleBlur}
           defaultChecked={this.props.defaultChecked}
-          className="screenreader-only"
+          className="react-toggle-screenreader-only"
           type="checkbox"
           id={this.props.id}
           aria-labelledby={this.props['aria-labelledby']}
