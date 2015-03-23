@@ -15,7 +15,7 @@
     "react-component"
   ],
   "author": "Aaron Shafovaloff <ashafovaloff@instructure.com>",
-  "homepage": "https://github.com/instructure/react-toggle",
+  "homepage": "https://github.com/instructure-react/react-toggle",
   "repository": {
     "type": "git",
     "url": "git@github.com:instructure-react/react-toggle.git"
