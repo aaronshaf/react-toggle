@@ -1,6 +1,6 @@
 {
   "name": "react-toggle",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "An elegant, accessible toggle component for React. Also a glorified checkbox.",
   "main": "index.js",
   "style": "style.css",
