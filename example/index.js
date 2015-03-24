@@ -51,11 +51,11 @@ var App = React.createClass({
         <div className="example">
           <div>Installation</div>
           <pre>
-{`npm install react-toggle`}
+{`npm install react-toggle --save-dev`}
           </pre>
-          <pre>
-{`import Toggle from 'react-toggle'`}
-          </pre>
+          <pre>{`import Toggle from 'react-toggle'`}</pre>
+          <p>Or if you're not using the ES6 module format yet:</p>
+          <pre>{`var Toggle = require('react-toggle')`}</pre>
           <p>Include the component's <a href="https://raw.githubusercontent.com/instructure-react/react-toggle/master/style.css">CSS</a>.</p>
         </div>
 
