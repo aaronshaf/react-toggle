@@ -7,7 +7,7 @@ export default React.createClass({
   displayName: 'Toggle',
 
   propTypes: {
-    defaulChecked: React.PropTypes.bool,
+    defaultChecked: React.PropTypes.bool,
     onChange: React.PropTypes.func,
     name: React.PropTypes.string,
     value: React.PropTypes.string,
