@@ -112,12 +112,22 @@
 	        React.createElement(
 	          "pre",
 	          null,
-	          "npm install react-toggle"
+	          "npm install react-toggle --save-dev"
 	        ),
 	        React.createElement(
 	          "pre",
 	          null,
 	          "import Toggle from 'react-toggle'"
+	        ),
+	        React.createElement(
+	          "p",
+	          null,
+	          "Or if you're not using the ES6 module format yet:"
+	        ),
+	        React.createElement(
+	          "pre",
+	          null,
+	          "var Toggle = require('react-toggle')"
 	        ),
 	        React.createElement(
 	          "p",
