@@ -54,7 +54,7 @@ var App = React.createClass({
           <pre>
 {`import Toggle from 'react-toggle'`}
           </pre>
-          <p>Include the component's <a href="https://raw.githubusercontent.com/instructure-react/react-toggle/master/example/styles.css">CSS</a>.</p>
+          <p>Include the component's <a href="https://raw.githubusercontent.com/instructure-react/react-toggle/master/style.css">CSS</a>.</p>
         </div>
 
         {/* Bacon */}
