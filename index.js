@@ -28,7 +28,6 @@ module.exports = React.createClass({
 
   getInitialState: function getInitialState() {
     return {
-      checked: !!this.props.checked,
       hasFocus: false
     };
   },

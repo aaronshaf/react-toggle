@@ -19,7 +19,6 @@ export default React.createClass({
 
   getInitialState() {
     return {
-      checked: !!this.props.checked,
       hasFocus: false
     }
   },
