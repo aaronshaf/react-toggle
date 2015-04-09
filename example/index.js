@@ -213,6 +213,38 @@ var App = React.createClass({
             onChange={this.handleBurritoChange} />
         </div>
 
+        {/* Disabled */}
+
+        <div className="example">
+          <label>
+            <Toggle
+              defaultChecked={false}
+              disabled={true} />
+            <span className="label-text">Diabled, Unchecked</span>
+          </label>
+          <label>
+            <Toggle
+              defaultChecked={true}
+              disabled={true} />
+            <span className="label-text">Disabled, Checked</span>
+          </label>
+
+          <pre>
+{`<label>
+  <Toggle
+    defaultChecked={false}
+    disabled={true} />
+  <span className="label-text">Diabled, Unchecked</span>
+</label>
+<label>
+  <Toggle
+    defaultChecked={true}
+    disabled={true} />
+  <span className="label-text">Disabled, Checked</span>
+</label>`}
+          </pre>
+        </div>
+
       </form>
     )
   }
