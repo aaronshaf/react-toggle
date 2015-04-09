@@ -28,6 +28,10 @@
   width: 1px;
 }
 
+.react-toggle--disabled {
+  opacity: 0.5;
+}
+
 .react-toggle-track {
   width: 50px;
   height: 24px;
