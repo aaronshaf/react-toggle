@@ -7,6 +7,7 @@ export default React.createClass({
   displayName: 'Toggle',
 
   propTypes: {
+    checked: React.PropTypes.bool,
     defaultChecked: React.PropTypes.bool,
     onChange: React.PropTypes.func,
     name: React.PropTypes.string,
@@ -14,12 +15,6 @@ export default React.createClass({
     id: React.PropTypes.string,
     'aria-labelledby': React.PropTypes.string,
     'aria-label': React.PropTypes.string
-  },
-
-  getDefaultProps() {
-    return {
-      checked: false
-    }
   },
 
   getInitialState() {
@@ -32,7 +27,6 @@ export default React.createClass({
   handleClick(event) {
     var checkbox = this.refs.input.getDOMNode()
     var checkboxWasDirectlyClicked = event.target === checkbox
-    this.setState({checked: checkbox.checked})
     if(checkboxWasDirectlyClicked) {
       return
     }
@@ -49,9 +43,19 @@ export default React.createClass({
     this.setState({hasFocus: false})
   },
 
+  isChecked() {
+    if (this.props.checked != null) {
+      return this.props.checked
+    }
+    if (this.refs.input) {
+      return this.refs.input.getDOMNode().checked
+    }
+    return this.props.defaultChecked || false
+  },
+
   render() {
     var classes = classNames('react-toggle', {
-      'react-toggle--checked': this.state.checked,
+      'react-toggle--checked': this.isChecked(),
       'react-toggle--focus': this.state.hasFocus
     })
 
@@ -68,18 +72,12 @@ export default React.createClass({
         <div className="react-toggle-thumb"></div>
 
         <input
-          name={this.props.name}
-          value={this.props.value}
           ref="input"
           onFocus={this.handleFocus}
           onBlur={this.handleBlur}
-          defaultChecked={this.props.defaultChecked}
           className="react-toggle-screenreader-only"
           type="checkbox"
-          id={this.props.id}
-          aria-labelledby={this.props['aria-labelledby']}
-          aria-label={this.props['aria-label']}
-          onChange={this.props.onChange} />
+          {...this.props} />
       </div>
     )
   }

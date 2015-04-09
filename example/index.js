@@ -16,6 +16,7 @@ var App = React.createClass({
       biscuitIsReady: false,
       milkIsReady: false,
       eggsAreReady: false,
+      burritoIsReady: false,
       formData: {}
     }
   },
@@ -39,6 +40,10 @@ var App = React.createClass({
   handleMilkChange(event) {
     var form = this.refs.breakfastForm.getDOMNode()
     this.setState({formData: form.milkIsReady.checked ? {milkIsReady: form.milkIsReady.value} : {}})
+  },
+
+  handleBurritoChange(event) {
+    this.setState({burritoIsReady: event.target.checked})
   },
 
   render() {
@@ -179,6 +184,33 @@ var App = React.createClass({
           <pre>
             formData: {JSON.stringify(this.state.formData)}
           </pre>
+        </div>
+
+        {/* Controlled Component */}
+
+        <div className="example">
+          <label>
+            <input
+              type="checkbox"
+              checked={this.state.burritoIsReady}
+              name="burritoIsReady2"
+              onChange={this.handleBurritoChange} />
+            <span className="label-text"> Controlled Component</span>
+          </label>
+
+          <pre>
+{`<Toggle
+  checked={this.state.burritoIsReady}
+  name="burritoIsReady"
+  value="yes"
+  onChange={this.handleBurritoChange}/>`}
+          </pre>
+
+          <Toggle
+            checked={this.state.burritoIsReady}
+            name="burritoIsReady"
+            value="yes"
+            onChange={this.handleBurritoChange} />
         </div>
 
       </form>
