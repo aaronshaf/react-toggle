@@ -2,6 +2,8 @@
 
 var _interopRequire = function (obj) { return obj && obj.__esModule ? obj["default"] : obj; };
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var React = _interopRequire(require("react"));
 
 var classNames = _interopRequire(require("classnames"));
@@ -14,6 +16,7 @@ module.exports = React.createClass({
   displayName: "Toggle",
 
   propTypes: {
+    checked: React.PropTypes.bool,
     defaultChecked: React.PropTypes.bool,
     onChange: React.PropTypes.func,
     name: React.PropTypes.string,
@@ -23,15 +26,8 @@ module.exports = React.createClass({
     "aria-label": React.PropTypes.string
   },
 
-  getDefaultProps: function getDefaultProps() {
-    return {
-      checked: false
-    };
-  },
-
   getInitialState: function getInitialState() {
     return {
-      checked: !!this.props.defaultChecked,
       hasFocus: false
     };
   },
@@ -39,7 +35,6 @@ module.exports = React.createClass({
   handleClick: function handleClick(event) {
     var checkbox = this.refs.input.getDOMNode();
     var checkboxWasDirectlyClicked = event.target === checkbox;
-    this.setState({ checked: checkbox.checked });
     if (checkboxWasDirectlyClicked) {
       return;
     }
@@ -56,9 +51,19 @@ module.exports = React.createClass({
     this.setState({ hasFocus: false });
   },
 
+  isChecked: function isChecked() {
+    if (this.props.checked != null) {
+      return this.props.checked;
+    }
+    if (this.refs.input) {
+      return this.refs.input.getDOMNode().checked;
+    }
+    return this.props.defaultChecked || false;
+  },
+
   render: function render() {
     var classes = classNames("react-toggle", {
-      "react-toggle--checked": this.state.checked,
+      "react-toggle--checked": this.isChecked(),
       "react-toggle--focus": this.state.hasFocus
     });
 
@@ -80,19 +85,13 @@ module.exports = React.createClass({
         )
       ),
       React.createElement("div", { className: "react-toggle-thumb" }),
-      React.createElement("input", {
-        name: this.props.name,
-        value: this.props.value,
+      React.createElement("input", _extends({
         ref: "input",
         onFocus: this.handleFocus,
         onBlur: this.handleBlur,
-        defaultChecked: this.props.defaultChecked,
         className: "react-toggle-screenreader-only",
-        type: "checkbox",
-        id: this.props.id,
-        "aria-labelledby": this.props["aria-labelledby"],
-        "aria-label": this.props["aria-label"],
-        onChange: this.props.onChange })
+        type: "checkbox"
+      }, this.props))
     );
   }
 });
