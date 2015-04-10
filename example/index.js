@@ -216,18 +216,23 @@ var App = React.createClass({
         {/* Disabled */}
 
         <div className="example">
-          <label>
-            <Toggle
-              defaultChecked={false}
-              disabled={true} />
-            <span className="label-text">Diabled, Unchecked</span>
-          </label>
-          <label>
-            <Toggle
-              defaultChecked={true}
-              disabled={true} />
-            <span className="label-text">Disabled, Checked</span>
-          </label>
+          <div style={{marginBottom: '8px'}}>
+            <label>
+              <Toggle
+                defaultChecked={false}
+                disabled={true} />
+              <span className="label-text">Diabled, Unchecked</span>
+            </label>
+          </div>
+
+          <div>
+            <label>
+              <Toggle
+                defaultChecked={true}
+                disabled={true} />
+              <span className="label-text">Disabled, Checked</span>
+            </label>
+          </div>
 
           <pre>
 {`<label>

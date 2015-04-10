@@ -30,6 +30,8 @@
 
 .react-toggle--disabled {
   opacity: 0.5;
+  -webkit-transition: opacity 0.25s;
+  transition: opacity 0.25s;
 }
 
 .react-toggle-track {
