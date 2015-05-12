@@ -33,7 +33,7 @@ module.exports = React.createClass({
   },
 
   handleClick: function handleClick(event) {
-    var checkbox = React.findDOMNode(this.refs.input);
+    var checkbox = this.refs.input.getDOMNode();
     var checkboxWasDirectlyClicked = event.target === checkbox;
     if (checkboxWasDirectlyClicked) {
       return;
@@ -56,7 +56,7 @@ module.exports = React.createClass({
       return this.props.checked;
     }
     if (this.refs.input) {
-      return React.findDOMNode(this.refs.input).checked;
+      return this.refs.input.getDOMNode().checked;
     }
     return this.props.defaultChecked || false;
   },
