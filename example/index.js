@@ -17,6 +17,7 @@ var App = React.createClass({
       milkIsReady: false,
       eggsAreReady: false,
       burritoIsReady: false,
+      toastIsReady: false,
       formData: {}
     }
   },
@@ -44,6 +45,10 @@ var App = React.createClass({
 
   handleBurritoChange(event) {
     this.setState({burritoIsReady: event.target.checked})
+  },
+
+  handleToastChange(event) {
+    this.setState({toastIsReady: event.target.checked})
   },
 
   render() {
@@ -168,7 +173,7 @@ var App = React.createClass({
         <div className="example">
           <label>
             <Toggle
-              defaultChecked={this.state.milkIsReady}
+              defaultChecked={!!this.state.milkIsReady}
               name="milkIsReady"
               value="yes"
               onChange={this.handleMilkChange} />
@@ -211,6 +216,31 @@ var App = React.createClass({
             name="burritoIsReady"
             value="yes"
             onChange={this.handleBurritoChange} />
+        </div>
+
+        {/* Controlled Component without onChange */}
+
+        <div className="example">
+          <label>
+            <input
+              type="checkbox"
+              checked={this.state.toastIsReady}
+              name="toastIsReady2"
+              onChange={this.handleToastChange} />
+            <span className="label-text"> Controlled Component without onChange</span>
+          </label>
+
+          <pre>
+{`<Toggle
+  checked={this.state.toastIsReady}
+  name="toastIsReady"
+  value="yes" />`}
+          </pre>
+
+          <Toggle
+            checked={this.state.toastIsReady}
+            name="toastIsReady"
+            value="yes" />
         </div>
 
         {/* Disabled */}
