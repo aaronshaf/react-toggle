@@ -4,6 +4,7 @@ module.exports = {
   entry: {
     'example/bundle': './example/index'
   },
+  devtool: 'source-map',
 
   output: {
     path: '.',
