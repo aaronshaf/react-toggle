@@ -9,6 +9,11 @@ See [usage and examples](http://instructure-react.github.io/react-toggle/).
 ```bash
 npm install react-toggle
 ```
+OR 
+
+```bash
+bower install https://github.com/garbin/react-toggle.git#master
+```
 
 Include the component's [CSS](https://raw.githubusercontent.com/instructure-react/react-toggle/master/example/styles.css).
 
