@@ -6,6 +6,7 @@
   "style": "style.css",
   "scripts": {
     "build": "babel index.es6.js --out-file index.js && babel x.es6.js --out-file x.js && babel check.es6.js --out-file check.js && webpack",
+    "dist": "cp style.css ./dist/react-toggle.css && gluejs --include index.js --include check.js --include x.js --global ReactToggle --replace react=window.React --replace 'react/addons'=window.React --replace classnames=window.classNames --out ./dist/react-toggle.js",
     "dev": "webpack --watch"
   },
   "keywords": [
@@ -29,6 +30,7 @@
     "babel-core": "^4.7.16",
     "babel-loader": "^4.2.0",
     "css-loader": "^0.9.1",
+    "gluejs": "^2.3.9",
     "mocha": "^2.2.1",
     "react": "^0.13.0",
     "style-loader": "^0.9.0",
