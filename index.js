@@ -24,6 +24,7 @@ module.exports = React.createClass({
   propTypes: {
     checked: React.PropTypes.bool,
     defaultChecked: React.PropTypes.bool,
+    allowPending: React.PropTypes.bool,
     onChange: React.PropTypes.func,
     name: React.PropTypes.string,
     value: React.PropTypes.string,
@@ -41,6 +42,7 @@ module.exports = React.createClass({
     }
     return {
       checked: !!checked,
+      pendingAllowed: !!this.props.allowPending,
       hasFocus: false
     };
   },
@@ -60,7 +62,7 @@ module.exports = React.createClass({
       return;
     }
 
-    if (!("checked" in this.props)) {
+    if (!("checked" in this.props) || this.state.pendingAllowed) {
       this.setState({ checked: checkbox.checked });
     }
   },
@@ -73,11 +75,16 @@ module.exports = React.createClass({
     this.setState({ hasFocus: false });
   },
 
+  isPending: function isPending() {
+    return "checked" in this.props && this.props.checked !== this.state.checked;
+  },
+
   render: function render() {
     var classes = classNames("react-toggle", {
       "react-toggle--checked": this.state.checked,
       "react-toggle--focus": this.state.hasFocus,
-      "react-toggle--disabled": this.props.disabled
+      "react-toggle--disabled": this.props.disabled,
+      "react-toggle--pending": this.isPending()
     });
 
     return React.createElement(

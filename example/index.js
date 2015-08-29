@@ -206,6 +206,7 @@ var App = React.createClass({
           <label>
             <Toggle
               checked={!!this.state.cakeIsReady}
+              allowPending={true}
               name="cakeIsReady"
               value="yes"
               onChange={this.handleCakeChange} />
