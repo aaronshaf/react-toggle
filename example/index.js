@@ -18,6 +18,7 @@ var App = React.createClass({
       eggsAreReady: false,
       burritoIsReady: false,
       toastIsReady: false,
+      cakeIsReady: false,
       formData: {}
     }
   },
@@ -49,6 +50,14 @@ var App = React.createClass({
 
   handleToastChange(event) {
     this.setState({toastIsReady: event.target.checked})
+  },
+
+  handleCakeChange(event) {
+    var self = this;
+    var checked = event.target.checked;
+    setTimeout(() => {
+      self.setState({cakeIsReady: checked})
+    }, 2000);
   },
 
   render() {
@@ -188,6 +197,30 @@ var App = React.createClass({
           </pre>
           <pre>
             formData: {JSON.stringify(this.state.formData)}
+          </pre>
+        </div>
+
+        {/* Using delayed prop change */}
+
+        <div className="example">
+          <label>
+            <Toggle
+              checked={!!this.state.cakeIsReady}
+              allowPending={true}
+              name="cakeIsReady"
+              value="yes"
+              onChange={this.handleCakeChange} />
+            <span className="label-text">Using delayed prop change</span>
+          </label>
+
+          <pre>
+{`<Toggle
+  checked={this.state.cakeIsReady}
+  name="cakeIsReady"
+  value="yes" />`}
+          </pre>
+          <pre>
+            this.state.cakeIsReady: {JSON.stringify(this.state.cakeIsReady)}
           </pre>
         </div>
 
