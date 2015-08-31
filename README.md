@@ -10,7 +10,7 @@ See [usage and examples](http://instructure-react.github.io/react-toggle/).
 npm install react-toggle
 ```
 
-Include the component's [CSS](https://raw.githubusercontent.com/instructure-react/react-toggle/master/example/styles.css).
+Include the component's [CSS](./style.css).
 
 ## Development
 
