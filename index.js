@@ -29,7 +29,9 @@ module.exports = React.createClass({
     value: React.PropTypes.string,
     id: React.PropTypes.string,
     "aria-labelledby": React.PropTypes.string,
-    "aria-label": React.PropTypes.string
+    "aria-label": React.PropTypes.string,
+    disabled: React.PropTypes.bool,
+    hasFocus: React.PropTypes.bool
   },
 
   getInitialState: function getInitialState() {
