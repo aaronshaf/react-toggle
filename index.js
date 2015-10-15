@@ -28,6 +28,9 @@ module.exports = React.createClass({
     name: React.PropTypes.string,
     value: React.PropTypes.string,
     id: React.PropTypes.string,
+    style: React.PropTypes.object,
+    checkedValue: React.PropTypes.string,
+    uncheckedValue: React.PropTypes.string,
     "aria-labelledby": React.PropTypes.string,
     "aria-label": React.PropTypes.string
   },
@@ -85,16 +88,24 @@ module.exports = React.createClass({
       { className: classes, onClick: this.handleClick },
       React.createElement(
         "div",
-        { className: "react-toggle-track" },
+        { className: "react-toggle-track", style: this.props.style },
         React.createElement(
           "div",
           { className: "react-toggle-track-check" },
-          React.createElement(Check, null)
+          this.props.checkedValue ? React.createElement(
+            "div",
+            null,
+            this.props.checkedValue
+          ) : React.createElement(Check, null)
         ),
         React.createElement(
           "div",
           { className: "react-toggle-track-x" },
-          React.createElement(X, null)
+          this.props.uncheckedValue ? React.createElement(
+            "div",
+            null,
+            this.props.uncheckedValue
+          ) : React.createElement(X, null)
         )
       ),
       React.createElement("div", { className: "react-toggle-thumb" }),

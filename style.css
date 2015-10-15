@@ -59,9 +59,7 @@
 
 .react-toggle-track-check {
   position: absolute;
-  width: 14px;
-  height: 10px;
-  top: 0px;
+  top: 7px;
   bottom: 0px;
   margin-top: auto;
   margin-bottom: auto;
@@ -73,6 +71,15 @@
   transition: opacity 0.25s ease;
 }
 
+.react-toggle-track-check div {
+  top: 5px;
+  position: relative;
+  color: #fff;
+  font-weight: 700;
+  text-transform: uppercase;
+  visibility: hidden;
+}
+
 .react-toggle--checked .react-toggle-track-check {
   opacity: 1;
   -webkit-transition: opacity 0.25s ease;
@@ -80,24 +87,40 @@
   transition: opacity 0.25s ease;
 }
 
+.react-toggle--checked .react-toggle-track-check div {
+  visibility: visible;
+}
+
 .react-toggle-track-x {
   position: absolute;
-  width: 10px;
-  height: 10px;
-  top: 0px;
-  bottom: 0px;
+  top: 7px;
+  right: 8px;
   margin-top: auto;
   margin-bottom: auto;
   line-height: 0;
-  right: 10px;
   opacity: 1;
+  text-align: right;
   -webkit-transition: opacity 0.25s ease;
   -moz-transition: opacity 0.25s ease;
   transition: opacity 0.25s ease;
 }
 
+.react-toggle-track-x div {
+  top: 5px;
+  right: 3px;
+  position: relative;
+  color: #fff;
+  font-weight: 700;
+  text-transform: uppercase;
+  visibility: visible;
+}
+
 .react-toggle--checked .react-toggle-track-x {
   opacity: 0;
+}
+
+.react-toggle--checked .react-toggle-track-x div {
+  visibility: hidden;
 }
 
 .react-toggle-thumb {
@@ -121,7 +144,8 @@
 }
 
 .react-toggle--checked .react-toggle-thumb {
-  left: 27px;
+  right: 1px;
+  left: auto;
   border-color: #19AB27;
 }
 
