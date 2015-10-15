@@ -293,7 +293,7 @@ var App = React.createClass({
             defaultChecked={false}
             checkedValue="crêpes"
             uncheckedValue="pancakes"
-            width="110px"
+            width="115px"
             onChange={this.handleBreakfastChange} />
           <label htmlFor="breakfast-status">Labelled options</label>
 
@@ -303,6 +303,7 @@ var App = React.createClass({
   defaultChecked={false}
   checkedValue="crêpes"
   uncheckedValue="pancakes"
+  width="115px"
   onChange={this.handleBreakfastChange} />
 <label htmlFor="breakfast-status">Labelled options</label>`}
           </pre>
