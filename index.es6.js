@@ -78,10 +78,10 @@ export default React.createClass({
       <div className={classes} onClick={this.handleClick}>
         <div className="react-toggle-track" style={this.props.style}>
           <div className="react-toggle-track-check">
-            {this.props.checkedValue ? <div>{this.props.checkedValue}</div> : <Check />}
+            <Check />
           </div>
           <div className="react-toggle-track-x">
-            {this.props.uncheckedValue ? <div>{this.props.uncheckedValue}</div> : <X />}
+            <X />
           </div>
         </div>
         <div className="react-toggle-thumb"></div>
