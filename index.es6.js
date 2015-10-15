@@ -2,9 +2,7 @@ import React from 'react'
 import classNames from 'classnames'
 import Check from './check'
 import X from './x'
-import {addons} from 'react/addons'
-
-var PureRenderMixin = addons.PureRenderMixin;
+import PureRenderMixin from 'react-addons-pure-render-mixin'
 
 export default React.createClass({
   mixins: [PureRenderMixin],
@@ -45,7 +43,7 @@ export default React.createClass({
   },
 
   handleClick(event) {
-    var checkbox = React.findDOMNode(this.refs.input)
+    var checkbox = this.refs.input
     if (event.target !== checkbox)
     {
       event.preventDefault()

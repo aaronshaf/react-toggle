@@ -1,4 +1,5 @@
 import React from 'react'
+import { render } from 'react-dom'
 
 import Toggle from '../index.es6'
 // In your code this would be:
@@ -40,7 +41,7 @@ var App = React.createClass({
   },
 
   handleMilkChange(event) {
-    var form = this.refs.breakfastForm.getDOMNode()
+    var form = this.refs.breakfastForm
     this.setState({formData: form.milkIsReady.checked ? {milkIsReady: form.milkIsReady.value} : {}})
   },
 
@@ -318,4 +319,4 @@ var App = React.createClass({
   }
 })
 
-React.render(<App />, document.getElementById('application'))
+render(<App />, document.getElementById('application'))
