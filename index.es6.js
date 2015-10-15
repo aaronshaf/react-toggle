@@ -18,7 +18,7 @@ export default React.createClass({
     name: React.PropTypes.string,
     value: React.PropTypes.string,
     id: React.PropTypes.string,
-    width: React.PropTypes.string,
+    style: React.PropTypes.object,
     checkedValue: React.PropTypes.string,
     uncheckedValue: React.PropTypes.string,
     'aria-labelledby': React.PropTypes.string,
@@ -74,11 +74,9 @@ export default React.createClass({
       'react-toggle--disabled': this.props.disabled
     })
 
-    var style = 'width' in this.props ? {width: this.props.width} : null;
-
     return (
       <div className={classes} onClick={this.handleClick}>
-        <div className="react-toggle-track" style={style}>
+        <div className="react-toggle-track" style={this.props.style}>
           <div className="react-toggle-track-check">
             {this.props.checkedValue ? <div>{this.props.checkedValue}</div> : <Check />}
           </div>
