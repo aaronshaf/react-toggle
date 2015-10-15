@@ -1,4 +1,5 @@
 import React from 'react'
+import { render } from 'react-dom'
 
 import Toggle from '../index.es6'
 // In your code this would be:
@@ -16,6 +17,8 @@ var App = React.createClass({
       biscuitIsReady: false,
       milkIsReady: false,
       eggsAreReady: false,
+      burritoIsReady: false,
+      toastIsReady: false,
       formData: {}
     }
   },
@@ -37,8 +40,16 @@ var App = React.createClass({
   },
 
   handleMilkChange(event) {
-    var form = this.refs.breakfastForm.getDOMNode()
+    var form = this.refs.breakfastForm
     this.setState({formData: form.milkIsReady.checked ? {milkIsReady: form.milkIsReady.value} : {}})
+  },
+
+  handleBurritoChange(event) {
+    this.setState({burritoIsReady: event.target.checked})
+  },
+
+  handleToastChange(event) {
+    this.setState({toastIsReady: event.target.checked})
   },
 
   render() {
@@ -163,7 +174,7 @@ var App = React.createClass({
         <div className="example">
           <label>
             <Toggle
-              defaultChecked={this.state.milkIsReady}
+              defaultChecked={!!this.state.milkIsReady}
               name="milkIsReady"
               value="yes"
               onChange={this.handleMilkChange} />
@@ -181,9 +192,98 @@ var App = React.createClass({
           </pre>
         </div>
 
+        {/* Controlled Component */}
+
+        <div className="example">
+          <label>
+            <input
+              type="checkbox"
+              checked={this.state.burritoIsReady}
+              name="burritoIsReady2"
+              onChange={this.handleBurritoChange} />
+            <span className="label-text"> Controlled Component</span>
+          </label>
+
+          <pre>
+{`<Toggle
+  checked={this.state.burritoIsReady}
+  name="burritoIsReady"
+  value="yes"
+  onChange={this.handleBurritoChange}/>`}
+          </pre>
+
+          <Toggle
+            checked={this.state.burritoIsReady}
+            name="burritoIsReady"
+            value="yes"
+            onChange={this.handleBurritoChange} />
+        </div>
+
+        {/* Controlled Component without onChange */}
+
+        <div className="example">
+          <label>
+            <input
+              type="checkbox"
+              checked={this.state.toastIsReady}
+              name="toastIsReady2"
+              onChange={this.handleToastChange} />
+            <span className="label-text"> Controlled Component without onChange</span>
+          </label>
+
+          <pre>
+{`<Toggle
+  checked={this.state.toastIsReady}
+  name="toastIsReady"
+  value="yes" />`}
+          </pre>
+
+          <Toggle
+            checked={this.state.toastIsReady}
+            name="toastIsReady"
+            value="yes" />
+        </div>
+
+        {/* Disabled */}
+
+        <div className="example">
+          <div style={{marginBottom: '8px'}}>
+            <label>
+              <Toggle
+                defaultChecked={false}
+                disabled={true} />
+              <span className="label-text">Diabled, Unchecked</span>
+            </label>
+          </div>
+
+          <div>
+            <label>
+              <Toggle
+                defaultChecked={true}
+                disabled={true} />
+              <span className="label-text">Disabled, Checked</span>
+            </label>
+          </div>
+
+          <pre>
+{`<label>
+  <Toggle
+    defaultChecked={false}
+    disabled={true} />
+  <span className="label-text">Diabled, Unchecked</span>
+</label>
+<label>
+  <Toggle
+    defaultChecked={true}
+    disabled={true} />
+  <span className="label-text">Disabled, Checked</span>
+</label>`}
+          </pre>
+        </div>
+
       </form>
     )
   }
 })
 
-React.render(<App />, document.getElementById('application'))
+render(<App />, document.getElementById('application'))
