@@ -74,9 +74,7 @@ export default React.createClass({
       'react-toggle--disabled': this.props.disabled
     })
 
-    var style = this.props.width ?
-      {width: this.props.width} :
-      null;
+    var style = 'width' in this.props ? {width: this.props.width} : null;
 
     return (
       <div className={classes} onClick={this.handleClick}>

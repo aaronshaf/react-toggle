@@ -83,7 +83,7 @@ module.exports = React.createClass({
       "react-toggle--disabled": this.props.disabled
     });
 
-    var style = this.props.width ? { width: this.props.width } : null;
+    var style = "width" in this.props ? { width: this.props.width } : null;
 
     return React.createElement(
       "div",
