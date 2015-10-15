@@ -16,7 +16,8 @@ export default React.createClass({
     name: React.PropTypes.string,
     value: React.PropTypes.string,
     id: React.PropTypes.string,
-    style: React.PropTypes.object,
+    disabled: React.PropTypes.bool,
+    className: React.PropTypes.string,
     checkedValue: React.PropTypes.string,
     uncheckedValue: React.PropTypes.string,
     'aria-labelledby': React.PropTypes.string,
@@ -70,11 +71,11 @@ export default React.createClass({
       'react-toggle--checked': this.state.checked,
       'react-toggle--focus': this.state.hasFocus,
       'react-toggle--disabled': this.props.disabled
-    })
+    }, this.props.className)
 
     return (
       <div className={classes} onClick={this.handleClick}>
-        <div className="react-toggle-track" style={this.props.style}>
+        <div className="react-toggle-track">
           <div className="react-toggle-track-check">
             {this.props.checkedValue ? <div>{this.props.checkedValue}</div> : <Check />}
           </div>
@@ -90,7 +91,13 @@ export default React.createClass({
           onBlur={this.handleBlur}
           className="react-toggle-screenreader-only"
           type="checkbox"
-          {...this.props} />
+          onChange={this.props.onChange}
+          name={this.props.name}
+          value={this.props.value}
+          id={this.props.id}
+          disabled={this.props.disabled}
+          aria-labelledby={this.props['aria-labelledby']}
+          aria-label={this.props['aria-label']} />
       </div>
     )
   }
