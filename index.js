@@ -28,9 +28,6 @@ module.exports = React.createClass({
     name: React.PropTypes.string,
     value: React.PropTypes.string,
     id: React.PropTypes.string,
-    width: React.PropTypes.string,
-    checkedValue: React.PropTypes.string,
-    uncheckedValue: React.PropTypes.string,
     "aria-labelledby": React.PropTypes.string,
     "aria-label": React.PropTypes.string
   },
@@ -83,31 +80,21 @@ module.exports = React.createClass({
       "react-toggle--disabled": this.props.disabled
     });
 
-    var style = "width" in this.props ? { width: this.props.width } : null;
-
     return React.createElement(
       "div",
       { className: classes, onClick: this.handleClick },
       React.createElement(
         "div",
-        { className: "react-toggle-track", style: style },
+        { className: "react-toggle-track" },
         React.createElement(
           "div",
           { className: "react-toggle-track-check" },
-          this.props.checkedValue ? React.createElement(
-            "div",
-            null,
-            this.props.checkedValue
-          ) : React.createElement(Check, null)
+          React.createElement(Check, null)
         ),
         React.createElement(
           "div",
           { className: "react-toggle-track-x" },
-          this.props.uncheckedValue ? React.createElement(
-            "div",
-            null,
-            this.props.uncheckedValue
-          ) : React.createElement(X, null)
+          React.createElement(X, null)
         )
       ),
       React.createElement("div", { className: "react-toggle-thumb" }),

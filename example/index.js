@@ -18,7 +18,6 @@ var App = React.createClass({
       eggsAreReady: false,
       burritoIsReady: false,
       toastIsReady: false,
-      whatsForBreakfast: "pancakes",
       formData: {}
     }
   },
@@ -50,10 +49,6 @@ var App = React.createClass({
 
   handleToastChange(event) {
     this.setState({toastIsReady: event.target.checked})
-  },
-
-  handleBreakfastChange(event) {
-    this.setState({whatsForBreakfast: event.target.checked ? "crêpes" : "pancakes"})
   },
 
   render() {
@@ -283,34 +278,6 @@ var App = React.createClass({
   <span className="label-text">Disabled, Checked</span>
 </label>`}
           </pre>
-        </div>
-
-        {/* Crêpes or Pancakes */}
-
-        <div className="example">
-          <Toggle
-            id="breakfast-status"
-            defaultChecked={false}
-            checkedValue="crêpes"
-            uncheckedValue="pancakes"
-            width="115px"
-            onChange={this.handleBreakfastChange} />
-          <label htmlFor="breakfast-status">Labelled options</label>
-
-          <pre>
-{`<Toggle
-  id="breakfast-status"
-  defaultChecked={false}
-  checkedValue="crêpes"
-  uncheckedValue="pancakes"
-  width="115px"
-  onChange={this.handleBreakfastChange} />
-<label htmlFor="breakfast-status">Labelled options</label>`}
-          </pre>
-          <pre>
-            this.state.whatsForBreakfast: {JSON.stringify(this.state.whatsForBreakfast)}
-          </pre>
-
         </div>
 
       </form>
