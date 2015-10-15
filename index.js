@@ -92,12 +92,20 @@ module.exports = React.createClass({
         React.createElement(
           "div",
           { className: "react-toggle-track-check" },
-          React.createElement(Check, null)
+          this.props.checkedValue ? React.createElement(
+            "div",
+            null,
+            this.props.checkedValue
+          ) : React.createElement(Check, null)
         ),
         React.createElement(
           "div",
           { className: "react-toggle-track-x" },
-          React.createElement(X, null)
+          this.props.uncheckedValue ? React.createElement(
+            "div",
+            null,
+            this.props.uncheckedValue
+          ) : React.createElement(X, null)
         )
       ),
       React.createElement("div", { className: "react-toggle-thumb" }),

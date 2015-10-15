@@ -18,6 +18,7 @@ var App = React.createClass({
       eggsAreReady: false,
       burritoIsReady: false,
       toastIsReady: false,
+      whatsForBreakfast: "pancakes",
       formData: {}
     }
   },
@@ -49,6 +50,10 @@ var App = React.createClass({
 
   handleToastChange(event) {
     this.setState({toastIsReady: event.target.checked})
+  },
+
+  handleBreakfastChange(event) {
+    this.setState({whatsForBreakfast: event.target.checked ? "crêpes" : "pancakes"})
   },
 
   render() {
