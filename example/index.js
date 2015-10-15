@@ -308,7 +308,7 @@ var App = React.createClass({
 <label htmlFor="breakfast-status">Labelled options</label>`}
           </pre>
           <pre>
-            this.state.whatsForBreakfast: {JSON.stringify(this.state.whatsForBreakfast)}
+            this.state.whatsForBreakfast: {this.state.whatsForBreakfast}
           </pre>
 
         </div>
