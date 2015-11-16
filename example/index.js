@@ -244,6 +244,22 @@ var App = React.createClass({
             value="yes" />
         </div>
 
+        {/* Configure if icons are shown */}
+
+        <div className="example">
+          <label>
+            <Toggle showIcons={false} />
+            <span className="label-text">Configure if icons are shown</span>
+          </label>
+
+          <pre>
+{`<label>
+  <Toggle showIcons={false} />
+  <span className="label-text">My addition</span>
+</label>`}
+          </pre>
+        </div>
+
         {/* Disabled */}
 
         <div className="example">

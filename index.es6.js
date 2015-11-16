@@ -17,7 +17,14 @@ export default React.createClass({
     value: React.PropTypes.string,
     id: React.PropTypes.string,
     'aria-labelledby': React.PropTypes.string,
-    'aria-label': React.PropTypes.string
+    'aria-label': React.PropTypes.string,
+    showIcons: React.PropTypes.bool
+  },
+
+  getDefaultProps() {
+    return {
+      showIcons: true
+    };
   },
 
   getInitialState() {
@@ -73,10 +80,10 @@ export default React.createClass({
       <div className={classes} onClick={this.handleClick}>
         <div className="react-toggle-track">
           <div className="react-toggle-track-check">
-            <Check />
+            {this.props.showIcons ? <Check /> : ''}
           </div>
           <div className="react-toggle-track-x">
-            <X />
+            {this.props.showIcons ? <X /> : ''}
           </div>
         </div>
         <div className="react-toggle-thumb"></div>
