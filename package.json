@@ -30,14 +30,14 @@
     "babel-loader": "^4.2.0",
     "css-loader": "^0.9.1",
     "mocha": "^2.2.1",
-    "react": "^0.14.0",
-    "react-dom": "^0.14.0",
+    "react": "*",
+    "react-dom": ">=0.14.0",
     "style-loader": "^0.9.0",
     "webpack": "^1.7.3",
     "webpack-dev-server": "^1.7.0"
   },
   "dependencies": {
-    "classnames": "^1.2.0",
-    "react-addons-pure-render-mixin": "^0.14.0"
+    "classnames": "~2.2",
+    "react-addons-pure-render-mixin": ">=0.14.0"
   }
 }
