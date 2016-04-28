@@ -2,8 +2,6 @@
 
 var _interopRequire = function (obj) { return obj && obj.__esModule ? obj["default"] : obj; };
 
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
 var React = _interopRequire(require("react"));
 
 var classNames = _interopRequire(require("classnames"));
@@ -26,6 +24,10 @@ module.exports = React.createClass({
     name: React.PropTypes.string,
     value: React.PropTypes.string,
     id: React.PropTypes.string,
+    disabled: React.PropTypes.bool,
+    className: React.PropTypes.string,
+    checkedValue: React.PropTypes.string,
+    uncheckedValue: React.PropTypes.string,
     "aria-labelledby": React.PropTypes.string,
     "aria-label": React.PropTypes.string
   },
@@ -76,7 +78,7 @@ module.exports = React.createClass({
       "react-toggle--checked": this.state.checked,
       "react-toggle--focus": this.state.hasFocus,
       "react-toggle--disabled": this.props.disabled
-    });
+    }, this.props.className);
 
     return React.createElement(
       "div",
@@ -87,22 +89,36 @@ module.exports = React.createClass({
         React.createElement(
           "div",
           { className: "react-toggle-track-check" },
-          React.createElement(Check, null)
+          this.props.checkedValue ? React.createElement(
+            "div",
+            null,
+            this.props.checkedValue
+          ) : React.createElement(Check, null)
         ),
         React.createElement(
           "div",
           { className: "react-toggle-track-x" },
-          React.createElement(X, null)
+          this.props.uncheckedValue ? React.createElement(
+            "div",
+            null,
+            this.props.uncheckedValue
+          ) : React.createElement(X, null)
         )
       ),
       React.createElement("div", { className: "react-toggle-thumb" }),
-      React.createElement("input", _extends({
+      React.createElement("input", {
         ref: "input",
         onFocus: this.handleFocus,
         onBlur: this.handleBlur,
         className: "react-toggle-screenreader-only",
-        type: "checkbox"
-      }, this.props))
+        type: "checkbox",
+        onChange: this.props.onChange,
+        name: this.props.name,
+        value: this.props.value,
+        id: this.props.id,
+        disabled: this.props.disabled,
+        "aria-labelledby": this.props["aria-labelledby"],
+        "aria-label": this.props["aria-label"] })
     );
   }
 });
