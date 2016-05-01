@@ -27,7 +27,14 @@ module.exports = React.createClass({
     value: React.PropTypes.string,
     id: React.PropTypes.string,
     "aria-labelledby": React.PropTypes.string,
-    "aria-label": React.PropTypes.string
+    "aria-label": React.PropTypes.string,
+    showIcons: React.PropTypes.bool
+  },
+
+  getDefaultProps: function getDefaultProps() {
+    return {
+      showIcons: true
+    };
   },
 
   getInitialState: function getInitialState() {
@@ -87,12 +94,12 @@ module.exports = React.createClass({
         React.createElement(
           "div",
           { className: "react-toggle-track-check" },
-          React.createElement(Check, null)
+          this.props.showIcons ? React.createElement(Check, null) : ""
         ),
         React.createElement(
           "div",
           { className: "react-toggle-track-x" },
-          React.createElement(X, null)
+          this.props.showIcons ? React.createElement(X, null) : ""
         )
       ),
       React.createElement("div", { className: "react-toggle-thumb" }),
