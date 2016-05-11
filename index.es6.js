@@ -2,6 +2,7 @@ import React from 'react'
 import classNames from 'classnames'
 import Check from './check'
 import X from './x'
+import Label from './label'
 import PureRenderMixin from 'react-addons-pure-render-mixin'
 
 export default React.createClass({
@@ -41,8 +42,7 @@ export default React.createClass({
 
   handleClick(event) {
     var checkbox = this.refs.input
-    if (event.target !== checkbox)
-    {
+    if (event.target !== checkbox) {
       event.preventDefault()
       checkbox.focus()
       checkbox.click()
@@ -62,6 +62,20 @@ export default React.createClass({
     this.setState({hasFocus: false})
   },
 
+  renderCheck(){
+    if (this.props.checkLabel) {
+      return <Label value={this.props.checkLabel}/>
+    }
+    return <Check/>
+  },
+
+  renderX(){
+    if (this.props.xLabel) {
+      return <Label value={this.props.xLabel}/>
+    }
+    return <X/>
+  },
+
   render() {
     var classes = classNames('react-toggle', {
       'react-toggle--checked': this.state.checked,
@@ -73,10 +87,10 @@ export default React.createClass({
       <div className={classes} onClick={this.handleClick}>
         <div className="react-toggle-track">
           <div className="react-toggle-track-check">
-            <Check />
+            {this.renderCheck()}
           </div>
           <div className="react-toggle-track-x">
-            <X />
+            {this.renderX()}
           </div>
         </div>
         <div className="react-toggle-thumb"></div>
