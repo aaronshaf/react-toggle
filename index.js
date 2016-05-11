@@ -12,6 +12,8 @@ var Check = _interopRequire(require("./check"));
 
 var X = _interopRequire(require("./x"));
 
+var Label = _interopRequire(require("./label"));
+
 var PureRenderMixin = _interopRequire(require("react-addons-pure-render-mixin"));
 
 module.exports = React.createClass({
@@ -71,6 +73,20 @@ module.exports = React.createClass({
     this.setState({ hasFocus: false });
   },
 
+  renderCheck: function renderCheck() {
+    if (this.props.checkLabel) {
+      return React.createElement(Label, { value: this.props.checkLabel });
+    }
+    return React.createElement(Check, null);
+  },
+
+  renderX: function renderX() {
+    if (this.props.xLabel) {
+      return React.createElement(Label, { value: this.props.checkLabel });
+    }
+    return React.createElement(X, null);
+  },
+
   render: function render() {
     var classes = classNames("react-toggle", {
       "react-toggle--checked": this.state.checked,
@@ -87,12 +103,12 @@ module.exports = React.createClass({
         React.createElement(
           "div",
           { className: "react-toggle-track-check" },
-          React.createElement(Check, null)
+          this.renderCheck()
         ),
         React.createElement(
           "div",
           { className: "react-toggle-track-x" },
-          React.createElement(X, null)
+          this.renderX()
         )
       ),
       React.createElement("div", { className: "react-toggle-thumb" }),

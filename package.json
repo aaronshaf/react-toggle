@@ -5,7 +5,7 @@
   "main": "index.js",
   "style": "style.css",
   "scripts": {
-    "build": "babel index.es6.js --out-file index.js && babel x.es6.js --out-file x.js && babel check.es6.js --out-file check.js && webpack",
+    "build": "babel index.es6.js --out-file index.js && babel x.es6.js --out-file x.js && babel check.es6.js --out-file check.js && babel label.es6.js --out-file label.js && webpack",
     "dev": "webpack --watch"
   },
   "keywords": [

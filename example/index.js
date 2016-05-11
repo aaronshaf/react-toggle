@@ -19,6 +19,7 @@ var App = React.createClass({
       eggsAreReady: false,
       burritoIsReady: false,
       toastIsReady: false,
+      burgerIsReady:false,
       formData: {}
     }
   },
@@ -50,6 +51,10 @@ var App = React.createClass({
 
   handleToastChange(event) {
     this.setState({toastIsReady: event.target.checked})
+  },
+
+  handleBurgerChange(event) {
+    this.setState({burgerIsReady: event.target.checked})
   },
 
   render() {
@@ -279,6 +284,30 @@ var App = React.createClass({
   <span className="label-text">Disabled, Checked</span>
 </label>`}
           </pre>
+        </div>
+
+        <div className="example">
+          <Toggle
+            id="cheese-status"
+            checkLabel="On"
+            xLabel="Off"
+            defaultChecked={this.state.burgerIsReady}
+            onChange={this.handleCheeseChange} />
+          <label htmlFor="burger-status">Custom labels</label>
+
+          <pre>
+{`<Toggle
+  id="burger-status"
+   checkLabel="On"
+   xLabel="Off"
+  defaultChecked={this.state.burgerIsReady}
+  onChange={this.handleBurgerChange} />
+<label htmlFor="burger-status">Custom labels</label>`}
+          </pre>
+          <pre>
+            this.state.burgerIsReady: {JSON.stringify(this.state.burgerIsReady)}
+          </pre>
+
         </div>
 
       </form>
