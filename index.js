@@ -6,15 +6,15 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 var React = _interopRequire(require("react"));
 
+var ReactDOM = _interopRequire(require("react-dom"));
+
 var classNames = _interopRequire(require("classnames"));
 
 var Check = _interopRequire(require("./check"));
 
 var X = _interopRequire(require("./x"));
 
-var addons = require("react/addons").addons;
-
-var PureRenderMixin = addons.PureRenderMixin;
+var PureRenderMixin = _interopRequire(require("react-addons-pure-render-mixin"));
 
 module.exports = React.createClass({
   mixins: [PureRenderMixin],
@@ -54,7 +54,7 @@ module.exports = React.createClass({
   },
 
   handleClick: function handleClick(event) {
-    var checkbox = React.findDOMNode(this.refs.input);
+    var checkbox = ReactDOM.findDOMNode(this.refs.input);
     if (event.target !== checkbox) {
       event.preventDefault();
       checkbox.focus();

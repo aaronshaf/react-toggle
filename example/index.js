@@ -1,4 +1,5 @@
 import React from 'react'
+import ReactDOM from 'react-dom'
 
 import Toggle from '../index.es6'
 // In your code this would be:
@@ -318,4 +319,4 @@ var App = React.createClass({
   }
 })
 
-React.render(<App />, document.getElementById('application'))
+ReactDOM.render(<App />, document.getElementById('application'))
