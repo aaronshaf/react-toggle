@@ -50,7 +50,7 @@ module.exports = React.createClass({
   },
 
   handleClick: function handleClick(event) {
-    var checkbox = this.refs.input;
+    var checkbox = this.input;
     if (event.target !== checkbox) {
       event.preventDefault();
       checkbox.focus();
@@ -69,6 +69,10 @@ module.exports = React.createClass({
 
   handleBlur: function handleBlur() {
     this.setState({ hasFocus: false });
+  },
+
+  setRef: function(ref) {
+    this.input = ref;
   },
 
   render: function render() {
@@ -97,7 +101,7 @@ module.exports = React.createClass({
       ),
       React.createElement("div", { className: "react-toggle-thumb" }),
       React.createElement("input", _extends({
-        ref: "input",
+        ref: this.setRef,
         onFocus: this.handleFocus,
         onBlur: this.handleBlur,
         className: "react-toggle-screenreader-only",
