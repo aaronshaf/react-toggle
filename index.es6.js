@@ -40,7 +40,7 @@ export default React.createClass({
   },
 
   handleClick(event) {
-    var checkbox = this.refs.input
+    var checkbox = this.input
     if (event.target !== checkbox)
     {
       event.preventDefault()
@@ -82,7 +82,7 @@ export default React.createClass({
         <div className="react-toggle-thumb"></div>
 
         <input
-          ref="input"
+          ref={ref => {this.input = ref;}}
           onFocus={this.handleFocus}
           onBlur={this.handleBlur}
           className="react-toggle-screenreader-only"
