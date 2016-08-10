@@ -14,14 +14,14 @@
     "react",
     "react-component"
   ],
-  "author": "Aaron Shafovaloff <ashafovaloff@instructure.com>",
-  "homepage": "https://github.com/instructure-react/react-toggle",
+  "author": "Aaron Shafovaloff <aaronshaf@gmail.com>",
+  "homepage": "https://github.com/aaronshaf/react-toggle",
   "repository": {
     "type": "git",
-    "url": "git@github.com:instructure-react/react-toggle.git"
+    "url": "git@github.com:aaronshaf/react-toggle.git"
   },
   "bugs": {
-    "url": "https://github.com/instructure-react/react-toggle/issues"
+    "url": "https://github.com/aaronshaf/react-toggle/issues"
   },
   "license": "MIT",
   "devDependencies": {
