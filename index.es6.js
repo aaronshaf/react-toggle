@@ -13,6 +13,8 @@ export default React.createClass({
     checked: React.PropTypes.bool,
     defaultChecked: React.PropTypes.bool,
     onChange: React.PropTypes.func,
+    labelOn: React.PropTypes.element,
+    labelOff: React.PropTypes.element,
     name: React.PropTypes.string,
     value: React.PropTypes.string,
     id: React.PropTypes.string,
@@ -69,14 +71,16 @@ export default React.createClass({
       'react-toggle--disabled': this.props.disabled
     })
 
+    var { labelOn, labelOff, ...rest } = this.props;
+
     return (
       <div className={classes} onClick={this.handleClick}>
         <div className="react-toggle-track">
           <div className="react-toggle-track-check">
-            <Check />
+            {labelOn || <Check />}
           </div>
           <div className="react-toggle-track-x">
-            <X />
+            {labelOff || <X />}
           </div>
         </div>
         <div className="react-toggle-thumb"></div>
@@ -87,7 +91,7 @@ export default React.createClass({
           onBlur={this.handleBlur}
           className="react-toggle-screenreader-only"
           type="checkbox"
-          {...this.props} />
+          {...rest} />
       </div>
     )
   }
