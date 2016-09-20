@@ -80,7 +80,7 @@ module.exports = React.createClass({
 
     return React.createElement(
       "div",
-      { className: classes, onClick: this.handleClick },
+      { className: classes, onClick: this.handleClick, onTouchEnd: this.handleClick },
       React.createElement(
         "div",
         { className: "react-toggle-track" },
