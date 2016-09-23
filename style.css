@@ -29,6 +29,7 @@
 }
 
 .react-toggle--disabled {
+  cursor: default;
   opacity: 0.5;
   -webkit-transition: opacity 0.25s;
   transition: opacity 0.25s;
@@ -45,7 +46,7 @@
   transition: all 0.2s ease;
 }
 
-.react-toggle:hover .react-toggle-track {
+.react-toggle:hover:not(.react-toggle--disabled) .react-toggle-track {
   background-color: #000000;
 }
 
@@ -53,7 +54,7 @@
   background-color: #19AB27;
 }
 
-.react-toggle.react-toggle--checked:hover .react-toggle-track {
+.react-toggle.react-toggle--checked:hover:not(.react-toggle--disabled) .react-toggle-track {
   background-color: #128D15;
 }
 
@@ -131,7 +132,7 @@
   box-shadow: 0px 0px 2px 3px #0099E0;
 }
 
-.react-toggle:active .react-toggle-thumb {
+.react-toggle:active:not(.react-toggle--disabled) .react-toggle-thumb {
   -webkit-box-shadow: 0px 0px 5px 5px #0099E0;
   -moz-box-shadow: 0px 0px 5px 5px #0099E0;
   box-shadow: 0px 0px 5px 5px #0099E0;
