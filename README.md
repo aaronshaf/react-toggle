@@ -19,7 +19,7 @@ The component takes the following props.
 
 - `onChange`: _function_
 > Callback function to invoke when the user clicks on the toggle.
-	The function signature should be the following: ```js function(e) { }```.
+	The function signature should be the following: `function(e) { }`.
 	To get the current checked status from the event, use `e.target.checked`.
 
 - `name`: _string_
