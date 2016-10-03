@@ -25,19 +25,26 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "babel": "^4.7.16",
-    "babel-core": "^4.7.16",
-    "babel-loader": "^4.2.0",
-    "css-loader": "^0.9.1",
-    "mocha": "^2.2.1",
-    "react": "*",
-    "react-dom": ">=0.14.0",
-    "style-loader": "^0.9.0",
-    "webpack": "^1.7.3",
-    "webpack-dev-server": "^1.7.0"
+    "babel-cli": "^6.14.0",
+    "babel-core": "^6.14.0",
+    "babel-loader": "^6.2.5",
+    "babel-preset-es2015": "^6.14.0",
+    "babel-preset-react": "^6.11.1",
+    "css-loader": "^0.25.0",
+    "mocha": "^3.0.2",
+    "react": "^15.3.1",
+    "react-addons-pure-render-mixin": "^15.3.1",
+    "react-dom": "^15.3.1",
+    "style-loader": "^0.13.1",
+    "webpack": "^1.13.2",
+    "webpack-dev-server": "^1.16.0"
   },
   "dependencies": {
-    "classnames": "~2.2",
-    "react-addons-pure-render-mixin": ">=0.14.0"
+    "classnames": "^2.2.5"
+  },
+  "peerDependencies": {
+    "react": "~0.14.0 || ^15.0.0",
+    "react-addons-pure-render-mixin": "~0.14.0 || ^15.0.0",
+    "react-dom": "~0.14.0 || ^15.0.0"
   }
 }
