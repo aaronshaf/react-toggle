@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { render } from 'react-dom'
 
 import Toggle from '../src'
@@ -8,11 +8,18 @@ import Toggle from '../src'
 import '../style.css'
 import './style.css'
 
-var App = React.createClass({
-  displayName: 'App',
+class App extends Component {
+  constructor(props) {
+    super(props)
+    this.handleMilkChange = this.handleMilkChange.bind(this)
+    this.handleEggsChange = this.handleChange.bind(this, "eggsAreReady")
+    this.handleBaconChange = this.handleChange.bind(this, "baconIsReady")
+    this.handleToastChange = this.handleChange.bind(this, "toastIsReady")
+    this.handleCheeseChange = this.handleChange.bind(this, "cheeseIsReady")
+    this.handleBiscuitChange = this.handleChange.bind(this, "biscuitIsReady")
+    this.handleBurritoChange = this.handleChange.bind(this, "burritoIsReady")
 
-  getInitialState() {
-    return {
+    this.state = {
       cheeseIsReady: false,
       baconIsReady: false,
       biscuitIsReady: false,
@@ -22,36 +29,16 @@ var App = React.createClass({
       toastIsReady: false,
       formData: {}
     }
-  },
+  }
 
-  handleBaconChange(event) {
-    this.setState({baconIsReady: event.target.checked})
-  },
-
-  handleCheeseChange(event) {
-    this.setState({cheeseIsReady: event.target.checked})
-  },
-
-  handleBiscuitChange(event) {
-    this.setState({biscuitIsReady: event.target.checked})
-  },
-
-  handleEggsChange(event) {
-    this.setState({eggsAreReady: event.target.checked})
-  },
+  handleChange(key, event) {
+    this.setState({ [key]: event.target.checked })
+  }
 
   handleMilkChange(event) {
     var form = this.refs.breakfastForm
     this.setState({formData: form.milkIsReady.checked ? {milkIsReady: form.milkIsReady.value} : {}})
-  },
-
-  handleBurritoChange(event) {
-    this.setState({burritoIsReady: event.target.checked})
-  },
-
-  handleToastChange(event) {
-    this.setState({toastIsReady: event.target.checked})
-  },
+  }
 
   render() {
     return (
@@ -285,6 +272,8 @@ var App = React.createClass({
       </form>
     )
   }
-})
+}
+
+App.displayName = 'App'
 
 render(<App />, document.getElementById('application'))

@@ -1,43 +1,26 @@
-import React from 'react'
+import React, { Component, PropTypes } from 'react'
 import classNames from 'classnames'
 import Check from './check'
 import X from './x'
-import PureRenderMixin from 'react-addons-pure-render-mixin'
+import shallowCompare from 'react-addons-shallow-compare'
 
-export default React.createClass({
-  mixins: [PureRenderMixin],
-
-  displayName: 'Toggle',
-
-  propTypes: {
-    checked: React.PropTypes.bool,
-    defaultChecked: React.PropTypes.bool,
-    onChange: React.PropTypes.func,
-    name: React.PropTypes.string,
-    value: React.PropTypes.string,
-    id: React.PropTypes.string,
-    'aria-labelledby': React.PropTypes.string,
-    'aria-label': React.PropTypes.string
-  },
-
-  getInitialState() {
-    var checked = false;
-    if ('checked' in this.props) {
-      checked = this.props.checked
-    } else if ('defaultChecked' in this.props) {
-      checked = this.props.defaultChecked
-    }
-    return {
-      checked: !!checked,
+export default class Toggle extends Component {
+  constructor(props) {
+    super(props)
+    this.handleClick = this.handleClick.bind(this)
+    this.handleFocus = this.setState.bind(this, { hasFocus: true })
+    this.handleBlur = this.setState.bind(this, { hasFocus: false })
+    this.state = {
+      checked: !!(props.checked || props.defaultChecked),
       hasFocus: false
     }
-  },
+  }
 
   componentWillReceiveProps(nextProps) {
     if ('checked' in nextProps) {
       this.setState({checked: !!nextProps.checked})
     }
-  },
+  }
 
   handleClick(event) {
     var checkbox = this.input
@@ -52,15 +35,11 @@ export default React.createClass({
     if (!('checked' in this.props)) {
       this.setState({checked: checkbox.checked})
     }
-  },
+  }
 
-  handleFocus() {
-    this.setState({hasFocus: true})
-  },
-
-  handleBlur() {
-    this.setState({hasFocus: false})
-  },
+  shouldComponentUpdate(nextProps, nextState) {
+    return shallowCompare(this, nextProps, nextState)
+  }
 
   render() {
     var classes = classNames('react-toggle', {
@@ -91,4 +70,17 @@ export default React.createClass({
       </div>
     )
   }
-})
+}
+
+Toggle.displayName = 'Toggle'
+
+Toggle.propTypes = {
+  checked: PropTypes.bool,
+  defaultChecked: PropTypes.bool,
+  onChange: PropTypes.func,
+  name: PropTypes.string,
+  value: PropTypes.string,
+  id: PropTypes.string,
+  'aria-labelledby': PropTypes.string,
+  'aria-label': PropTypes.string
+}
