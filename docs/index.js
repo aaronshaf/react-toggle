@@ -1,11 +1,12 @@
 import React from 'react'
 import { render } from 'react-dom'
 
-import Toggle from '../index.es6'
+import Toggle from '../src'
 // In your code this would be:
 // import Toggle from 'react-toggle'
 
-require("../style.css")
+import '../style.css'
+import './style.css'
 
 var App = React.createClass({
   displayName: 'App',

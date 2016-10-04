@@ -1,0 +1,22 @@
+/* These are example-specific */
+
+.react-toggle {
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+label,
+.label-text {
+  vertical-align: middle;
+  font-weight: normal;
+  margin-bottom: 0; /* override bootstrap */
+}
+
+.example {
+  margin-top: 36px;
+  margin-bottom: 36px;
+}
+
+pre {
+  margin-top: 8px;
+}

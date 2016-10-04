@@ -59,8 +59,6 @@ npm install
 npm run dev
 ```
 
-`index.es6.js` transpiles to `index.js`.
-
 ## Build
 
 ```javascript

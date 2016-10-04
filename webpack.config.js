@@ -1,26 +1,30 @@
 var path = require('path')
 
 module.exports = {
-  entry: {
-    'example/bundle': './example/index'
-  },
+  entry: path.join(__dirname, 'docs/index.js'),
   devtool: 'source-map',
 
   output: {
-    path: '.',
-    filename: '[name].js',
-    publicPath: '/example/'
+    path: path.join(__dirname, 'docs'),
+    filename: 'bundle.js',
   },
 
   module: {
     loaders: [
-      { test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader'},
-      { test: /\.css$/, loader: "style-loader!css-loader" }
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader'
+      },
+      {
+        test: /\.css$/,
+        loader: "style-loader!css-loader"
+      }
     ]
   },
 
   devServer: {
-    contentBase: './example',
+    contentBase: './docs',
     host: 'localhost',
     inline: true,
     info: false
