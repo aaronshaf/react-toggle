@@ -83,12 +83,12 @@
 	    var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
 	
 	    _this.handleMilkChange = _this.handleMilkChange.bind(_this);
-	    _this.handleEggsChange = _this.handleChange.bind(_this, "eggsAreReady");
-	    _this.handleBaconChange = _this.handleChange.bind(_this, "baconIsReady");
-	    _this.handleToastChange = _this.handleChange.bind(_this, "toastIsReady");
-	    _this.handleCheeseChange = _this.handleChange.bind(_this, "cheeseIsReady");
-	    _this.handleBiscuitChange = _this.handleChange.bind(_this, "biscuitIsReady");
-	    _this.handleBurritoChange = _this.handleChange.bind(_this, "burritoIsReady");
+	    _this.handleEggsChange = _this.handleChange.bind(_this, 'eggsAreReady');
+	    _this.handleBaconChange = _this.handleChange.bind(_this, 'baconIsReady');
+	    _this.handleToastChange = _this.handleChange.bind(_this, 'toastIsReady');
+	    _this.handleCheeseChange = _this.handleChange.bind(_this, 'cheeseIsReady');
+	    _this.handleBiscuitChange = _this.handleChange.bind(_this, 'biscuitIsReady');
+	    _this.handleBurritoChange = _this.handleChange.bind(_this, 'burritoIsReady');
 	
 	    _this.state = {
 	      cheeseIsReady: false,
@@ -207,7 +207,7 @@
 	          _react2.default.createElement(
 	            'pre',
 	            null,
-	            '<Toggle\n  id="cheese-status"\n  defaultChecked={this.state.cheeseIsReady}\n  onChange={this.handleCheeseChange} />\n<label htmlFor="cheese-status">Adjacent label tag</label>'
+	            '<Toggle\n  id=\'cheese-status\'\n  defaultChecked={this.state.cheeseIsReady}\n  onChange={this.handleCheeseChange} />\n<label htmlFor=\'cheese-status\'>Adjacent label tag</label>'
 	          ),
 	          _react2.default.createElement(
 	            'pre',
@@ -232,7 +232,7 @@
 	          _react2.default.createElement(
 	            'pre',
 	            null,
-	            '<Toggle\n  id="biscuit-status"\n  defaultChecked={this.state.biscuitIsReady}\n  aria-labelledby="biscuit-label"\n  onChange={this.handleBiscuitChange} />\n<span id="biscuit-label">Adjacent label, but not standard tag</span>'
+	            '<Toggle\n  id=\'biscuit-status\'\n  defaultChecked={this.state.biscuitIsReady}\n  aria-labelledby=\'biscuit-label\'\n  onChange={this.handleBiscuitChange} />\n<span id=\'biscuit-label\'>Adjacent label, but not standard tag</span>'
 	          ),
 	          _react2.default.createElement(
 	            'pre',
@@ -256,7 +256,7 @@
 	          _react2.default.createElement(
 	            'pre',
 	            null,
-	            '<Toggle\n  defaultChecked={this.state.eggsAreReady}\n  aria-label="No label tag"\n  onChange={this.handleEggsChange} />\n<span>No label tag</span>'
+	            '<Toggle\n  defaultChecked={this.state.eggsAreReady}\n  aria-label=\'No label tag\'\n  onChange={this.handleEggsChange} />\n<span>No label tag</span>'
 	          ),
 	          _react2.default.createElement(
 	            'pre',
@@ -299,7 +299,7 @@
 	          _react2.default.createElement(
 	            'pre',
 	            null,
-	            '<Toggle\n  defaultChecked={this.state.milkIsReady}\n  name="milkIsReady"\n  value="yes" />'
+	            '<Toggle\n  defaultChecked={this.state.milkIsReady}\n  name=\'milkIsReady\'\n  value=\'yes\' />'
 	          ),
 	          _react2.default.createElement(
 	            'pre',
@@ -328,7 +328,7 @@
 	          _react2.default.createElement(
 	            'pre',
 	            null,
-	            '<Toggle\n  checked={this.state.burritoIsReady}\n  name="burritoIsReady"\n  value="yes"\n  onChange={this.handleBurritoChange}/>'
+	            '<Toggle\n  checked={this.state.burritoIsReady}\n  name=\'burritoIsReady\'\n  value=\'yes\'\n  onChange={this.handleBurritoChange}/>'
 	          ),
 	          _react2.default.createElement(_src2.default, {
 	            checked: this.state.burritoIsReady,
@@ -356,7 +356,7 @@
 	          _react2.default.createElement(
 	            'pre',
 	            null,
-	            '<Toggle\n  checked={this.state.toastIsReady}\n  name="toastIsReady"\n  value="yes" />'
+	            '<Toggle\n  checked={this.state.toastIsReady}\n  name=\'toastIsReady\'\n  value=\'yes\' />'
 	          ),
 	          _react2.default.createElement(_src2.default, {
 	            checked: this.state.toastIsReady,
@@ -401,7 +401,7 @@
 	          _react2.default.createElement(
 	            'pre',
 	            null,
-	            '<label>\n  <Toggle\n    defaultChecked={false}\n    disabled={true} />\n  <span className="label-text">Diabled, Unchecked</span>\n</label>\n<label>\n  <Toggle\n    defaultChecked={true}\n    disabled={true} />\n  <span className="label-text">Disabled, Checked</span>\n</label>'
+	            '<label>\n  <Toggle\n    defaultChecked={false}\n    disabled={true} />\n  <span className=\'label-text\'>Diabled, Unchecked</span>\n</label>\n<label>\n  <Toggle\n    defaultChecked={true}\n    disabled={true} />\n  <span className=\'label-text\'>Disabled, Checked</span>\n</label>'
 	          )
 	        )
 	      );
@@ -21921,6 +21921,7 @@
 	
 	Toggle.propTypes = {
 	  checked: _react.PropTypes.bool,
+	  disabled: _react.PropTypes.bool,
 	  defaultChecked: _react.PropTypes.bool,
 	  onChange: _react.PropTypes.func,
 	  name: _react.PropTypes.string,
@@ -21988,7 +21989,7 @@
 /* 174 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -22002,14 +22003,14 @@
 	
 	exports.default = function () {
 	  return _react2.default.createElement(
-	    "svg",
-	    { width: "14", height: "11", viewBox: "0 0 14 11" },
+	    'svg',
+	    { width: '14', height: '11', viewBox: '0 0 14 11' },
 	    _react2.default.createElement(
-	      "title",
+	      'title',
 	      null,
-	      "switch-check"
+	      'switch-check'
 	    ),
-	    _react2.default.createElement("path", { d: "M11.264 0L5.26 6.004 2.103 2.847 0 4.95l5.26 5.26 8.108-8.107L11.264 0", fill: "#fff", fillRule: "evenodd" })
+	    _react2.default.createElement('path', { d: 'M11.264 0L5.26 6.004 2.103 2.847 0 4.95l5.26 5.26 8.108-8.107L11.264 0', fill: '#fff', fillRule: 'evenodd' })
 	  );
 	};
 
@@ -22017,7 +22018,7 @@
 /* 175 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -22031,14 +22032,14 @@
 	
 	exports.default = function () {
 	  return _react2.default.createElement(
-	    "svg",
-	    { width: "10", height: "10", viewBox: "0 0 10 10" },
+	    'svg',
+	    { width: '10', height: '10', viewBox: '0 0 10 10' },
 	    _react2.default.createElement(
-	      "title",
+	      'title',
 	      null,
-	      "switch-x"
+	      'switch-x'
 	    ),
-	    _react2.default.createElement("path", { d: "M9.9 2.12L7.78 0 4.95 2.828 2.12 0 0 2.12l2.83 2.83L0 7.776 2.123 9.9 4.95 7.07 7.78 9.9 9.9 7.776 7.072 4.95 9.9 2.12", fill: "#fff", fillRule: "evenodd" })
+	    _react2.default.createElement('path', { d: 'M9.9 2.12L7.78 0 4.95 2.828 2.12 0 0 2.12l2.83 2.83L0 7.776 2.123 9.9 4.95 7.07 7.78 9.9 9.9 7.776 7.072 4.95 9.9 2.12', fill: '#fff', fillRule: 'evenodd' })
 	  );
 	};
 
