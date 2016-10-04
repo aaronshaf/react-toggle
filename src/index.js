@@ -5,7 +5,7 @@ import X from './x'
 import shallowCompare from 'react-addons-shallow-compare'
 
 export default class Toggle extends Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
     this.handleClick = this.handleClick.bind(this)
     this.handleFocus = this.setState.bind(this, { hasFocus: true })
@@ -16,16 +16,15 @@ export default class Toggle extends Component {
     }
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps (nextProps) {
     if ('checked' in nextProps) {
       this.setState({checked: !!nextProps.checked})
     }
   }
 
-  handleClick(event) {
+  handleClick (event) {
     var checkbox = this.input
-    if (event.target !== checkbox)
-    {
+    if (event.target !== checkbox) {
       event.preventDefault()
       checkbox.focus()
       checkbox.click()
@@ -37,11 +36,11 @@ export default class Toggle extends Component {
     }
   }
 
-  shouldComponentUpdate(nextProps, nextState) {
+  shouldComponentUpdate (nextProps, nextState) {
     return shallowCompare(this, nextProps, nextState)
   }
 
-  render() {
+  render () {
     var classes = classNames('react-toggle', {
       'react-toggle--checked': this.state.checked,
       'react-toggle--focus': this.state.hasFocus,
@@ -50,22 +49,22 @@ export default class Toggle extends Component {
 
     return (
       <div className={classes} onClick={this.handleClick}>
-        <div className="react-toggle-track">
-          <div className="react-toggle-track-check">
+        <div className='react-toggle-track'>
+          <div className='react-toggle-track-check'>
             <Check />
           </div>
-          <div className="react-toggle-track-x">
+          <div className='react-toggle-track-x'>
             <X />
           </div>
         </div>
-        <div className="react-toggle-thumb"></div>
+        <div className='react-toggle-thumb' />
 
         <input
-          ref={ref => {this.input = ref;}}
+          ref={ref => { this.input = ref }}
           onFocus={this.handleFocus}
           onBlur={this.handleBlur}
-          className="react-toggle-screenreader-only"
-          type="checkbox"
+          className='react-toggle-screenreader-only'
+          type='checkbox'
           {...this.props} />
       </div>
     )
@@ -76,6 +75,7 @@ Toggle.displayName = 'Toggle'
 
 Toggle.propTypes = {
   checked: PropTypes.bool,
+  disabled: PropTypes.bool,
   defaultChecked: PropTypes.bool,
   onChange: PropTypes.func,
   name: PropTypes.string,

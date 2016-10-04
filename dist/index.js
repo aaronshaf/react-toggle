@@ -133,6 +133,7 @@ Toggle.displayName = 'Toggle';
 
 Toggle.propTypes = {
   checked: _react.PropTypes.bool,
+  disabled: _react.PropTypes.bool,
   defaultChecked: _react.PropTypes.bool,
   onChange: _react.PropTypes.func,
   name: _react.PropTypes.string,
