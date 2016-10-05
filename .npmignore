@@ -1,3 +1,6 @@
+.babelrc
+.eslintrc.json
+.eslintignore
+docs/
+src/
 webpack.config.js
-docs
-src
