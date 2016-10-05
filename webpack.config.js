@@ -6,7 +6,7 @@ module.exports = {
 
   output: {
     path: path.join(__dirname, 'docs'),
-    filename: 'bundle.js',
+    filename: 'bundle.js'
   },
 
   module: {
@@ -18,7 +18,7 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        loader: "style-loader!css-loader"
+        loader: 'style-loader!css-loader'
       }
     ]
   },

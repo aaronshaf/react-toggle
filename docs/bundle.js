@@ -46,6 +46,8 @@
 
 	'use strict';
 	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
 	var _react = __webpack_require__(1);
 	
 	var _react2 = _interopRequireDefault(_react);
@@ -56,20 +58,39 @@
 	
 	var _src2 = _interopRequireDefault(_src);
 	
-	__webpack_require__(179);
+	__webpack_require__(178);
 	
-	__webpack_require__(183);
+	__webpack_require__(182);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
+	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	// In your code this would be:
 	// import Toggle from 'react-toggle'
 	
-	var App = _react2.default.createClass({
-	  displayName: 'App',
+	var App = function (_Component) {
+	  _inherits(App, _Component);
 	
-	  getInitialState: function getInitialState() {
-	    return {
+	  function App(props) {
+	    _classCallCheck(this, App);
+	
+	    var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
+	
+	    _this.handleMilkChange = _this.handleMilkChange.bind(_this);
+	    _this.handleEggsChange = _this.handleChange.bind(_this, 'eggsAreReady');
+	    _this.handleBaconChange = _this.handleChange.bind(_this, 'baconIsReady');
+	    _this.handleToastChange = _this.handleChange.bind(_this, 'toastIsReady');
+	    _this.handleCheeseChange = _this.handleChange.bind(_this, 'cheeseIsReady');
+	    _this.handleBiscuitChange = _this.handleChange.bind(_this, 'biscuitIsReady');
+	    _this.handleBurritoChange = _this.handleChange.bind(_this, 'burritoIsReady');
+	
+	    _this.state = {
 	      cheeseIsReady: false,
 	      baconIsReady: false,
 	      biscuitIsReady: false,
@@ -79,320 +100,318 @@
 	      toastIsReady: false,
 	      formData: {}
 	    };
-	  },
-	  handleBaconChange: function handleBaconChange(event) {
-	    this.setState({ baconIsReady: event.target.checked });
-	  },
-	  handleCheeseChange: function handleCheeseChange(event) {
-	    this.setState({ cheeseIsReady: event.target.checked });
-	  },
-	  handleBiscuitChange: function handleBiscuitChange(event) {
-	    this.setState({ biscuitIsReady: event.target.checked });
-	  },
-	  handleEggsChange: function handleEggsChange(event) {
-	    this.setState({ eggsAreReady: event.target.checked });
-	  },
-	  handleMilkChange: function handleMilkChange(event) {
-	    var form = this.refs.breakfastForm;
-	    this.setState({ formData: form.milkIsReady.checked ? { milkIsReady: form.milkIsReady.value } : {} });
-	  },
-	  handleBurritoChange: function handleBurritoChange(event) {
-	    this.setState({ burritoIsReady: event.target.checked });
-	  },
-	  handleToastChange: function handleToastChange(event) {
-	    this.setState({ toastIsReady: event.target.checked });
-	  },
-	  render: function render() {
-	    return _react2.default.createElement(
-	      'form',
-	      { ref: 'breakfastForm' },
-	      _react2.default.createElement(
-	        'h1',
-	        null,
-	        'react-toggle'
-	      ),
-	      _react2.default.createElement(
-	        'div',
-	        { className: 'example' },
-	        _react2.default.createElement(
-	          'div',
-	          null,
-	          'Installation'
-	        ),
-	        _react2.default.createElement(
-	          'pre',
-	          null,
-	          'npm install react-toggle --save-dev'
-	        ),
-	        _react2.default.createElement(
-	          'pre',
-	          null,
-	          'import Toggle from \'react-toggle\''
-	        ),
-	        _react2.default.createElement(
-	          'p',
-	          null,
-	          'Or if you\'re not using the ES6 module format yet:'
-	        ),
-	        _react2.default.createElement(
-	          'pre',
-	          null,
-	          'var Toggle = require(\'react-toggle\')'
-	        ),
-	        _react2.default.createElement(
-	          'p',
-	          null,
-	          'Include the component\'s ',
-	          _react2.default.createElement(
-	            'a',
-	            { href: 'https://raw.githubusercontent.com/instructure-react/react-toggle/master/style.css' },
-	            'CSS'
-	          ),
-	          '.'
-	        )
-	      ),
-	      _react2.default.createElement(
-	        'div',
-	        { className: 'example' },
-	        _react2.default.createElement(
-	          'label',
-	          null,
-	          _react2.default.createElement(_src2.default, {
-	            defaultChecked: this.state.baconIsReady,
-	            onChange: this.handleBaconChange }),
-	          _react2.default.createElement(
-	            'span',
-	            { className: 'label-text' },
-	            'Wrapper label tag'
-	          )
-	        ),
-	        _react2.default.createElement(
-	          'pre',
-	          null,
-	          '<label>\n  <Toggle\n    defaultChecked={this.state.baconIsReady}\n    onChange={this.handleBaconChange} />\n  <span>Wrapper label tag</span>\n</label>'
-	        ),
-	        _react2.default.createElement(
-	          'pre',
-	          null,
-	          'this.state.baconIsReady: ',
-	          JSON.stringify(this.state.baconIsReady)
-	        )
-	      ),
-	      _react2.default.createElement(
-	        'div',
-	        { className: 'example' },
-	        _react2.default.createElement(_src2.default, {
-	          id: 'cheese-status',
-	          defaultChecked: this.state.cheeseIsReady,
-	          onChange: this.handleCheeseChange }),
-	        _react2.default.createElement(
-	          'label',
-	          { htmlFor: 'cheese-status' },
-	          'Adjacent label tag'
-	        ),
-	        _react2.default.createElement(
-	          'pre',
-	          null,
-	          '<Toggle\n  id="cheese-status"\n  defaultChecked={this.state.cheeseIsReady}\n  onChange={this.handleCheeseChange} />\n<label htmlFor="cheese-status">Adjacent label tag</label>'
-	        ),
-	        _react2.default.createElement(
-	          'pre',
-	          null,
-	          'this.state.cheeseIsReady: ',
-	          JSON.stringify(this.state.cheeseIsReady)
-	        )
-	      ),
-	      _react2.default.createElement(
-	        'div',
-	        { className: 'example' },
-	        _react2.default.createElement(_src2.default, {
-	          id: 'biscuit-status',
-	          defaultChecked: this.state.biscuitIsReady,
-	          'aria-labelledby': 'biscuit-label',
-	          onChange: this.handleBiscuitChange }),
-	        _react2.default.createElement(
-	          'span',
-	          { id: 'biscuit-label', className: 'label-text' },
-	          'Adjacent label, but not standard tag'
-	        ),
-	        _react2.default.createElement(
-	          'pre',
-	          null,
-	          '<Toggle\n  id="biscuit-status"\n  defaultChecked={this.state.biscuitIsReady}\n  aria-labelledby="biscuit-label"\n  onChange={this.handleBiscuitChange} />\n<span id="biscuit-label">Adjacent label, but not standard tag</span>'
-	        ),
-	        _react2.default.createElement(
-	          'pre',
-	          null,
-	          'this.state.biscuitIsReady: ',
-	          JSON.stringify(this.state.biscuitIsReady)
-	        )
-	      ),
-	      _react2.default.createElement(
-	        'div',
-	        { className: 'example' },
-	        _react2.default.createElement(_src2.default, {
-	          defaultChecked: this.state.eggsAreReady,
-	          'aria-label': 'No label',
-	          onChange: this.handleEggsChange }),
-	        _react2.default.createElement(
-	          'span',
-	          { className: 'label-text' },
-	          'No label tag'
-	        ),
-	        _react2.default.createElement(
-	          'pre',
-	          null,
-	          '<Toggle\n  defaultChecked={this.state.eggsAreReady}\n  aria-label="No label tag"\n  onChange={this.handleEggsChange} />\n<span>No label tag</span>'
-	        ),
-	        _react2.default.createElement(
-	          'pre',
-	          null,
-	          'this.state.eggsAreReady: ',
-	          JSON.stringify(this.state.eggsAreReady)
-	        )
-	      ),
-	      _react2.default.createElement(
-	        'div',
-	        { className: 'example' },
-	        _react2.default.createElement(
-	          'div',
-	          null,
-	          'Handle change'
-	        ),
-	        _react2.default.createElement(
-	          'pre',
-	          null,
-	          'handleChange(event) {\n  // do something with event.target.checked\n}'
-	        )
-	      ),
-	      _react2.default.createElement(
-	        'div',
-	        { className: 'example' },
-	        _react2.default.createElement(
-	          'label',
-	          null,
-	          _react2.default.createElement(_src2.default, {
-	            defaultChecked: !!this.state.milkIsReady,
-	            name: 'milkIsReady',
-	            value: 'yes',
-	            onChange: this.handleMilkChange }),
-	          _react2.default.createElement(
-	            'span',
-	            { className: 'label-text' },
-	            'Using form data'
-	          )
-	        ),
-	        _react2.default.createElement(
-	          'pre',
-	          null,
-	          '<Toggle\n  defaultChecked={this.state.milkIsReady}\n  name="milkIsReady"\n  value="yes" />'
-	        ),
-	        _react2.default.createElement(
-	          'pre',
-	          null,
-	          'formData: ',
-	          JSON.stringify(this.state.formData)
-	        )
-	      ),
-	      _react2.default.createElement(
-	        'div',
-	        { className: 'example' },
-	        _react2.default.createElement(
-	          'label',
-	          null,
-	          _react2.default.createElement('input', {
-	            type: 'checkbox',
-	            checked: this.state.burritoIsReady,
-	            name: 'burritoIsReady2',
-	            onChange: this.handleBurritoChange }),
-	          _react2.default.createElement(
-	            'span',
-	            { className: 'label-text' },
-	            ' Controlled Component'
-	          )
-	        ),
-	        _react2.default.createElement(
-	          'pre',
-	          null,
-	          '<Toggle\n  checked={this.state.burritoIsReady}\n  name="burritoIsReady"\n  value="yes"\n  onChange={this.handleBurritoChange}/>'
-	        ),
-	        _react2.default.createElement(_src2.default, {
-	          checked: this.state.burritoIsReady,
-	          name: 'burritoIsReady',
-	          value: 'yes',
-	          onChange: this.handleBurritoChange })
-	      ),
-	      _react2.default.createElement(
-	        'div',
-	        { className: 'example' },
-	        _react2.default.createElement(
-	          'label',
-	          null,
-	          _react2.default.createElement('input', {
-	            type: 'checkbox',
-	            checked: this.state.toastIsReady,
-	            name: 'toastIsReady2',
-	            onChange: this.handleToastChange }),
-	          _react2.default.createElement(
-	            'span',
-	            { className: 'label-text' },
-	            ' Controlled Component without onChange'
-	          )
-	        ),
-	        _react2.default.createElement(
-	          'pre',
-	          null,
-	          '<Toggle\n  checked={this.state.toastIsReady}\n  name="toastIsReady"\n  value="yes" />'
-	        ),
-	        _react2.default.createElement(_src2.default, {
-	          checked: this.state.toastIsReady,
-	          name: 'toastIsReady',
-	          value: 'yes' })
-	      ),
-	      _react2.default.createElement(
-	        'div',
-	        { className: 'example' },
-	        _react2.default.createElement(
-	          'div',
-	          { style: { marginBottom: '8px' } },
-	          _react2.default.createElement(
-	            'label',
-	            null,
-	            _react2.default.createElement(_src2.default, {
-	              defaultChecked: false,
-	              disabled: true }),
-	            _react2.default.createElement(
-	              'span',
-	              { className: 'label-text' },
-	              'Diabled, Unchecked'
-	            )
-	          )
-	        ),
-	        _react2.default.createElement(
-	          'div',
-	          null,
-	          _react2.default.createElement(
-	            'label',
-	            null,
-	            _react2.default.createElement(_src2.default, {
-	              defaultChecked: true,
-	              disabled: true }),
-	            _react2.default.createElement(
-	              'span',
-	              { className: 'label-text' },
-	              'Disabled, Checked'
-	            )
-	          )
-	        ),
-	        _react2.default.createElement(
-	          'pre',
-	          null,
-	          '<label>\n  <Toggle\n    defaultChecked={false}\n    disabled={true} />\n  <span className="label-text">Diabled, Unchecked</span>\n</label>\n<label>\n  <Toggle\n    defaultChecked={true}\n    disabled={true} />\n  <span className="label-text">Disabled, Checked</span>\n</label>'
-	        )
-	      )
-	    );
+	    return _this;
 	  }
-	});
+	
+	  _createClass(App, [{
+	    key: 'handleChange',
+	    value: function handleChange(key, event) {
+	      this.setState(_defineProperty({}, key, event.target.checked));
+	    }
+	  }, {
+	    key: 'handleMilkChange',
+	    value: function handleMilkChange(event) {
+	      var form = this.refs.breakfastForm;
+	      this.setState({ formData: form.milkIsReady.checked ? { milkIsReady: form.milkIsReady.value } : {} });
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'form',
+	        { ref: 'breakfastForm' },
+	        _react2.default.createElement(
+	          'h1',
+	          null,
+	          'react-toggle'
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'example' },
+	          _react2.default.createElement(
+	            'div',
+	            null,
+	            'Installation'
+	          ),
+	          _react2.default.createElement(
+	            'pre',
+	            null,
+	            'npm install react-toggle --save-dev'
+	          ),
+	          _react2.default.createElement(
+	            'pre',
+	            null,
+	            'import Toggle from \'react-toggle\''
+	          ),
+	          _react2.default.createElement(
+	            'p',
+	            null,
+	            'Or if you\'re not using the ES6 module format yet:'
+	          ),
+	          _react2.default.createElement(
+	            'pre',
+	            null,
+	            'var Toggle = require(\'react-toggle\')'
+	          ),
+	          _react2.default.createElement(
+	            'p',
+	            null,
+	            'Include the component\'s ',
+	            _react2.default.createElement(
+	              'a',
+	              { href: 'https://raw.githubusercontent.com/instructure-react/react-toggle/master/style.css' },
+	              'CSS'
+	            ),
+	            '.'
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'example' },
+	          _react2.default.createElement(
+	            'label',
+	            null,
+	            _react2.default.createElement(_src2.default, {
+	              defaultChecked: this.state.baconIsReady,
+	              onChange: this.handleBaconChange }),
+	            _react2.default.createElement(
+	              'span',
+	              { className: 'label-text' },
+	              'Wrapper label tag'
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'pre',
+	            null,
+	            '<label>\n  <Toggle\n    defaultChecked={this.state.baconIsReady}\n    onChange={this.handleBaconChange} />\n  <span>Wrapper label tag</span>\n</label>'
+	          ),
+	          _react2.default.createElement(
+	            'pre',
+	            null,
+	            'this.state.baconIsReady: ',
+	            JSON.stringify(this.state.baconIsReady)
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'example' },
+	          _react2.default.createElement(_src2.default, {
+	            id: 'cheese-status',
+	            defaultChecked: this.state.cheeseIsReady,
+	            onChange: this.handleCheeseChange }),
+	          _react2.default.createElement(
+	            'label',
+	            { htmlFor: 'cheese-status' },
+	            'Adjacent label tag'
+	          ),
+	          _react2.default.createElement(
+	            'pre',
+	            null,
+	            '<Toggle\n  id=\'cheese-status\'\n  defaultChecked={this.state.cheeseIsReady}\n  onChange={this.handleCheeseChange} />\n<label htmlFor=\'cheese-status\'>Adjacent label tag</label>'
+	          ),
+	          _react2.default.createElement(
+	            'pre',
+	            null,
+	            'this.state.cheeseIsReady: ',
+	            JSON.stringify(this.state.cheeseIsReady)
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'example' },
+	          _react2.default.createElement(_src2.default, {
+	            id: 'biscuit-status',
+	            defaultChecked: this.state.biscuitIsReady,
+	            'aria-labelledby': 'biscuit-label',
+	            onChange: this.handleBiscuitChange }),
+	          _react2.default.createElement(
+	            'span',
+	            { id: 'biscuit-label', className: 'label-text' },
+	            'Adjacent label, but not standard tag'
+	          ),
+	          _react2.default.createElement(
+	            'pre',
+	            null,
+	            '<Toggle\n  id=\'biscuit-status\'\n  defaultChecked={this.state.biscuitIsReady}\n  aria-labelledby=\'biscuit-label\'\n  onChange={this.handleBiscuitChange} />\n<span id=\'biscuit-label\'>Adjacent label, but not standard tag</span>'
+	          ),
+	          _react2.default.createElement(
+	            'pre',
+	            null,
+	            'this.state.biscuitIsReady: ',
+	            JSON.stringify(this.state.biscuitIsReady)
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'example' },
+	          _react2.default.createElement(_src2.default, {
+	            defaultChecked: this.state.eggsAreReady,
+	            'aria-label': 'No label',
+	            onChange: this.handleEggsChange }),
+	          _react2.default.createElement(
+	            'span',
+	            { className: 'label-text' },
+	            'No label tag'
+	          ),
+	          _react2.default.createElement(
+	            'pre',
+	            null,
+	            '<Toggle\n  defaultChecked={this.state.eggsAreReady}\n  aria-label=\'No label tag\'\n  onChange={this.handleEggsChange} />\n<span>No label tag</span>'
+	          ),
+	          _react2.default.createElement(
+	            'pre',
+	            null,
+	            'this.state.eggsAreReady: ',
+	            JSON.stringify(this.state.eggsAreReady)
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'example' },
+	          _react2.default.createElement(
+	            'div',
+	            null,
+	            'Handle change'
+	          ),
+	          _react2.default.createElement(
+	            'pre',
+	            null,
+	            'handleChange(event) {\n  // do something with event.target.checked\n}'
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'example' },
+	          _react2.default.createElement(
+	            'label',
+	            null,
+	            _react2.default.createElement(_src2.default, {
+	              defaultChecked: !!this.state.milkIsReady,
+	              name: 'milkIsReady',
+	              value: 'yes',
+	              onChange: this.handleMilkChange }),
+	            _react2.default.createElement(
+	              'span',
+	              { className: 'label-text' },
+	              'Using form data'
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'pre',
+	            null,
+	            '<Toggle\n  defaultChecked={this.state.milkIsReady}\n  name=\'milkIsReady\'\n  value=\'yes\' />'
+	          ),
+	          _react2.default.createElement(
+	            'pre',
+	            null,
+	            'formData: ',
+	            JSON.stringify(this.state.formData)
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'example' },
+	          _react2.default.createElement(
+	            'label',
+	            null,
+	            _react2.default.createElement('input', {
+	              type: 'checkbox',
+	              checked: this.state.burritoIsReady,
+	              name: 'burritoIsReady2',
+	              onChange: this.handleBurritoChange }),
+	            _react2.default.createElement(
+	              'span',
+	              { className: 'label-text' },
+	              ' Controlled Component'
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'pre',
+	            null,
+	            '<Toggle\n  checked={this.state.burritoIsReady}\n  name=\'burritoIsReady\'\n  value=\'yes\'\n  onChange={this.handleBurritoChange}/>'
+	          ),
+	          _react2.default.createElement(_src2.default, {
+	            checked: this.state.burritoIsReady,
+	            name: 'burritoIsReady',
+	            value: 'yes',
+	            onChange: this.handleBurritoChange })
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'example' },
+	          _react2.default.createElement(
+	            'label',
+	            null,
+	            _react2.default.createElement('input', {
+	              type: 'checkbox',
+	              checked: this.state.toastIsReady,
+	              name: 'toastIsReady2',
+	              onChange: this.handleToastChange }),
+	            _react2.default.createElement(
+	              'span',
+	              { className: 'label-text' },
+	              ' Controlled Component without onChange'
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'pre',
+	            null,
+	            '<Toggle\n  checked={this.state.toastIsReady}\n  name=\'toastIsReady\'\n  value=\'yes\' />'
+	          ),
+	          _react2.default.createElement(_src2.default, {
+	            checked: this.state.toastIsReady,
+	            name: 'toastIsReady',
+	            value: 'yes' })
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'example' },
+	          _react2.default.createElement(
+	            'div',
+	            { style: { marginBottom: '8px' } },
+	            _react2.default.createElement(
+	              'label',
+	              null,
+	              _react2.default.createElement(_src2.default, {
+	                defaultChecked: false,
+	                disabled: true }),
+	              _react2.default.createElement(
+	                'span',
+	                { className: 'label-text' },
+	                'Diabled, Unchecked'
+	              )
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            null,
+	            _react2.default.createElement(
+	              'label',
+	              null,
+	              _react2.default.createElement(_src2.default, {
+	                defaultChecked: true,
+	                disabled: true }),
+	              _react2.default.createElement(
+	                'span',
+	                { className: 'label-text' },
+	                'Disabled, Checked'
+	              )
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'pre',
+	            null,
+	            '<label>\n  <Toggle\n    defaultChecked={false}\n    disabled={true} />\n  <span className=\'label-text\'>Diabled, Unchecked</span>\n</label>\n<label>\n  <Toggle\n    defaultChecked={true}\n    disabled={true} />\n  <span className=\'label-text\'>Disabled, Checked</span>\n</label>'
+	          )
+	        )
+	      );
+	    }
+	  }]);
+	
+	  return App;
+	}(_react.Component);
+	
+	App.displayName = 'App';
 	
 	(0, _reactDom.render)(_react2.default.createElement(App, null), document.getElementById('application'));
 
@@ -21775,6 +21794,8 @@
 	
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
 	var _react = __webpack_require__(1);
 	
 	var _react2 = _interopRequireDefault(_react);
@@ -21791,103 +21812,124 @@
 	
 	var _x2 = _interopRequireDefault(_x);
 	
-	var _reactAddonsPureRenderMixin = __webpack_require__(176);
+	var _reactAddonsShallowCompare = __webpack_require__(176);
 	
-	var _reactAddonsPureRenderMixin2 = _interopRequireDefault(_reactAddonsPureRenderMixin);
+	var _reactAddonsShallowCompare2 = _interopRequireDefault(_reactAddonsShallowCompare);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	exports.default = _react2.default.createClass({
-	  mixins: [_reactAddonsPureRenderMixin2.default],
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
-	  displayName: 'Toggle',
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 	
-	  propTypes: {
-	    checked: _react2.default.PropTypes.bool,
-	    defaultChecked: _react2.default.PropTypes.bool,
-	    onChange: _react2.default.PropTypes.func,
-	    name: _react2.default.PropTypes.string,
-	    value: _react2.default.PropTypes.string,
-	    id: _react2.default.PropTypes.string,
-	    'aria-labelledby': _react2.default.PropTypes.string,
-	    'aria-label': _react2.default.PropTypes.string
-	  },
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	  getInitialState: function getInitialState() {
-	    var checked = false;
-	    if ('checked' in this.props) {
-	      checked = this.props.checked;
-	    } else if ('defaultChecked' in this.props) {
-	      checked = this.props.defaultChecked;
-	    }
-	    return {
-	      checked: !!checked,
+	var Toggle = function (_Component) {
+	  _inherits(Toggle, _Component);
+	
+	  function Toggle(props) {
+	    _classCallCheck(this, Toggle);
+	
+	    var _this = _possibleConstructorReturn(this, (Toggle.__proto__ || Object.getPrototypeOf(Toggle)).call(this, props));
+	
+	    _this.handleClick = _this.handleClick.bind(_this);
+	    _this.handleFocus = _this.setState.bind(_this, { hasFocus: true });
+	    _this.handleBlur = _this.setState.bind(_this, { hasFocus: false });
+	    _this.state = {
+	      checked: !!(props.checked || props.defaultChecked),
 	      hasFocus: false
 	    };
-	  },
-	  componentWillReceiveProps: function componentWillReceiveProps(nextProps) {
-	    if ('checked' in nextProps) {
-	      this.setState({ checked: !!nextProps.checked });
-	    }
-	  },
-	  handleClick: function handleClick(event) {
-	    var checkbox = this.input;
-	    if (event.target !== checkbox) {
-	      event.preventDefault();
-	      checkbox.focus();
-	      checkbox.click();
-	      return;
-	    }
-	
-	    if (!('checked' in this.props)) {
-	      this.setState({ checked: checkbox.checked });
-	    }
-	  },
-	  handleFocus: function handleFocus() {
-	    this.setState({ hasFocus: true });
-	  },
-	  handleBlur: function handleBlur() {
-	    this.setState({ hasFocus: false });
-	  },
-	  render: function render() {
-	    var _this = this;
-	
-	    var classes = (0, _classnames2.default)('react-toggle', {
-	      'react-toggle--checked': this.state.checked,
-	      'react-toggle--focus': this.state.hasFocus,
-	      'react-toggle--disabled': this.props.disabled
-	    });
-	
-	    return _react2.default.createElement(
-	      'div',
-	      { className: classes, onClick: this.handleClick },
-	      _react2.default.createElement(
-	        'div',
-	        { className: 'react-toggle-track' },
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'react-toggle-track-check' },
-	          _react2.default.createElement(_check2.default, null)
-	        ),
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'react-toggle-track-x' },
-	          _react2.default.createElement(_x2.default, null)
-	        )
-	      ),
-	      _react2.default.createElement('div', { className: 'react-toggle-thumb' }),
-	      _react2.default.createElement('input', _extends({
-	        ref: function ref(_ref) {
-	          _this.input = _ref;
-	        },
-	        onFocus: this.handleFocus,
-	        onBlur: this.handleBlur,
-	        className: 'react-toggle-screenreader-only',
-	        type: 'checkbox'
-	      }, this.props))
-	    );
+	    return _this;
 	  }
-	});
+	
+	  _createClass(Toggle, [{
+	    key: 'componentWillReceiveProps',
+	    value: function componentWillReceiveProps(nextProps) {
+	      if ('checked' in nextProps) {
+	        this.setState({ checked: !!nextProps.checked });
+	      }
+	    }
+	  }, {
+	    key: 'handleClick',
+	    value: function handleClick(event) {
+	      var checkbox = this.input;
+	      if (event.target !== checkbox) {
+	        event.preventDefault();
+	        checkbox.focus();
+	        checkbox.click();
+	        return;
+	      }
+	
+	      if (!('checked' in this.props)) {
+	        this.setState({ checked: checkbox.checked });
+	      }
+	    }
+	  }, {
+	    key: 'shouldComponentUpdate',
+	    value: function shouldComponentUpdate(nextProps, nextState) {
+	      return (0, _reactAddonsShallowCompare2.default)(this, nextProps, nextState);
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var _this2 = this;
+	
+	      var classes = (0, _classnames2.default)('react-toggle', {
+	        'react-toggle--checked': this.state.checked,
+	        'react-toggle--focus': this.state.hasFocus,
+	        'react-toggle--disabled': this.props.disabled
+	      });
+	
+	      return _react2.default.createElement(
+	        'div',
+	        { className: classes, onClick: this.handleClick },
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'react-toggle-track' },
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'react-toggle-track-check' },
+	            _react2.default.createElement(_check2.default, null)
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'react-toggle-track-x' },
+	            _react2.default.createElement(_x2.default, null)
+	          )
+	        ),
+	        _react2.default.createElement('div', { className: 'react-toggle-thumb' }),
+	        _react2.default.createElement('input', _extends({
+	          ref: function ref(_ref) {
+	            _this2.input = _ref;
+	          },
+	          onFocus: this.handleFocus,
+	          onBlur: this.handleBlur,
+	          className: 'react-toggle-screenreader-only',
+	          type: 'checkbox'
+	        }, this.props))
+	      );
+	    }
+	  }]);
+	
+	  return Toggle;
+	}(_react.Component);
+	
+	exports.default = Toggle;
+	
+	
+	Toggle.displayName = 'Toggle';
+	
+	Toggle.propTypes = {
+	  checked: _react.PropTypes.bool,
+	  disabled: _react.PropTypes.bool,
+	  defaultChecked: _react.PropTypes.bool,
+	  onChange: _react.PropTypes.func,
+	  name: _react.PropTypes.string,
+	  value: _react.PropTypes.string,
+	  id: _react.PropTypes.string,
+	  'aria-labelledby': _react.PropTypes.string,
+	  'aria-label': _react.PropTypes.string
+	};
 
 /***/ },
 /* 173 */
@@ -21947,7 +21989,7 @@
 /* 174 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -21959,27 +22001,24 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	exports.default = _react2.default.createClass({
-	  displayName: "check",
-	  render: function render() {
-	    return _react2.default.createElement(
-	      "svg",
-	      { width: "14", height: "11", viewBox: "0 0 14 11" },
-	      _react2.default.createElement(
-	        "title",
-	        null,
-	        "switch-check"
-	      ),
-	      _react2.default.createElement("path", { d: "M11.264 0L5.26 6.004 2.103 2.847 0 4.95l5.26 5.26 8.108-8.107L11.264 0", fill: "#fff", fillRule: "evenodd" })
-	    );
-	  }
-	});
+	exports.default = function () {
+	  return _react2.default.createElement(
+	    'svg',
+	    { width: '14', height: '11', viewBox: '0 0 14 11' },
+	    _react2.default.createElement(
+	      'title',
+	      null,
+	      'switch-check'
+	    ),
+	    _react2.default.createElement('path', { d: 'M11.264 0L5.26 6.004 2.103 2.847 0 4.95l5.26 5.26 8.108-8.107L11.264 0', fill: '#fff', fillRule: 'evenodd' })
+	  );
+	};
 
 /***/ },
 /* 175 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -21991,21 +22030,18 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	exports.default = _react2.default.createClass({
-	  displayName: "x",
-	  render: function render() {
-	    return _react2.default.createElement(
-	      "svg",
-	      { width: "10", height: "10", viewBox: "0 0 10 10" },
-	      _react2.default.createElement(
-	        "title",
-	        null,
-	        "switch-x"
-	      ),
-	      _react2.default.createElement("path", { d: "M9.9 2.12L7.78 0 4.95 2.828 2.12 0 0 2.12l2.83 2.83L0 7.776 2.123 9.9 4.95 7.07 7.78 9.9 9.9 7.776 7.072 4.95 9.9 2.12", fill: "#fff", fillRule: "evenodd" })
-	    );
-	  }
-	});
+	exports.default = function () {
+	  return _react2.default.createElement(
+	    'svg',
+	    { width: '10', height: '10', viewBox: '0 0 10 10' },
+	    _react2.default.createElement(
+	      'title',
+	      null,
+	      'switch-x'
+	    ),
+	    _react2.default.createElement('path', { d: 'M9.9 2.12L7.78 0 4.95 2.828 2.12 0 0 2.12l2.83 2.83L0 7.776 2.123 9.9 4.95 7.07 7.78 9.9 9.9 7.776 7.072 4.95 9.9 2.12', fill: '#fff', fillRule: 'evenodd' })
+	  );
+	};
 
 /***/ },
 /* 176 */
@@ -22015,59 +22051,6 @@
 
 /***/ },
 /* 177 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/**
-	 * Copyright 2013-present, Facebook, Inc.
-	 * All rights reserved.
-	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
-	 *
-	 * @providesModule ReactComponentWithPureRenderMixin
-	 */
-	
-	'use strict';
-	
-	var shallowCompare = __webpack_require__(178);
-	
-	/**
-	 * If your React component's render function is "pure", e.g. it will render the
-	 * same result given the same props and state, provide this mixin for a
-	 * considerable performance boost.
-	 *
-	 * Most React components have pure render functions.
-	 *
-	 * Example:
-	 *
-	 *   var ReactComponentWithPureRenderMixin =
-	 *     require('ReactComponentWithPureRenderMixin');
-	 *   React.createClass({
-	 *     mixins: [ReactComponentWithPureRenderMixin],
-	 *
-	 *     render: function() {
-	 *       return <div className={this.props.className}>foo</div>;
-	 *     }
-	 *   });
-	 *
-	 * Note: This only checks shallow equality for props and state. If these contain
-	 * complex data structures this mixin may have false-negatives for deeper
-	 * differences. Only mixin to components which have simple props and state, or
-	 * use `forceUpdate()` when you know deep data structures have changed.
-	 *
-	 * See https://facebook.github.io/react/docs/pure-render-mixin.html
-	 */
-	var ReactComponentWithPureRenderMixin = {
-	  shouldComponentUpdate: function (nextProps, nextState) {
-	    return shallowCompare(this, nextProps, nextState);
-	  }
-	};
-	
-	module.exports = ReactComponentWithPureRenderMixin;
-
-/***/ },
-/* 178 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -22097,16 +22080,16 @@
 	module.exports = shallowCompare;
 
 /***/ },
-/* 179 */
+/* 178 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(180);
+	var content = __webpack_require__(179);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(182)(content, {});
+	var update = __webpack_require__(181)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -22123,10 +22106,10 @@
 	}
 
 /***/ },
-/* 180 */
+/* 179 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(181)();
+	exports = module.exports = __webpack_require__(180)();
 	// imports
 	
 	
@@ -22137,7 +22120,7 @@
 
 
 /***/ },
-/* 181 */
+/* 180 */
 /***/ function(module, exports) {
 
 	/*
@@ -22193,7 +22176,7 @@
 
 
 /***/ },
-/* 182 */
+/* 181 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -22445,16 +22428,16 @@
 
 
 /***/ },
-/* 183 */
+/* 182 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(184);
+	var content = __webpack_require__(183);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(182)(content, {});
+	var update = __webpack_require__(181)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -22471,10 +22454,10 @@
 	}
 
 /***/ },
-/* 184 */
+/* 183 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(181)();
+	exports = module.exports = __webpack_require__(180)();
 	// imports
 	
 	

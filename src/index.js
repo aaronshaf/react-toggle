@@ -1,48 +1,30 @@
-import React from 'react'
+import React, { Component, PropTypes } from 'react'
 import classNames from 'classnames'
 import Check from './check'
 import X from './x'
-import PureRenderMixin from 'react-addons-pure-render-mixin'
+import shallowCompare from 'react-addons-shallow-compare'
 
-export default React.createClass({
-  mixins: [PureRenderMixin],
-
-  displayName: 'Toggle',
-
-  propTypes: {
-    checked: React.PropTypes.bool,
-    defaultChecked: React.PropTypes.bool,
-    onChange: React.PropTypes.func,
-    name: React.PropTypes.string,
-    value: React.PropTypes.string,
-    id: React.PropTypes.string,
-    'aria-labelledby': React.PropTypes.string,
-    'aria-label': React.PropTypes.string
-  },
-
-  getInitialState() {
-    var checked = false;
-    if ('checked' in this.props) {
-      checked = this.props.checked
-    } else if ('defaultChecked' in this.props) {
-      checked = this.props.defaultChecked
-    }
-    return {
-      checked: !!checked,
+export default class Toggle extends Component {
+  constructor (props) {
+    super(props)
+    this.handleClick = this.handleClick.bind(this)
+    this.handleFocus = this.setState.bind(this, { hasFocus: true })
+    this.handleBlur = this.setState.bind(this, { hasFocus: false })
+    this.state = {
+      checked: !!(props.checked || props.defaultChecked),
       hasFocus: false
     }
-  },
+  }
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps (nextProps) {
     if ('checked' in nextProps) {
       this.setState({checked: !!nextProps.checked})
     }
-  },
+  }
 
-  handleClick(event) {
+  handleClick (event) {
     var checkbox = this.input
-    if (event.target !== checkbox)
-    {
+    if (event.target !== checkbox) {
       event.preventDefault()
       checkbox.focus()
       checkbox.click()
@@ -52,17 +34,13 @@ export default React.createClass({
     if (!('checked' in this.props)) {
       this.setState({checked: checkbox.checked})
     }
-  },
+  }
 
-  handleFocus() {
-    this.setState({hasFocus: true})
-  },
+  shouldComponentUpdate (nextProps, nextState) {
+    return shallowCompare(this, nextProps, nextState)
+  }
 
-  handleBlur() {
-    this.setState({hasFocus: false})
-  },
-
-  render() {
+  render () {
     var classes = classNames('react-toggle', {
       'react-toggle--checked': this.state.checked,
       'react-toggle--focus': this.state.hasFocus,
@@ -71,24 +49,38 @@ export default React.createClass({
 
     return (
       <div className={classes} onClick={this.handleClick}>
-        <div className="react-toggle-track">
-          <div className="react-toggle-track-check">
+        <div className='react-toggle-track'>
+          <div className='react-toggle-track-check'>
             <Check />
           </div>
-          <div className="react-toggle-track-x">
+          <div className='react-toggle-track-x'>
             <X />
           </div>
         </div>
-        <div className="react-toggle-thumb"></div>
+        <div className='react-toggle-thumb' />
 
         <input
-          ref={ref => {this.input = ref;}}
+          ref={ref => { this.input = ref }}
           onFocus={this.handleFocus}
           onBlur={this.handleBlur}
-          className="react-toggle-screenreader-only"
-          type="checkbox"
+          className='react-toggle-screenreader-only'
+          type='checkbox'
           {...this.props} />
       </div>
     )
   }
-})
+}
+
+Toggle.displayName = 'Toggle'
+
+Toggle.propTypes = {
+  checked: PropTypes.bool,
+  disabled: PropTypes.bool,
+  defaultChecked: PropTypes.bool,
+  onChange: PropTypes.func,
+  name: PropTypes.string,
+  value: PropTypes.string,
+  id: PropTypes.string,
+  'aria-labelledby': PropTypes.string,
+  'aria-label': PropTypes.string
+}
