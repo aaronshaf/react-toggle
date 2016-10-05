@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import { render } from 'react-dom'
 
-import Toggle from '../src'
+import Toggle from '../component'
 // In your code this would be:
 // import Toggle from 'react-toggle'
 
-import '../style.css'
+import '../../style.css'
 import './style.css'
 
 class App extends Component {
