@@ -14,6 +14,7 @@ as of release version 2.1.0.
 
 ### Changed
 - Use newer React and JavaScript language features
+- Use `cursor: not-allowed` on hover when disabled
 - Rearrange project file structure
 - Stop tracking compiled files
 - Update URLs and email address in package.json
