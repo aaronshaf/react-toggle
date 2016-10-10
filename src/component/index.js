@@ -41,31 +41,25 @@ export default class Toggle extends Component {
   }
 
   render () {
-    var classes = classNames('react-toggle', {
-      'react-toggle--checked': this.state.checked,
-      'react-toggle--focus': this.state.hasFocus,
-      'react-toggle--disabled': this.props.disabled
+    const {toggleRenderer, disabled, ...otherProps} = this.props;
+    const {checked, hasFocus} = this.state;
+    const inputProps = {...otherProps, disabled};
+    const classes = classNames('react-toggle', {
+      'react-toggle--checked': checked,
+      'react-toggle--focus': hasFocus,
+      'react-toggle--disabled': disabled
     })
 
     return (
       <div className={classes} onClick={this.handleClick}>
-        <div className='react-toggle-track'>
-          <div className='react-toggle-track-check'>
-            <Check />
-          </div>
-          <div className='react-toggle-track-x'>
-            <X />
-          </div>
-        </div>
-        <div className='react-toggle-thumb' />
-
+        {toggleRenderer({checked, disabled, hasFocus})}
         <input
           ref={ref => { this.input = ref }}
           onFocus={this.handleFocus}
           onBlur={this.handleBlur}
           className='react-toggle-screenreader-only'
           type='checkbox'
-          {...this.props} />
+          {...inputProps} />
       </div>
     )
   }
@@ -79,8 +73,27 @@ Toggle.propTypes = {
   defaultChecked: PropTypes.bool,
   onChange: PropTypes.func,
   name: PropTypes.string,
+  toggleRenderer: PropTypes.func,
   value: PropTypes.string,
   id: PropTypes.string,
   'aria-labelledby': PropTypes.string,
   'aria-label': PropTypes.string
+}
+
+Toggle.defaultProps = {
+  toggleRenderer: () => {
+    return (
+      <div>
+        <div className='react-toggle-track'>
+          <div className='react-toggle-track-check'>
+            <Check />
+          </div>
+          <div className='react-toggle-track-x'>
+            <X />
+          </div>
+        </div>
+        <div className='react-toggle-thumb' />
+      </div>
+    );
+  }
 }
