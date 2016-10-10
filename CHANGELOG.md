@@ -11,6 +11,7 @@ as of release version 2.1.0.
 - Add props documentation to README.md
 - Add [standardjs](http://standardjs.com/) linting
 - Add support for `className`-prop
+- Add support for swiping
 
 ### Changed
 - Use newer React and JavaScript language features

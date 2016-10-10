@@ -48,7 +48,9 @@ export default class Toggle extends Component {
     }, this.props.className)
 
     return (
-      <div className={classes} onClick={this.handleClick}>
+      <div className={classes}
+        onClick={this.handleClick}
+        onTouchEnd={this.handleClick}>
         <div className='react-toggle-track'>
           <div className='react-toggle-track-check'>
             <Check />
