@@ -20,3 +20,74 @@ label,
 pre {
   margin-top: 8px;
 }
+
+.track-custom {
+  width: 63px;
+  height: 32px;
+  padding: 0;
+  border-radius: 16px;
+
+  -webkit-transition: all 0.2s ease;
+  -moz-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+}
+
+.track-custom--checked {
+  background-color: #19AB27;
+}
+
+.track-custom--unchecked {
+  background-color: #4D4D4D;
+}
+
+.thumb-custom {
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+  position: absolute;
+  top: 1px;
+  width: 30px;
+  height: 30px;
+  border: 1px solid #4D4D4D;
+  border-radius: 50%;
+  background: #FEFEFE;
+
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+
+  -webkit-transition: all 0.25s ease;
+  -moz-transition: all 0.25s ease;
+  transition: all 0.25s ease;
+}
+
+.thumb-custom--checked {
+  left: 32px;
+  border-color: #19AB27;
+}
+
+.thumb-custom--unchecked {
+  left: 1px;
+}
+
+.check-custom, .x-custom {
+  font-size: 10px;
+  color: #FEFEFE;
+}
+
+.check-custom::before, .x-custom::before {
+  position: absolute;
+  top: 8px;
+}
+
+.check-custom::before {
+  content: 'YES';
+  left: 10px;
+}
+
+.x-custom {
+  color: #FEFEFE;
+}
+
+.x-custom::before {
+  content: 'NO';
+  right: 10px;
+}

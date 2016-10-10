@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { render } from 'react-dom'
+import classnames from 'classnames';
 
 import Toggle from '../component'
 // In your code this would be:
@@ -7,6 +8,28 @@ import Toggle from '../component'
 
 import '../../style.css'
 import './style.css'
+
+function customToggleRenderer({checked, disabled}) {
+  const trackClassName = classnames('track-custom', {
+    'track-custom--checked': checked,
+    'track-custom--unchecked': !checked
+  });
+  const thumbClassName = classnames('thumb-custom', {
+    'thumb-custom--checked': checked,
+    'thumb-custom--unchecked': !checked
+  });
+  const toggleClassName = classnames({'disabled-custom': disabled});
+
+  return (
+    <div className={toggleClassName}>
+      <div className={trackClassName}>
+        <div className="check-custom"/>
+        <div className="x-custom"/>
+      </div>
+      <div className={thumbClassName}/>
+    </div>
+  );
+}
 
 class App extends Component {
   constructor (props) {
@@ -269,6 +292,64 @@ class App extends Component {
           </pre>
         </div>
 
+      {/* Customize Style */}
+
+        <div className='example'>
+          <div style={{marginBottom: '8px'}}>
+            <label>
+              <Toggle
+                defaultChecked
+                toggleRenderer={customToggleRenderer} />
+                <span className='label-text'>Custom toggle renderer</span>
+            </label>
+          </div>
+          <div>
+            <label>
+              <Toggle
+                disabled={true}
+                toggleRenderer={customToggleRenderer} />
+                <span className='label-text'>Custom toggle renderer, disabled</span>
+            </label>
+          </div>
+          <pre>
+            {`/*
+function customToggleRenderer({checked, disabled}) {
+  const trackClassName = classnames('track-custom', {
+    'track-custom--checked': checked,
+    'track-custom--unchecked': !checked
+  });
+  const thumbClassName = classnames('thumb-custom', {
+    'thumb-custom--checked': checked,
+    'thumb-custom--unchecked': !checked
+  });
+  const toggleClassName = classnames({'disabled-custom': disabled});
+
+  return (
+    <div className={toggleClassName}>
+      <div className={trackClassName}>
+        <div className="check-custom"/>
+        <div className="x-custom"/>
+      </div>
+      <div className={thumbClassName}/>
+    </div>
+  );
+}
+*/
+
+<label>
+  <Toggle
+    defaultChecked
+    toggleRenderer={customToggleRenderer} />
+    <span className='label-text'>Customized toggle renderer</span>
+</label>
+<label>
+  <Toggle
+    disabled={true}
+    toggleRenderer={customToggleRenderer} />
+    <span className='label-text'>Custom toggle renderer, disabled</span>
+</label>`}
+          </pre>
+        </div>
       </form>
     )
   }

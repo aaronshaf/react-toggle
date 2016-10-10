@@ -25,6 +25,10 @@ The component takes the following props.
 - `name`: _string_
 > The value of the `name` attribute of the wrapped \<input\> element
 
+- `toggleRenderer`: _function_
+> A method `function({checked, disabled, }) => React.Element` which overrides the default toggle renderer.
+  Returns the custom React element to be rendered as the toggle.
+
 - `value`: _string_
 > The value of the `value` attribute of the wrapped \<input\> element
 
