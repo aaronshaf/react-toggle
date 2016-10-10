@@ -10,6 +10,7 @@ as of release version 2.1.0.
 ### Added
 - Add props documentation to README.md
 - Add [standardjs](http://standardjs.com/) linting
+- Add support for `className`-prop
 
 ### Changed
 - Use newer React and JavaScript language features

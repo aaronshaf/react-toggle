@@ -20,3 +20,7 @@ label,
 pre {
   margin-top: 8px;
 }
+
+.custom-classname.react-toggle--checked .react-toggle-track {
+  background-color: #ab199f;
+}

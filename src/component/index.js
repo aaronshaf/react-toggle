@@ -45,7 +45,7 @@ export default class Toggle extends Component {
       'react-toggle--checked': this.state.checked,
       'react-toggle--focus': this.state.hasFocus,
       'react-toggle--disabled': this.props.disabled
-    })
+    }, this.props.className)
 
     return (
       <div className={classes} onClick={this.handleClick}>
@@ -60,12 +60,12 @@ export default class Toggle extends Component {
         <div className='react-toggle-thumb' />
 
         <input
+          {...this.props}
           ref={ref => { this.input = ref }}
           onFocus={this.handleFocus}
           onBlur={this.handleBlur}
           className='react-toggle-screenreader-only'
-          type='checkbox'
-          {...this.props} />
+          type='checkbox' />
       </div>
     )
   }
@@ -78,6 +78,7 @@ Toggle.propTypes = {
   disabled: PropTypes.bool,
   defaultChecked: PropTypes.bool,
   onChange: PropTypes.func,
+  className: PropTypes.string,
   name: PropTypes.string,
   value: PropTypes.string,
   id: PropTypes.string,

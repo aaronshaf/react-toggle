@@ -18,8 +18,10 @@ class App extends Component {
     this.handleCheeseChange = this.handleChange.bind(this, 'cheeseIsReady')
     this.handleBiscuitChange = this.handleChange.bind(this, 'biscuitIsReady')
     this.handleBurritoChange = this.handleChange.bind(this, 'burritoIsReady')
+    this.handleAubergineChange = this.handleChange.bind(this, 'aubergineIsReady')
 
     this.state = {
+      aubergineIsReady: true,
       cheeseIsReady: false,
       baconIsReady: false,
       biscuitIsReady: false,
@@ -269,6 +271,33 @@ class App extends Component {
           </pre>
         </div>
 
+
+        {/* Custom className */}
+
+        <div className='example'>
+          <label>
+            <Toggle
+              defaultChecked={this.state.aubergineIsReady}
+              className="custom-classname"
+              onChange={this.handleAubergineChange} />
+            <span className='label-text'>Custom className</span>
+          </label>
+
+          <pre>
+            {`<label>
+  <Toggle
+    defaultChecked={this.state.aubergineIsReady}
+    className="custom-classname"
+    onChange={this.handleAubergineChange} />
+  <span>Custom className</span>
+</label>`}
+          </pre>
+          <pre>
+            {`.custom-classname.react-toggle--checked .react-toggle-track {
+  background-color: #ab199f;
+}`}
+          </pre>
+        </div>
       </form>
     )
   }
