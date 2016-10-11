@@ -19,7 +19,6 @@ The component takes the following props.
 | `aria-labelledby` | _string_   | The value of the `aria-labelledby` attribute of the wrapped \<input\> element |
 | `aria-label`      | _string_   | The value of the `aria-label` attribute of the wrapped \<input\> element |
 | `disabled`        | _boolean_  | If `true`, the toggle is enabled. If `false`, the toggle is disabled |
-| `hasFocus`        | _boolean_  | If `true`, the toggle is focused. If `false`, the toggle does not have focus |
 
 ## Installation
 
