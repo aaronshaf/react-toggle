@@ -12,7 +12,7 @@ export default class Toggle extends Component {
     this.handleBlur = this.setState.bind(this, { hasFocus: false })
     this.state = {
       checked: !!(props.checked || props.defaultChecked),
-      hasFocus: false
+      hasFocus: false,
     }
   }
 
@@ -44,7 +44,7 @@ export default class Toggle extends Component {
     const classes = classNames('react-toggle', {
       'react-toggle--checked': this.state.checked,
       'react-toggle--focus': this.state.hasFocus,
-      'react-toggle--disabled': this.props.disabled
+      'react-toggle--disabled': this.props.disabled,
     }, this.props.className)
 
     return (
@@ -85,5 +85,5 @@ Toggle.propTypes = {
   value: PropTypes.string,
   id: PropTypes.string,
   'aria-labelledby': PropTypes.string,
-  'aria-label': PropTypes.string
+  'aria-label': PropTypes.string,
 }

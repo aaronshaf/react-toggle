@@ -29,7 +29,7 @@ class App extends Component {
       eggsAreReady: false,
       burritoIsReady: false,
       toastIsReady: false,
-      formData: {}
+      formData: {},
     }
   }
 
@@ -271,14 +271,13 @@ class App extends Component {
           </pre>
         </div>
 
-
         {/* Custom className */}
 
         <div className='example'>
           <label>
             <Toggle
               defaultChecked={this.state.aubergineIsReady}
-              className="custom-classname"
+              className='custom-classname'
               onChange={this.handleAubergineChange} />
             <span className='label-text'>Custom className</span>
           </label>
@@ -287,7 +286,7 @@ class App extends Component {
             {`<label>
   <Toggle
     defaultChecked={this.state.aubergineIsReady}
-    className="custom-classname"
+    className='custom-classname'
     onChange={this.handleAubergineChange} />
   <span>Custom className</span>
 </label>`}

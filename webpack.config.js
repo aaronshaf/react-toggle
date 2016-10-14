@@ -7,7 +7,7 @@ module.exports = {
 
   output: {
     path: path.join(__dirname, 'dist/docs'),
-    filename: 'bundle.js'
+    filename: 'bundle.js',
   },
 
   module: {
@@ -15,25 +15,25 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        loader: 'babel-loader'
+        loader: 'babel-loader',
       },
       {
         test: /\.css$/,
-        loader: 'style-loader!css-loader'
-      }
-    ]
+        loader: 'style-loader!css-loader',
+      },
+    ],
   },
 
   devServer: {
     contentBase: path.join(__dirname, 'dist/docs'),
     host: 'localhost',
     inline: true,
-    info: false
+    info: false,
   },
 
   plugins: [
     new CopyWebpackPlugin([
-      { from: path.join(__dirname, 'src/docs/index.html') }
-    ])
-  ]
+      { from: path.join(__dirname, 'src/docs/index.html') },
+    ]),
+  ],
 }
