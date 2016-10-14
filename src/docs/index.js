@@ -38,7 +38,7 @@ class App extends Component {
   }
 
   handleMilkChange (event) {
-    var form = this.refs.breakfastForm
+    const form = this.refs.breakfastForm
     this.setState({formData: form.milkIsReady.checked ? {milkIsReady: form.milkIsReady.value} : {}})
   }
 

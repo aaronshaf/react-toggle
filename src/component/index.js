@@ -23,7 +23,7 @@ export default class Toggle extends Component {
   }
 
   handleClick (event) {
-    var checkbox = this.input
+    const checkbox = this.input
     if (event.target !== checkbox) {
       event.preventDefault()
       checkbox.focus()
@@ -41,7 +41,7 @@ export default class Toggle extends Component {
   }
 
   render () {
-    var classes = classNames('react-toggle', {
+    const classes = classNames('react-toggle', {
       'react-toggle--checked': this.state.checked,
       'react-toggle--focus': this.state.hasFocus,
       'react-toggle--disabled': this.props.disabled
