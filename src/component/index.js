@@ -8,8 +8,8 @@ export default class Toggle extends Component {
   constructor (props) {
     super(props)
     this.handleClick = this.handleClick.bind(this)
-    this.handleFocus = this.setState.bind(this, { hasFocus: true })
-    this.handleBlur = this.setState.bind(this, { hasFocus: false })
+    this.handleFocus = this.setState.bind(this, { hasFocus: true }, () => {})
+    this.handleBlur = this.setState.bind(this, { hasFocus: false }, () => {})
     this.state = {
       checked: !!(props.checked || props.defaultChecked),
       hasFocus: false,
