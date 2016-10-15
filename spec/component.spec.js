@@ -1,0 +1,82 @@
+import React from 'react'
+import chai, { expect } from 'chai'
+import chaiEnzyme from 'chai-enzyme'
+import Toggle from '../src/component'
+import { shallow, mount } from 'enzyme'
+
+const noop = () => {}
+const classNames = {
+  base: 'react-toggle',
+  focus: 'react-toggle--focus',
+  checked: 'react-toggle--checked',
+  disabled: 'react-toggle--disabled',
+}
+
+chai.use(chaiEnzyme())
+
+describe('Component', () => {
+  let wrapper
+
+  it('sets state/input-value based on `checked`-prop', () => {
+    wrapper = shallow(
+      <Toggle
+        onChange={noop}
+        checked={false} />
+    )
+
+    expect(wrapper.state('checked')).to.be.false
+    expect(wrapper.find('input')).to.not.be.checked()
+
+    wrapper.setProps({ checked: true })
+
+    expect(wrapper.state('checked')).to.be.true
+    expect(wrapper.find('input')).to.be.checked()
+  })
+
+  it('accepts a className as a prop', () => {
+    const className = "foobar"
+    wrapper = shallow(<Toggle className={className} />)
+
+    expect(wrapper.hasClass(className)).to.be.true
+  })
+
+  it('defaults to the value of `defaultChecked`', () => {
+    wrapper = shallow(<Toggle defaultChecked={false} />)
+
+    expect(wrapper.state('checked')).to.be.false
+    expect(wrapper.find('input')).to.not.be.checked()
+
+    wrapper = shallow(<Toggle defaultChecked={true} />)
+
+    expect(wrapper.state('checked')).to.be.true
+    expect(wrapper.find('input')).to.be.checked()
+  })
+
+  it('uses correct classNames based on state', () => {
+    wrapper = shallow(<Toggle />)
+
+    wrapper.setState({ checked: false, hasFocus: false })
+    expect(wrapper.hasClass(classNames.base)).to.be.true
+    expect(wrapper.hasClass(classNames.focus)).to.be.false
+    expect(wrapper.hasClass(classNames.checked)).to.be.false
+    expect(wrapper.hasClass(classNames.disabled)).to.be.false
+
+    wrapper.setState({ checked: true, hasFocus: false })
+    expect(wrapper.hasClass(classNames.base)).to.be.true
+    expect(wrapper.hasClass(classNames.focus)).to.be.false
+    expect(wrapper.hasClass(classNames.checked)).to.be.true
+    expect(wrapper.hasClass(classNames.disabled)).to.be.false
+
+    wrapper.setState({ checked: false, hasFocus: true })
+    expect(wrapper.hasClass(classNames.base)).to.be.true
+    expect(wrapper.hasClass(classNames.focus)).to.be.true
+    expect(wrapper.hasClass(classNames.checked)).to.be.false
+    expect(wrapper.hasClass(classNames.disabled)).to.be.false
+
+    wrapper.setState({ checked: true, hasFocus: true })
+    expect(wrapper.hasClass(classNames.base)).to.be.true
+    expect(wrapper.hasClass(classNames.focus)).to.be.true
+    expect(wrapper.hasClass(classNames.checked)).to.be.true
+    expect(wrapper.hasClass(classNames.disabled)).to.be.false
+  })
+})
