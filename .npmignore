@@ -2,5 +2,6 @@
 .eslintrc.json
 .eslintignore
 docs/
+spec/
 src/
 webpack.config.js
