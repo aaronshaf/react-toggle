@@ -53,10 +53,10 @@ export default class Toggle extends Component {
         onTouchEnd={this.handleClick}>
         <div className='react-toggle-track'>
           <div className='react-toggle-track-check'>
-            <Check />
+            {this.props.icons && this.props.icons.checked}
           </div>
           <div className='react-toggle-track-x'>
-            <X />
+            {this.props.icons && this.props.icons.unchecked}
           </div>
         </div>
         <div className='react-toggle-thumb' />
@@ -75,6 +75,13 @@ export default class Toggle extends Component {
 
 Toggle.displayName = 'Toggle'
 
+Toggle.defaultProps = {
+  icons: {
+    checked: <Check />,
+    unchecked: <X />,
+  }
+}
+
 Toggle.propTypes = {
   checked: PropTypes.bool,
   disabled: PropTypes.bool,
@@ -86,4 +93,11 @@ Toggle.propTypes = {
   id: PropTypes.string,
   'aria-labelledby': PropTypes.string,
   'aria-label': PropTypes.string,
+  icons: PropTypes.oneOfType([
+    PropTypes.bool,
+    PropTypes.shape({
+      checked: PropTypes.node,
+      unchecked: PropTypes.node,
+    }),
+  ]),
 }
