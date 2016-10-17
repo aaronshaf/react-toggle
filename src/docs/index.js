@@ -19,6 +19,7 @@ class App extends Component {
     this.handleBiscuitChange = this.handleChange.bind(this, 'biscuitIsReady')
     this.handleBurritoChange = this.handleChange.bind(this, 'burritoIsReady')
     this.handleAubergineChange = this.handleChange.bind(this, 'aubergineIsReady')
+    this.handleCakeChange = this.handleCakeChange.bind(this)
 
     this.state = {
       aubergineIsReady: true,
@@ -29,6 +30,7 @@ class App extends Component {
       eggsAreReady: false,
       burritoIsReady: false,
       toastIsReady: false,
+      cakeIsReady: false,
       formData: {},
     }
   }
@@ -40,6 +42,13 @@ class App extends Component {
   handleMilkChange (event) {
     const form = this.refs.breakfastForm
     this.setState({formData: form.milkIsReady.checked ? {milkIsReady: form.milkIsReady.value} : {}})
+  }
+
+  handleCakeChange (event) {
+    const checked = event.target.checked;
+    setTimeout(() => {
+      this.setState({['cakeIsReady']: checked})
+    }, 2000);
   }
 
   render () {
@@ -297,6 +306,33 @@ class App extends Component {
 }`}
           </pre>
         </div>
+
+        {/* Using delayed prop change */}
+
+        <div className="example">
+          <label>
+            <Toggle
+              checked={!!this.state.cakeIsReady}
+              allowPending={true}
+              name="cakeIsReady"
+              onChange={this.handleCakeChange} />
+            <span className="label-text">Using delayed prop change</span>
+          </label>
+
+          <pre>
+{`<Toggle
+  checked={this.state.cakeIsReady}
+  allowPending={true}
+  name="cakeIsReady" />`}
+          </pre>
+          <pre>
+            this.state.cakeIsReady: {JSON.stringify(this.state.cakeIsReady)}
+          </pre>
+        </div>
+
+
+
+
       </form>
     )
   }

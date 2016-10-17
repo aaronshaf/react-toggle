@@ -31,7 +31,7 @@ export default class Toggle extends Component {
       return
     }
 
-    if (!('checked' in this.props)) {
+    if (!('checked' in this.props) || this.props.allowPending) {
       this.setState({checked: checkbox.checked})
     }
   }
@@ -40,12 +40,19 @@ export default class Toggle extends Component {
     return shallowCompare(this, nextProps, nextState)
   }
 
+  isPending() {
+    return 'checked' in this.props && this.props.checked !== this.state.checked
+  }
+
   render () {
     const classes = classNames('react-toggle', {
       'react-toggle--checked': this.state.checked,
       'react-toggle--focus': this.state.hasFocus,
       'react-toggle--disabled': this.props.disabled,
+      'react-toggle--pending': this.isPending()
     }, this.props.className)
+
+    const { allowPending, ...inputProps } = this.props
 
     return (
       <div className={classes}
@@ -62,7 +69,7 @@ export default class Toggle extends Component {
         <div className='react-toggle-thumb' />
 
         <input
-          {...this.props}
+          {...inputProps}
           ref={ref => { this.input = ref }}
           onFocus={this.handleFocus}
           onBlur={this.handleBlur}
@@ -79,6 +86,7 @@ Toggle.propTypes = {
   checked: PropTypes.bool,
   disabled: PropTypes.bool,
   defaultChecked: PropTypes.bool,
+  allowPending: PropTypes.bool,
   onChange: PropTypes.func,
   className: PropTypes.string,
   name: PropTypes.string,
