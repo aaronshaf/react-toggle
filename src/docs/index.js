@@ -313,6 +313,7 @@ class App extends Component {
           <label>
             <Toggle
               checked={!!this.state.cakeIsReady}
+              allowPending={true}
               name="cakeIsReady"
               onChange={this.handleCakeChange} />
             <span className="label-text">Using delayed prop change</span>
