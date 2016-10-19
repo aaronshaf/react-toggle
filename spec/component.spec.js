@@ -16,6 +16,7 @@ chai.use(chaiEnzyme())
 
 describe('Component', () => {
   let wrapper
+  const className = "foobar"
 
   it('sets state/input-value based on `checked`-prop', () => {
     wrapper = shallow(
@@ -34,10 +35,16 @@ describe('Component', () => {
   })
 
   it('accepts a className as a prop', () => {
-    const className = "foobar"
     wrapper = shallow(<Toggle className={className} />)
 
     expect(wrapper.hasClass(className)).to.be.true
+  })
+
+
+  it('does not pass the custom className to the checkbox', () => {
+    wrapper = shallow(<Toggle className={className} />)
+
+    expect(wrapper.find('input').hasClass(className)).to.be.false
   })
 
   it('defaults to the value of `defaultChecked`', () => {
