@@ -2,7 +2,7 @@ import React from 'react'
 import chai, { expect } from 'chai'
 import chaiEnzyme from 'chai-enzyme'
 import Toggle from '../src/component'
-import { shallow, mount } from 'enzyme'
+import { shallow } from 'enzyme'
 
 const noop = () => {}
 const classNames = {
@@ -16,7 +16,7 @@ chai.use(chaiEnzyme())
 
 describe('Component', () => {
   let wrapper
-  const className = "foobar"
+  const className = 'foobar'
 
   it('sets state/input-value based on `checked`-prop', () => {
     wrapper = shallow(
@@ -40,7 +40,6 @@ describe('Component', () => {
     expect(wrapper.hasClass(className)).to.be.true
   })
 
-
   it('does not pass the custom className to the checkbox', () => {
     wrapper = shallow(<Toggle className={className} />)
 
@@ -53,7 +52,7 @@ describe('Component', () => {
     expect(wrapper.state('checked')).to.be.false
     expect(wrapper.find('input')).to.not.be.checked()
 
-    wrapper = shallow(<Toggle defaultChecked={true} />)
+    wrapper = shallow(<Toggle defaultChecked />)
 
     expect(wrapper.state('checked')).to.be.true
     expect(wrapper.find('input')).to.be.checked()
