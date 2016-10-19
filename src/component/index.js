@@ -41,11 +41,12 @@ export default class Toggle extends Component {
   }
 
   render () {
+    const { className, ...inputProps } = this.props
     const classes = classNames('react-toggle', {
       'react-toggle--checked': this.state.checked,
       'react-toggle--focus': this.state.hasFocus,
       'react-toggle--disabled': this.props.disabled,
-    }, this.props.className)
+    }, className)
 
     return (
       <div className={classes}
@@ -62,7 +63,7 @@ export default class Toggle extends Component {
         <div className='react-toggle-thumb' />
 
         <input
-          {...this.props}
+          {...inputProps}
           ref={ref => { this.input = ref }}
           onFocus={this.handleFocus}
           onBlur={this.handleBlur}
