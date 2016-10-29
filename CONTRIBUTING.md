@@ -28,7 +28,7 @@ So, in a simple list:
   8. One last `npm test` again, because we edited stuff. (You can probably just skip the two previous ones. Should've read ahead ;))
   8. Add the relevant files - `git commit src/ spec/`
   9. Commit and write a nice, explanatory commit message.
- 10. Push to your fork - `git push origin`
- 11. Open a pull request
+  10. Push to your fork - `git push origin`
+  11. Open a pull request
 
  You did it! :) Thank you!
