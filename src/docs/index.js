@@ -8,10 +8,23 @@ import Toggle from '../component'
 import '../../style.css'
 import './style.css'
 
+const Heart = () => (
+  <div style={{
+    color: '#fff',
+    fontSize: '1.2em',
+    position: 'absolute',
+    top: '0.4em',
+  }}>
+  ❤
+  </div>
+)
+
 class App extends Component {
   constructor (props) {
     super(props)
     this.handleMilkChange = this.handleMilkChange.bind(this)
+    this.handleSoupChange = this.handleChange.bind(this, 'soupIsReady')
+    this.handleTofuChange = this.handleChange.bind(this, 'tofuIsReady')
     this.handleEggsChange = this.handleChange.bind(this, 'eggsAreReady')
     this.handleBaconChange = this.handleChange.bind(this, 'baconIsReady')
     this.handleToastChange = this.handleChange.bind(this, 'toastIsReady')
@@ -27,6 +40,8 @@ class App extends Component {
       biscuitIsReady: false,
       milkIsReady: false,
       eggsAreReady: false,
+      soupIsReady: true,
+      tofuIsReady: false,
       burritoIsReady: false,
       toastIsReady: false,
       formData: {},
@@ -297,6 +312,57 @@ class App extends Component {
 }`}
           </pre>
         </div>
+
+        {/* Custom icons */}
+
+        <div className='example'>
+          <label>
+            <Toggle
+              defaultChecked={this.state.soupIsReady}
+              icons={{
+                checked: <Heart />,
+                unchecked: null,
+              }}
+              onChange={this.handleSoupChange} />
+            <span className='label-text'>Custom icons</span>
+          </label>
+
+          <pre>
+            {`<label>
+  <Toggle
+    defaultChecked={this.state.soupIsReady}
+    icons={{
+      checked: <Heart />,
+      unchecked: null,
+    }}
+    onChange={this.handleSoupChange} />
+  <span>Custom icons</span>
+</label>`}
+          </pre>
+        </div>
+
+        {/* No icons */}
+
+        <div className='example'>
+          <label>
+            <Toggle
+              defaultChecked={this.state.tofuIsReady}
+              icons={false}
+              onChange={this.handleTofuChange} />
+            <span className='label-text'>No icons</span>
+          </label>
+
+          <pre>
+            {`<label>
+  <Toggle
+    defaultChecked={this.state.tofuIsReady}
+    icons={false}
+    onChange={this.handleTofuChange} />
+  <span>No icons</span>
+</label>`}
+          </pre>
+        </div>
+
       </form>
     )
   }
