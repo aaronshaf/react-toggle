@@ -1,7 +1,11 @@
 {
   "extends": ["standard", "standard-react"],
   "rules": {
-    "comma-dangle": [2, "always-multiline"]
+    "comma-dangle": [2, "always-multiline"],
+    "no-unused-vars": [2, {
+      "argsIgnorePattern": "^_",
+      "varsIgnorePattern": "^_"
+    }]
   },
   "env": {
     "mocha": true
