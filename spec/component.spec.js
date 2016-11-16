@@ -58,6 +58,18 @@ describe('Component', () => {
     expect(wrapper.find('input')).to.be.checked()
   })
 
+  it('will hide icons if set false', () => {
+    wrapper = shallow(<Toggle icons={false} />)
+
+    expect(wrapper.find('.react-toggle-track-check')).to.be.empty
+    expect(wrapper.find('.react-toggle-track-x')).to.be.empty
+
+    wrapper = shallow(<Toggle />)
+
+    expect(wrapper.find('.react-toggle-track-check')).to.not.be.empty
+    expect(wrapper.find('.react-toggle-track-x')).to.not.be.empty
+  })
+
   it('uses correct classNames based on state', () => {
     wrapper = shallow(<Toggle />)
 
