@@ -36,12 +36,22 @@ export default class Toggle extends Component {
     }
   }
 
+  getIcon (type) {
+    const { icons } = this.props
+    if (!icons) {
+      return null
+    }
+    return icons[type] === undefined
+      ? Toggle.defaultProps.icons[type]
+      : icons[type]
+  }
+
   shouldComponentUpdate (nextProps, nextState) {
     return shallowCompare(this, nextProps, nextState)
   }
 
   render () {
-    const { className, icons, ...inputProps } = this.props
+    const { className, icons: _icons, ...inputProps } = this.props
     const classes = classNames('react-toggle', {
       'react-toggle--checked': this.state.checked,
       'react-toggle--focus': this.state.hasFocus,
@@ -54,10 +64,10 @@ export default class Toggle extends Component {
         onTouchEnd={this.handleClick}>
         <div className='react-toggle-track'>
           <div className='react-toggle-track-check'>
-            {icons && icons.checked}
+            {this.getIcon('checked')}
           </div>
           <div className='react-toggle-track-x'>
-            {icons && icons.unchecked}
+            {this.getIcon('unchecked')}
           </div>
         </div>
         <div className='react-toggle-thumb' />
