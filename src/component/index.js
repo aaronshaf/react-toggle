@@ -2,14 +2,19 @@ import React, { Component, PropTypes } from 'react'
 import classNames from 'classnames'
 import Check from './check'
 import X from './x'
+import { pointerCoord } from './util'
 import shallowCompare from 'react-addons-shallow-compare'
 
 export default class Toggle extends Component {
   constructor (props) {
     super(props)
     this.handleClick = this.handleClick.bind(this)
+    this.handleTouchStart = this.handleTouchStart.bind(this)
+    this.handleTouchMove = this.handleTouchMove.bind(this)
+    this.handleTouchEnd = this.handleTouchEnd.bind(this)
     this.handleFocus = this.setState.bind(this, { hasFocus: true }, () => {})
     this.handleBlur = this.setState.bind(this, { hasFocus: false }, () => {})
+    this.previouslyChecked = !!(props.checked || props.defaultChecked)
     this.state = {
       checked: !!(props.checked || props.defaultChecked),
       hasFocus: false,
@@ -24,15 +29,60 @@ export default class Toggle extends Component {
 
   handleClick (event) {
     const checkbox = this.input
-    if (event.target !== checkbox) {
+    if (event.target !== checkbox && !this.moved) {
+      this.previouslyChecked = checkbox.checked
       event.preventDefault()
       checkbox.focus()
       checkbox.click()
       return
     }
 
-    if (!('checked' in this.props)) {
-      this.setState({checked: checkbox.checked})
+    this.setState({checked: checkbox.checked})
+  }
+
+  handleTouchStart (event) {
+    this.startX = pointerCoord(event).x
+    this.activated = true
+  }
+
+  handleTouchMove (event) {
+    if (!this.activated) return
+    this.moved = true
+
+    if (this.startX) {
+      let currentX = pointerCoord(event).x
+      if (this.state.checked && currentX + 15 < this.startX) {
+        this.setState({ checked: false })
+        this.startX = currentX
+        this.activated = true
+      } else if (currentX - 15 > this.startX) {
+        this.setState({ checked: true })
+        this.startX = currentX
+        this.activated = (currentX < this.startX + 5)
+      }
+    }
+  }
+
+  handleTouchEnd (event) {
+    if (!this.moved) return
+    const checkbox = this.input
+    event.preventDefault()
+
+    if (this.startX) {
+      let endX = pointerCoord(event).x
+      if (this.previouslyChecked === true && this.startX + 4 > endX) {
+        this.setState({ checked: false })
+        this.previouslyChecked = this.state.checked
+        checkbox.click()
+      } else if (this.startX - 4 < endX) {
+        this.setState({ checked: true })
+        this.previouslyChecked = this.state.checked
+        checkbox.click()
+      }
+
+      this.activated = false
+      this.startX = null
+      this.moved = false
     }
   }
 
@@ -61,7 +111,9 @@ export default class Toggle extends Component {
     return (
       <div className={classes}
         onClick={this.handleClick}
-        onTouchEnd={this.handleClick}>
+        onTouchStart={this.handleTouchStart}
+        onTouchMove={this.handleTouchMove}
+        onTouchEnd={this.handleTouchEnd}>
         <div className='react-toggle-track'>
           <div className='react-toggle-track-check'>
             {this.getIcon('checked')}
