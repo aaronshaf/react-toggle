@@ -71,13 +71,17 @@ export default class Toggle extends Component {
     if (this.startX) {
       let endX = pointerCoord(event).x
       if (this.previouslyChecked === true && this.startX + 4 > endX) {
-        this.setState({ checked: false })
-        this.previouslyChecked = this.state.checked
-        checkbox.click()
+        if (this.previouslyChecked !== this.state.checked) {
+          this.setState({ checked: false })
+          this.previouslyChecked = this.state.checked
+          checkbox.click()
+        }
       } else if (this.startX - 4 < endX) {
-        this.setState({ checked: true })
-        this.previouslyChecked = this.state.checked
-        checkbox.click()
+        if (this.previouslyChecked !== this.state.checked) {
+          this.setState({ checked: true })
+          this.previouslyChecked = this.state.checked
+          checkbox.click()
+        }
       }
 
       this.activated = false
