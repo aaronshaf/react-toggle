@@ -130,6 +130,22 @@ export default class Toggle extends PureComponent {
       'react-toggle--disabled': this.props.disabled,
     }, className)
 
+    const isIconOnThumb = _icons && _icons.thumb
+
+    const checked = this.getIcon('checked')
+    const unchecked = this.getIcon('unchecked')
+
+    const track = !isIconOnThumb && (
+      <div>
+        <div className='react-toggle-track-check'>
+          {checked}
+        </div>
+        <div className='react-toggle-track-x'>
+          {unchecked}
+        </div>
+      </div>
+    )
+
     return (
       <div className={classes}
         onClick={this.handleClick}
@@ -137,14 +153,11 @@ export default class Toggle extends PureComponent {
         onTouchMove={this.handleTouchMove}
         onTouchEnd={this.handleTouchEnd}>
         <div className='react-toggle-track'>
-          <div className='react-toggle-track-check'>
-            {this.getIcon('checked')}
-          </div>
-          <div className='react-toggle-track-x'>
-            {this.getIcon('unchecked')}
-          </div>
+          {track}
         </div>
-        <div className='react-toggle-thumb' />
+        <div className='react-toggle-thumb'>
+          {isIconOnThumb && (this.state.checked ? checked : unchecked)}
+        </div>
 
         <input
           {...inputProps}

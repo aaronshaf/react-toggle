@@ -121,6 +121,30 @@
   -webkit-transition: all 0.25s ease;
   -moz-transition: all 0.25s ease;
   transition: all 0.25s ease;
+
+  text-align: center;
+}
+
+.react-toggle-thumb {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.react-toggle-thumb .react-toggle-thumb-icon {
+  fill: #4D4D4D
+}
+
+.react-toggle:hover:not(.react-toggle--disabled) .react-toggle-thumb .react-toggle-thumb-icon {
+  fill: #000000;
+}
+
+.react-toggle--checked .react-toggle-thumb .react-toggle-thumb-icon {
+  fill: #19AB27;
+}
+
+.react-toggle--checked:hover:not(.react-toggle--disabled) .react-toggle-thumb .react-toggle-thumb-icon {
+  fill: #128D15;
 }
 
 .react-toggle--checked .react-toggle-thumb {
