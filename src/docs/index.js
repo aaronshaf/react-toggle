@@ -67,7 +67,7 @@ class App extends Component {
         <div className='example'>
           <div>Installation</div>
           <pre>
-            {`npm install react-toggle --save-dev`}
+            {`npm install react-toggle --save`}
           </pre>
           <pre>{`import Toggle from 'react-toggle'`}</pre>
           <p>Or if you're not using the ES6 module format yet:</p>
