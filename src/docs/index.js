@@ -52,7 +52,7 @@ class App extends Component {
     this.setState({ [key]: event.target.checked })
   }
 
-  handleMilkChange (event) {
+  handleMilkChange () {
     const form = this.refs.breakfastForm
     this.setState({formData: form.milkIsReady.checked ? {milkIsReady: form.milkIsReady.value} : {}})
   }
