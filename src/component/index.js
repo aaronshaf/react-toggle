@@ -1,11 +1,10 @@
-import React, { Component, PropTypes } from 'react'
+import React, { PureComponent, PropTypes } from 'react'
 import classNames from 'classnames'
 import Check from './check'
 import X from './x'
 import { pointerCoord } from './util'
-import shallowCompare from 'react-addons-shallow-compare'
 
-export default class Toggle extends Component {
+export default class Toggle extends PureComponent {
   constructor (props) {
     super(props)
     this.handleClick = this.handleClick.bind(this)
@@ -98,10 +97,6 @@ export default class Toggle extends Component {
     return icons[type] === undefined
       ? Toggle.defaultProps.icons[type]
       : icons[type]
-  }
-
-  shouldComponentUpdate (nextProps, nextState) {
-    return shallowCompare(this, nextProps, nextState)
   }
 
   render () {
