@@ -28,8 +28,8 @@ export default class Toggle extends PureComponent {
 
   handleClick (event) {
     const checkbox = this.input
+    this.previouslyChecked = checkbox.checked
     if (event.target !== checkbox && !this.moved) {
-      this.previouslyChecked = checkbox.checked
       event.preventDefault()
       checkbox.focus()
       checkbox.click()
