@@ -42,12 +42,12 @@ export default class Toggle extends PureComponent {
 
   handleTouchStart (event) {
     this.startX = pointerCoord(event).x
-    this.activated = true
+    this.touchStarted = true
   }
 
   handleTouchMove (event) {
-    if (!this.activated) return
-    this.moved = true
+    if (!this.touchStarted) return
+    this.touchMoved = true
 
     if (this.startX) {
       let currentX = pointerCoord(event).x
@@ -62,7 +62,7 @@ export default class Toggle extends PureComponent {
   }
 
   handleTouchEnd (event) {
-    if (!this.moved) return
+    if (!this.touchMoved) return
     const checkbox = this.input
     event.preventDefault()
 
@@ -82,9 +82,9 @@ export default class Toggle extends PureComponent {
         }
       }
 
-      this.activated = false
+      this.touchStarted = false
       this.startX = null
-      this.moved = false
+      this.touchMoved = false
     }
   }
 
