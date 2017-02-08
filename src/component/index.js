@@ -54,7 +54,7 @@ export default class Toggle extends PureComponent {
       if (this.state.checked && currentX + 15 < this.startX) {
         this.setState({ checked: false })
         this.startX = currentX
-      } else if (currentX - 15 > this.startX) {
+      } else if (!this.state.checked && currentX - 15 > this.startX) {
         this.setState({ checked: true })
         this.startX = currentX
       }
