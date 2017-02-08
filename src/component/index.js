@@ -49,7 +49,7 @@ export default class Toggle extends PureComponent {
     if (!this.touchStarted) return
     this.touchMoved = true
 
-    if (this.startX) {
+    if (this.startX != null) {
       let currentX = pointerCoord(event).x
       if (this.state.checked && currentX + 15 < this.startX) {
         this.setState({ checked: false })
@@ -66,7 +66,7 @@ export default class Toggle extends PureComponent {
     const checkbox = this.input
     event.preventDefault()
 
-    if (this.startX) {
+    if (this.startX != null) {
       if (this.previouslyChecked !== this.state.checked) {
         checkbox.click()
       }
