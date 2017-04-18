@@ -27,6 +27,7 @@ as of release version 2.1.0.
 - Don't react on hover when disabled
 - Fix issue with broken React ref
 - Fix lint errors
+- Don't use deprecated `React.PropTypes` API
 
 
 ## [2.1.1] - 2016-07-13
