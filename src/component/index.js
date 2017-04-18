@@ -1,5 +1,6 @@
-import React, { PureComponent, PropTypes } from 'react'
+import React, { PureComponent } from 'react'
 import classNames from 'classnames'
+import PropTypes from 'prop-types'
 import Check from './check'
 import X from './x'
 import { pointerCoord } from './util'
