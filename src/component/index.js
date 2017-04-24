@@ -12,8 +12,8 @@ export default class Toggle extends PureComponent {
     this.handleTouchStart = this.handleTouchStart.bind(this)
     this.handleTouchMove = this.handleTouchMove.bind(this)
     this.handleTouchEnd = this.handleTouchEnd.bind(this)
-    this.handleFocus = this.setState.bind(this, { hasFocus: true }, () => {})
-    this.handleBlur = this.setState.bind(this, { hasFocus: false }, () => {})
+    this.handleFocus = this.handleFocus.bind(this)
+    this.handleBlur = this.handleBlur.bind(this)
     this.previouslyChecked = !!(props.checked || props.defaultChecked)
     this.state = {
       checked: !!(props.checked || props.defaultChecked),
@@ -90,6 +90,26 @@ export default class Toggle extends PureComponent {
     }
   }
 
+  handleFocus (event) {
+    const { onFocus } = this.props
+
+    if (onFocus) {
+      onFocus(event)
+    }
+
+    this.setState({ hasFocus: true })
+  }
+
+  handleBlur (event) {
+    const { onBlur } = this.props
+
+    if (onBlur) {
+      onBlur(event)
+    }
+
+    this.setState({ hasFocus: false })
+  }
+
   getIcon (type) {
     const { icons } = this.props
     if (!icons) {
@@ -150,6 +170,8 @@ Toggle.propTypes = {
   disabled: PropTypes.bool,
   defaultChecked: PropTypes.bool,
   onChange: PropTypes.func,
+  onFocus: PropTypes.func,
+  onBlur: PropTypes.func,
   className: PropTypes.string,
   name: PropTypes.string,
   value: PropTypes.string,
