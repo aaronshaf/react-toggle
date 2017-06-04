@@ -2,7 +2,14 @@ import React from 'react'
 import chai, { expect } from 'chai'
 import chaiEnzyme from 'chai-enzyme'
 import Toggle from '../src/component'
-import { shallow } from 'enzyme'
+import { shallow, mount } from 'enzyme'
+import TestUtils from 'react-dom/test-utils'
+
+const {
+  findRenderedDOMComponentWithTag,
+  findRenderedDOMComponentWithClass,
+  Simulate,
+} = TestUtils
 
 const noop = () => {}
 const classNames = {
@@ -135,5 +142,115 @@ describe('Component', () => {
     expect(wrapper.hasClass(classNames.focus)).to.be.true
     expect(wrapper.hasClass(classNames.checked)).to.be.true
     expect(wrapper.hasClass(classNames.disabled)).to.be.false
+  })
+
+  it('tests toggle on click', () => {
+    wrapper = mount(
+      <Toggle
+        onChange={noop} />
+    )
+
+    expect(wrapper.find('input')).to.not.be.checked()
+    wrapper.find('.react-toggle').simulate('click')
+    expect(wrapper.find('input')).to.be.checked()
+    wrapper.find('.react-toggle').simulate('click')
+    expect(wrapper.find('input')).to.not.be.checked()
+  })
+
+  it('tests onChange callback', () => {
+    let called = false
+    const changeHandler = () => {
+      called = true
+      return
+    }
+    wrapper = mount(
+      <Toggle
+        onChange={changeHandler} />
+    )
+    const input = findRenderedDOMComponentWithTag(wrapper.node, 'input')
+    expect(called).to.equal(false)
+    Simulate.change(input)
+    expect(called).to.equal(true)
+  })
+
+  it('tests onBlur callback', () => {
+    let called = false
+    const blurHandler = () => {
+      called = true
+      return
+    }
+    const wrapper = mount(
+      <Toggle
+        onChange={noop}
+        onBlur={blurHandler} />
+    )
+    const input = findRenderedDOMComponentWithTag(wrapper.node, 'input')
+    expect(called).to.equal(false)
+    Simulate.blur(input)
+    expect(called).to.equal(true)
+  })
+
+  it('tests onFocus callback', () => {
+    let called = false
+    const focusHandler = () => {
+      called = true
+      return
+    }
+    const wrapper = mount(
+      <Toggle
+        onChange={noop}
+        onFocus={focusHandler} />
+    )
+    const input = findRenderedDOMComponentWithTag(wrapper.node, 'input')
+    expect(called).to.equal(false)
+    Simulate.focus(input)
+    expect(called).to.equal(true)
+  })
+
+  it('tests toggle on touch with default unchecked', () => {
+    const wrapper = mount(
+      <Toggle
+        defaultChecked={false}
+        onChange={noop} />
+    )
+    const toggleComp = findRenderedDOMComponentWithClass(wrapper.node, 'react-toggle')
+    expect(wrapper.find('input')).to.not.be.checked()
+    Simulate.touchStart(toggleComp, {changedTouches: [ {clientX: 30, clientY: 30} ]})
+    Simulate.touchMove(toggleComp, {changedTouches: [ {clientX: 55, clientY: 30} ]})
+    Simulate.touchEnd(toggleComp, {changedTouches: [ {clientX: 55, clientY: 30} ]})
+    expect(wrapper.find('input')).to.be.checked()
+  })
+
+  it('tests toggle on touch with default checked', () => {
+    const wrapper = mount(
+      <Toggle
+        defaultChecked
+        onChange={noop} />
+    )
+    const toggleComp = findRenderedDOMComponentWithClass(wrapper.node, 'react-toggle')
+    expect(wrapper.find('input')).to.be.checked()
+    Simulate.touchStart(toggleComp, {changedTouches: [ {clientX: 55, clientY: 30} ]})
+    Simulate.touchMove(toggleComp, {changedTouches: [ {clientX: 30, clientY: 30} ]})
+    Simulate.touchEnd(toggleComp, {changedTouches: [ {clientX: 30, clientY: 30} ]})
+    expect(wrapper.find('input')).to.not.be.checked()
+  })
+
+  it('tests toggle on touch with pageXY', () => {
+    const wrapper = mount(
+      <Toggle
+        defaultChecked={false}
+        onChange={noop} />
+    )
+    const toggleComp = findRenderedDOMComponentWithClass(wrapper.node, 'react-toggle')
+
+    expect(wrapper.find('input')).to.not.be.checked()
+    Simulate.touchStart(toggleComp, {changedTouches: [], pageX: 30, pageY: 30})
+    Simulate.touchMove(toggleComp, {changedTouches: [], pageX: 55, pageY: 30})
+    Simulate.touchEnd(toggleComp, {changedTouches: [], pageX: 55, pageY: 30})
+    expect(wrapper.find('input')).to.be.checked()
+    Simulate.touchStart(toggleComp, {changedTouches: [], pageX: 55, pageY: 30})
+    Simulate.touchMove(toggleComp, {changedTouches: [], pageX: 30, pageY: 30})
+    Simulate.touchEnd(toggleComp, {changedTouches: [], pageX: 30, pageY: 30})
+    expect(wrapper.find('input')).to.not.be.checked()
   })
 })

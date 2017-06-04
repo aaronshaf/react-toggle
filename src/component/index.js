@@ -36,8 +36,8 @@ export default class Toggle extends PureComponent {
       checkbox.click()
       return
     }
-    
-    const checked = this.props.hasOwnProperty('checked') ? this.props.checked : checkbox.checked;
+
+    const checked = this.props.hasOwnProperty('checked') ? this.props.checked : checkbox.checked
 
     this.setState({checked})
   }

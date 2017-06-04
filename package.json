@@ -9,7 +9,7 @@
     "build-component": "babel src/component --out-dir dist/component",
     "build-docs": "webpack",
     "build": "npm run build-component && npm run build-docs",
-    "test": "mocha --require babel-register --require spec/setup.js spec/**/*.spec.js",
+    "test": "nyc mocha --require babel-register --require spec/setup.js spec/**/*.spec.js",
     "lint": "eslint .; exit 0",
     "dev": "webpack-dev-server"
   },
@@ -50,6 +50,7 @@
     "eslint-plugin-standard": "^2.0.1",
     "jsdom": "^9.6.0",
     "mocha": "^3.1.2",
+    "nyc": "^11.0.2",
     "react": "^15.3.1",
     "react-dom": "^15.3.1",
     "style-loader": "^0.13.1",
