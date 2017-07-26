@@ -29,7 +29,15 @@ The component takes the following props.
 npm install react-toggle
 ```
 
-Include the component's [CSS](./style.css).
+## Usage
+
+If you want the default styling, include the component's [CSS](./style.css) with
+
+```javascript
+import "react-toggle/style.css" // for ES6 modules
+// or
+require("react-toggle/style.css") // for CommonJS
+```
 
 ## Development
 
