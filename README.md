@@ -21,7 +21,7 @@ The component takes the following props.
 | `icons`        | _object_  | If `false`, no icons are displayed. You may also pass custom icon components in `icons={{{checked: <CheckedIcon />, unchecked: <UncheckedIcon />}}` |
 | `aria-labelledby` | _string_   | The value of the `aria-labelledby` attribute of the wrapped \<input\> element |
 | `aria-label`      | _string_   | The value of the `aria-label` attribute of the wrapped \<input\> element |
-| `disabled`        | _boolean_  | If `true`, the toggle is enabled. If `false`, the toggle is disabled |
+| `disabled`        | _boolean_  | If `true`, the toggle is disabled. If `false`, the toggle is enabled |
 
 ## Installation
 
