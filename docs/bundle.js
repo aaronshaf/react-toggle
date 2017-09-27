@@ -22002,7 +22002,9 @@
 	        return;
 	      }
 	
-	      this.setState({ checked: checkbox.checked });
+	      var checked = this.props.hasOwnProperty('checked') ? this.props.checked : checkbox.checked;
+	
+	      this.setState({ checked: checked });
 	    }
 	  }, {
 	    key: 'handleTouchStart',
