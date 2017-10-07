@@ -3,6 +3,7 @@ import classNames from 'classnames'
 import PropTypes from 'prop-types'
 import Check from './check'
 import X from './x'
+import Loading from './loading'
 import { pointerCoord } from './util'
 
 export default class Toggle extends PureComponent {
@@ -18,6 +19,7 @@ export default class Toggle extends PureComponent {
     this.state = {
       checked: !!(props.checked || props.defaultChecked),
       hasFocus: false,
+      loading: !!(props.loading || false),
     }
   }
 
@@ -125,10 +127,19 @@ export default class Toggle extends PureComponent {
   render () {
     const { className, icons: _icons, ...inputProps } = this.props
     const classes = classNames('react-toggle', {
+      'react-toggle--loading  react-toggle--default-cursor': this.state.loading,
       'react-toggle--checked': this.state.checked,
       'react-toggle--focus': this.state.hasFocus,
       'react-toggle--disabled': this.props.disabled,
     }, className)
+
+    if (this.state.loading) {
+      return (
+        <div className={classes}>
+          {this.getIcon('loading')}
+        </div>
+      )
+    }
 
     return (
       <div className={classes}
@@ -164,10 +175,12 @@ Toggle.defaultProps = {
   icons: {
     checked: <Check />,
     unchecked: <X />,
+    loading: <Loading />,
   },
 }
 
 Toggle.propTypes = {
+  loading: PropTypes.bool,
   checked: PropTypes.bool,
   disabled: PropTypes.bool,
   defaultChecked: PropTypes.bool,
@@ -185,6 +198,7 @@ Toggle.propTypes = {
     PropTypes.shape({
       checked: PropTypes.node,
       unchecked: PropTypes.node,
+      loading: PropTypes.node,
     }),
   ]),
 }
