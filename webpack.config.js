@@ -6,7 +6,7 @@ module.exports = {
   devtool: 'source-map',
 
   output: {
-    path: path.join(__dirname, 'dist/docs'),
+    path: path.join(__dirname, 'docs'),
     filename: 'bundle.js',
   },
 
@@ -25,7 +25,7 @@ module.exports = {
   },
 
   devServer: {
-    contentBase: path.join(__dirname, 'dist/docs'),
+    contentBase: path.join(__dirname, 'docs'),
     host: 'localhost',
     inline: true,
     info: false,
