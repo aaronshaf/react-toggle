@@ -1,7 +1,7 @@
 {
-  "name": "react-toggle",
-  "version": "4.0.2",
-  "description": "An elegant, accessible toggle component for React. Also a glorified checkbox.",
+  "name": "react-toggle-styled-components",
+  "version": "0.0.1",
+  "description": "Styled component version of Arron Shaf's <http://aaronshaf.github.io/react-toggle/>. An elegant, accessible toggle component for React. Also a glorified checkbox.",
   "main": "dist/component/index.js",
   "style": "src/style.css",
   "scripts": {
@@ -19,14 +19,14 @@
     "react",
     "react-component"
   ],
-  "author": "Aaron Shafovaloff <aaronshaf@gmail.com>",
-  "homepage": "https://github.com/aaronshaf/react-toggle",
+  "author": "Gwilym Johnston <gwilym.johnston@isotoma.com>",
+  "homepage": "https://github.com/gwildar/react-toggle",
   "repository": {
     "type": "git",
-    "url": "git@github.com:aaronshaf/react-toggle.git"
+    "url": "git@github.com:gwildar/react-toggle.git"
   },
   "bugs": {
-    "url": "https://github.com/aaronshaf/react-toggle/issues"
+    "url": "https://github.com/gwilym/react-toggle/issues"
   },
   "license": "MIT",
   "devDependencies": {
@@ -51,15 +51,16 @@
     "jsdom": "^9.6.0",
     "mocha": "^3.1.2",
     "nyc": "^11.0.2",
+    "prop-types": "^15.3.0",
     "react": "^15.3.1",
     "react-dom": "^15.3.1",
     "style-loader": "^0.13.1",
     "webpack": "^1.13.2",
-    "webpack-dev-server": "^1.16.0",
-    "prop-types": "^15.3.0"
+    "webpack-dev-server": "^1.16.0"
   },
   "dependencies": {
-    "classnames": "^2.2.5"
+    "classnames": "^2.2.5",
+    "styled-components": "^2.2.3"
   },
   "peerDependencies": {
     "prop-types": "^15.3.0",

@@ -1,3 +1,5 @@
+A styled-components version of [Arron Shaf's](http://aaronshaf.github.io/react-toggle/) toggle component.
+
 An elegant, accessible toggle component for React. Also a glorified checkbox.
 
 <img src="https://camo.githubusercontent.com/7b82df5ece8794631d7b004a6fd1d9fe32a336b6/68747470733a2f2f64337676366c703535716a6171632e636c6f756466726f6e742e6e65742f6974656d732f334132783052335a3245337130523069304531692f53637265656e2532305265636f7264696e67253230323031362d31312d3234253230617425323031312e3433253230414d2e6769663f582d436c6f75644170702d56697369746f722d49643d643661386464343439306336316166646261386130613230383232373361613126763d3631613139333333" height="32px" />
@@ -26,17 +28,28 @@ The component takes the following props.
 ## Installation
 
 ```bash
-npm install react-toggle
+yarn react-toggle
 ```
 
 ## Usage
 
-If you want the default styling, include the component's [CSS](./style.css) with
+You can theme the component by wrapping in a `<ThemeProvider>` and supplying the following theme: 
 
 ```javascript
-import "react-toggle/style.css" // for ES6 modules
-// or
-require("react-toggle/style.css") // for CommonJS
+ const theme = {
+    checkedBg: '#19AB27',
+    checkedBgHover: '#128D15',
+    notCheckedBg: '#4D4D4D',
+    notCheckedBgHover: '#000000',
+    checkedBorder: '#19AB27',
+    notCheckedBorder: '#4D4D4D',
+    thumbBg: '#FAFAFA',
+  }
+```
+
+see [styled-components theming](https://www.styled-components.com/docs/advanced#theming) for more details
+
+
 ```
 
 ## Development

@@ -5,7 +5,6 @@ import Toggle from '../component'
 // In your code this would be:
 // import Toggle from 'react-toggle'
 
-import '../../style.css'
 import './style.css'
 
 const Heart = () => (

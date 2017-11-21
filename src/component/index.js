@@ -1,9 +1,9 @@
 import React, { PureComponent } from 'react'
-import classNames from 'classnames'
 import PropTypes from 'prop-types'
 import Check from './check'
 import X from './x'
 import { pointerCoord } from './util'
+import { Toggle as StyledToggle, ToggleTrack, ToggleTrackCheck, ToggleInput, ToggleTrackX, ToggleThumb } from './styles'
 
 export default class Toggle extends PureComponent {
   constructor (props) {
@@ -123,37 +123,35 @@ export default class Toggle extends PureComponent {
   }
 
   render () {
-    const { className, icons: _icons, ...inputProps } = this.props
-    const classes = classNames('react-toggle', {
-      'react-toggle--checked': this.state.checked,
-      'react-toggle--focus': this.state.hasFocus,
-      'react-toggle--disabled': this.props.disabled,
-    }, className)
+    const { icons: _icons, ...inputProps } = this.props
 
     return (
-      <div className={classes}
+      <StyledToggle
+        checked={this.state.checked}
+        focus={this.state.hasFocus}
+        disabled={this.props.disabled}
         onClick={this.handleClick}
         onTouchStart={this.handleTouchStart}
         onTouchMove={this.handleTouchMove}
         onTouchEnd={this.handleTouchEnd}>
-        <div className='react-toggle-track'>
-          <div className='react-toggle-track-check'>
+        <ToggleTrack>
+          <ToggleTrackCheck>
             {this.getIcon('checked')}
-          </div>
-          <div className='react-toggle-track-x'>
+          </ToggleTrackCheck>
+          <ToggleTrackX>
             {this.getIcon('unchecked')}
-          </div>
-        </div>
-        <div className='react-toggle-thumb' />
+          </ToggleTrackX>
+        </ToggleTrack>
+        <ToggleThumb />
 
-        <input
+        <ToggleInput
           {...inputProps}
-          ref={ref => { this.input = ref }}
-          onFocus={this.handleFocus}
-          onBlur={this.handleBlur}
-          className='react-toggle-screenreader-only'
-          type='checkbox' />
-      </div>
+          innerRef={x => { this.input = x }}
+          onFocus={() => this.handleFocus()}
+          onBlur={() => this.handleBlur()}
+          type='checkbox'
+        />
+      </StyledToggle>
     )
   }
 }
@@ -169,6 +167,7 @@ Toggle.defaultProps = {
 
 Toggle.propTypes = {
   checked: PropTypes.bool,
+  hasFocus: PropTypes.bool,
   disabled: PropTypes.bool,
   defaultChecked: PropTypes.bool,
   onChange: PropTypes.func,
