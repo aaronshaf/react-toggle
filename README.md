@@ -1,4 +1,4 @@
-A style-components version of [Arron Shaf's](http://aaronshaf.github.io/react-toggle/) toggle component.
+A styled-components version of [Arron Shaf's](http://aaronshaf.github.io/react-toggle/) toggle component.
 
 An elegant, accessible toggle component for React. Also a glorified checkbox.
 
@@ -28,17 +28,28 @@ The component takes the following props.
 ## Installation
 
 ```bash
-npm install react-toggle
+yarn react-toggle
 ```
 
 ## Usage
 
-If you want the default styling, include the component's [CSS](./style.css) with
+You can theme the component by wrapping in a `<ThemeProvider>` and supplying the following theme: 
 
 ```javascript
-import "react-toggle/style.css" // for ES6 modules
-// or
-require("react-toggle/style.css") // for CommonJS
+ const theme = {
+    checkedBg: '#19AB27',
+    checkedBgHover: '#128D15',
+    notCheckedBg: '#4D4D4D',
+    notCheckedBgHover: '#000000',
+    checkedBorder: '#19AB27',
+    notCheckedBorder: '#4D4D4D',
+    thumbBg: '#FAFAFA',
+  }
+```
+
+see [styled-components theming](https://www.styled-components.com/docs/advanced#theming) for more details
+
+
 ```
 
 ## Development
