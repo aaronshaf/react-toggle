@@ -30,6 +30,7 @@ export default class Toggle extends PureComponent {
 
   handleClick (event) {
     const checkbox = this.input
+    console.log(checkbox)
     if (event.target !== checkbox && !this.moved) {
       this.previouslyChecked = checkbox.checked
       event.preventDefault()
@@ -132,7 +133,7 @@ export default class Toggle extends PureComponent {
     }, className)
 
     return (
-      <StyledToggle {...inputProps}
+      <StyledToggle
         onClick={this.handleClick}
         onTouchStart={this.handleTouchStart}
         onTouchMove={this.handleTouchMove}
@@ -149,9 +150,10 @@ export default class Toggle extends PureComponent {
 
         <ToggleInput
           {...inputProps}
-          ref={ref => { this.input = ref }}
-          onFocus={this.handleFocus}
-          onBlur={this.handleBlur}
+          innerRef={x => { this.input = x }}
+          onFocus={() => this.input.focus()}
+          onBlur={() => this.handleBlur()}
+          type='checkbox'
         />
       </StyledToggle>
     )
