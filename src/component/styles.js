@@ -19,6 +19,8 @@ export const ToggleTrackCheck = styled.div`
   transition: opacity 0.25s ease;
 `
 
+ToggleTrackCheck.displayName = 'ToggleTrackCheck'
+
 export const ToggleInput = styled.input`
   border: 0;
   clip: rect(0 0 0 0);
@@ -30,6 +32,8 @@ export const ToggleInput = styled.input`
   width: 1px;
 `
 
+ToggleInput.displayName = 'ToggleInput'
+
 export const ToggleTrack = styled.div`
   width: 50px;
   height: 24px;
@@ -39,6 +43,7 @@ export const ToggleTrack = styled.div`
   -moz-transition: all 0.2s ease;
   transition: all 0.2s ease;
 `
+ToggleTrack.displayName = 'ToggleTrack'
 
 export const ToggleThumb = styled.div`
   transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1) 0ms;
@@ -59,6 +64,8 @@ export const ToggleThumb = styled.div`
   transition: all 0.25s ease;
 `
 
+ToggleThumb.displayName = 'ToggleThumb'
+
 export const ToggleTrackX = styled.div`
   position: absolute;
   width: 10px;
@@ -74,6 +81,8 @@ export const ToggleTrackX = styled.div`
   -moz-transition: opacity 0.25s ease;
   transition: opacity 0.25s ease;
 `
+
+ToggleTrackX.displayName = 'ToggleTrackX'
 
 export const Toggle = styled.div`
   touch-action: pan-x;
