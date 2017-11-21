@@ -1,5 +1,4 @@
 import React, { PureComponent } from 'react'
-import classNames from 'classnames'
 import PropTypes from 'prop-types'
 import Check from './check'
 import X from './x'
@@ -30,7 +29,6 @@ export default class Toggle extends PureComponent {
 
   handleClick (event) {
     const checkbox = this.input
-    console.log(checkbox)
     if (event.target !== checkbox && !this.moved) {
       this.previouslyChecked = checkbox.checked
       event.preventDefault()
@@ -125,15 +123,13 @@ export default class Toggle extends PureComponent {
   }
 
   render () {
-    const { className, icons: _icons, ...inputProps } = this.props
-    const classes = classNames('react-toggle', {
-      'react-toggle--checked': this.state.checked,
-      'react-toggle--focus': this.state.hasFocus,
-      'react-toggle--disabled': this.props.disabled,
-    }, className)
+    const { icons: _icons, ...inputProps } = this.props
 
     return (
       <StyledToggle
+        checked={this.state.checked}
+        focus={this.state.hasFocus}
+        disabled={this.props.disabled}
         onClick={this.handleClick}
         onTouchStart={this.handleTouchStart}
         onTouchMove={this.handleTouchMove}
@@ -151,7 +147,7 @@ export default class Toggle extends PureComponent {
         <ToggleInput
           {...inputProps}
           innerRef={x => { this.input = x }}
-          onFocus={() => this.input.focus()}
+          onFocus={() => this.handleFocus()}
           onBlur={() => this.handleBlur()}
           type='checkbox'
         />
@@ -171,6 +167,7 @@ Toggle.defaultProps = {
 
 Toggle.propTypes = {
   checked: PropTypes.bool,
+  hasFocus: PropTypes.bool,
   disabled: PropTypes.bool,
   defaultChecked: PropTypes.bool,
   onChange: PropTypes.func,
