@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import Check from './check'
 import X from './x'
 import { pointerCoord } from './util'
+import { Toggle as StyledToggle, ToggleTrack, ToggleTrackCheck, ToggleInput, ToggleTrackX, ToggleThumb } from './styles'
 
 export default class Toggle extends PureComponent {
   constructor (props) {
@@ -131,29 +132,28 @@ export default class Toggle extends PureComponent {
     }, className)
 
     return (
-      <div className={classes}
+      <StyledToggle {...inputProps}
         onClick={this.handleClick}
         onTouchStart={this.handleTouchStart}
         onTouchMove={this.handleTouchMove}
         onTouchEnd={this.handleTouchEnd}>
-        <div className='react-toggle-track'>
-          <div className='react-toggle-track-check'>
+        <ToggleTrack>
+          <ToggleTrackCheck>
             {this.getIcon('checked')}
-          </div>
-          <div className='react-toggle-track-x'>
+          </ToggleTrackCheck>
+          <ToggleTrackX>
             {this.getIcon('unchecked')}
-          </div>
-        </div>
-        <div className='react-toggle-thumb' />
+          </ToggleTrackX>
+        </ToggleTrack>
+        <ToggleThumb />
 
-        <input
+        <ToggleInput
           {...inputProps}
           ref={ref => { this.input = ref }}
           onFocus={this.handleFocus}
           onBlur={this.handleBlur}
-          className='react-toggle-screenreader-only'
-          type='checkbox' />
-      </div>
+        />
+      </StyledToggle>
     )
   }
 }
