@@ -123,7 +123,7 @@ export default class Toggle extends PureComponent {
   }
 
   render () {
-    const { className, icons: _icons, ...inputProps } = this.props
+    const { className, icons: _icons, divProps, ...inputProps } = this.props
     const classes = classNames('react-toggle', {
       'react-toggle--checked': this.state.checked,
       'react-toggle--focus': this.state.hasFocus,
@@ -131,7 +131,9 @@ export default class Toggle extends PureComponent {
     }, className)
 
     return (
-      <div className={classes}
+      <div
+        {...divProps}
+        className={classes}
         onClick={this.handleClick}
         onTouchStart={this.handleTouchStart}
         onTouchMove={this.handleTouchMove}
@@ -165,6 +167,7 @@ Toggle.defaultProps = {
     checked: <Check />,
     unchecked: <X />,
   },
+  divProps: {},
 }
 
 Toggle.propTypes = {
@@ -187,4 +190,5 @@ Toggle.propTypes = {
       unchecked: PropTypes.node,
     }),
   ]),
+  divProps: PropTypes.shape({}),
 }
