@@ -121,6 +121,9 @@
   -webkit-transition: all 0.25s ease;
   -moz-transition: all 0.25s ease;
   transition: all 0.25s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .react-toggle--checked .react-toggle-thumb {

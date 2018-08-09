@@ -18,7 +18,7 @@ The component takes the following props.
 | `name`            | _string_   | The value of the `name` attribute of the wrapped \<input\> element |
 | `value`           | _string_   | The value of the `value` attribute of the wrapped \<input\> element |
 | `id`              | _string_   | The value of the `id` attribute of the wrapped \<input\> element |
-| `icons`        | _object_  | If `false`, no icons are displayed. You may also pass custom icon components in `icons={{{checked: <CheckedIcon />, unchecked: <UncheckedIcon />}}` |
+| `icons`        | _object_  | If `false`, no icons are displayed. You may also pass custom icon components in `icons={{{checked: <CheckedIcon />, unchecked: <UncheckedIcon />, onThumb: true }}`. Set `onThumb = true` to show icon on thumb instead of track|
 | `aria-labelledby` | _string_   | The value of the `aria-labelledby` attribute of the wrapped \<input\> element |
 | `aria-label`      | _string_   | The value of the `aria-label` attribute of the wrapped \<input\> element |
 | `disabled`        | _boolean_  | If `true`, the toggle is disabled. If `false`, the toggle is enabled |

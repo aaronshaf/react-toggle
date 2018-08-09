@@ -112,9 +112,9 @@ export default class Toggle extends PureComponent {
     this.setState({ hasFocus: false })
   }
 
-  getIcon (type) {
+  getIcon (type, onThumb=false) {
     const { icons } = this.props
-    if (!icons) {
+    if (!icons || !!icons.onThumb !== onThumb) {
       return null
     }
     return icons[type] === undefined
@@ -144,7 +144,11 @@ export default class Toggle extends PureComponent {
             {this.getIcon('unchecked')}
           </div>
         </div>
-        <div className='react-toggle-thumb' />
+        <div className='react-toggle-thumb'>
+          <div className='react-toggle-thumb-icon'>
+            {this.getIcon(this.state.checked ? 'checked' : 'unchecked', true)}
+          </div>
+        </div>
 
         <input
           {...inputProps}
@@ -163,7 +167,7 @@ Toggle.displayName = 'Toggle'
 Toggle.defaultProps = {
   icons: {
     checked: <Check />,
-    unchecked: <X />,
+    unchecked: <X />
   },
 }
 

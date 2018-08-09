@@ -86,6 +86,20 @@ describe('Component', () => {
     expect(wrapper.find('.react-toggle-track-x')).to.be.contain(unchecked)
   })
 
+  it('show custom icons on thumb', () => {
+    const checked = <div>checked</div>
+    const unchecked = <div>unchecked</div>
+    wrapper = shallow(<Toggle icons={{ checked, unchecked, onThumb: true }} defaultChecked />)
+
+    expect(wrapper.find('.react-toggle-thumb')).to.be.contain(checked)
+    expect(wrapper.find('.react-toggle-track-x')).to.not.be.contain(unchecked)
+
+    wrapper = shallow(<Toggle icons={{ checked, unchecked, onThumb: true }} />)
+
+    expect(wrapper.find('.react-toggle-thumb')).to.be.contain(unchecked)
+    expect(wrapper.find('.react-toggle-track-x')).to.not.be.contain(checked)
+  })
+
   it('defaults to the regular icon if only one is supplied', () => {
     const checked = <div>checked</div>
     const unchecked = <div>unchecked</div>
