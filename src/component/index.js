@@ -112,7 +112,7 @@ export default class Toggle extends PureComponent {
     this.setState({ hasFocus: false })
   }
 
-  getIcon (type, onThumb=false) {
+  getIcon (type, onThumb = false) {
     const { icons } = this.props
     if (!icons || !!icons.onThumb !== onThumb) {
       return null
@@ -167,7 +167,7 @@ Toggle.displayName = 'Toggle'
 Toggle.defaultProps = {
   icons: {
     checked: <Check />,
-    unchecked: <X />
+    unchecked: <X />,
   },
 }
 
@@ -189,6 +189,7 @@ Toggle.propTypes = {
     PropTypes.shape({
       checked: PropTypes.node,
       unchecked: PropTypes.node,
+      onThumb: PropTypes.bool,
     }),
   ]),
 }

@@ -121,6 +121,10 @@
   -webkit-transition: all 0.25s ease;
   -moz-transition: all 0.25s ease;
   transition: all 0.25s ease;
+}
+
+.react-toggle-thumb, 
+.react-toggle-thumb-icon {
   display: flex;
   justify-content: center;
   align-items: center;
