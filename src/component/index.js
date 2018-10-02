@@ -28,6 +28,7 @@ export default class Toggle extends PureComponent {
   }
 
   handleClick (event) {
+    if (this.props.disabled) return
     const checkbox = this.input
     if (event.target !== checkbox && !this.moved) {
       this.previouslyChecked = checkbox.checked
@@ -43,11 +44,13 @@ export default class Toggle extends PureComponent {
   }
 
   handleTouchStart (event) {
+    if (this.props.disabled) return
     this.startX = pointerCoord(event).x
     this.activated = true
   }
 
   handleTouchMove (event) {
+    if (this.props.disabled) return
     if (!this.activated) return
     this.moved = true
 
@@ -66,6 +69,7 @@ export default class Toggle extends PureComponent {
   }
 
   handleTouchEnd (event) {
+    if (this.props.disabled) return
     if (!this.moved) return
     const checkbox = this.input
     event.preventDefault()
@@ -93,6 +97,7 @@ export default class Toggle extends PureComponent {
   }
 
   handleFocus (event) {
+    if (this.props.disabled) return
     const { onFocus } = this.props
 
     if (onFocus) {
@@ -103,6 +108,7 @@ export default class Toggle extends PureComponent {
   }
 
   handleBlur (event) {
+    if (this.props.disabled) return
     const { onBlur } = this.props
 
     if (onBlur) {
