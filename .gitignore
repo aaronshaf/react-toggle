@@ -3,3 +3,5 @@ node_modules
 dist/
 yarn.lock
 .nyc_output/
+.idea
+npm-debug.log
