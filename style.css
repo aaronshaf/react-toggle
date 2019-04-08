@@ -123,6 +123,13 @@
   transition: all 0.25s ease;
 }
 
+.react-toggle-thumb, 
+.react-toggle-thumb-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .react-toggle--checked .react-toggle-thumb {
   left: 27px;
   border-color: #19AB27;
