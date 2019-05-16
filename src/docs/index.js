@@ -363,6 +363,28 @@ class App extends Component {
           </pre>
         </div>
 
+        {/* thumb icons */}
+
+        <div className='example'>
+          <label>
+            <Toggle
+              defaultChecked={this.state.tofuIsReady}
+              icons={{ thumb: true }}
+              onChange={this.handleTofuChange} />
+            <span className='label-text'>Thumb Icons</span>
+          </label>
+
+          <pre>
+            {`<label>
+  <Toggle
+    defaultChecked={this.state.tofuIsReady}
+    icons={{ thumb: true }}
+    onChange={this.handleTofuChange} />
+  <span>Thumb Icons</span>
+</label>`}
+          </pre>
+        </div>
+
       </form>
     )
   }
