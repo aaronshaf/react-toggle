@@ -6,6 +6,15 @@ import X from './x'
 import { pointerCoord } from './util'
 
 export default class Toggle extends PureComponent {
+
+  static getDerivedStateFromProps (nextProps) {
+    if ('checked' in nextProps) {
+      return { checked: !!nextProps.checked }
+    }
+
+    return null
+  }
+
   constructor (props) {
     super(props)
     this.handleClick = this.handleClick.bind(this)
@@ -18,12 +27,6 @@ export default class Toggle extends PureComponent {
     this.state = {
       checked: !!(props.checked || props.defaultChecked),
       hasFocus: false,
-    }
-  }
-
-  componentWillReceiveProps (nextProps) {
-    if ('checked' in nextProps) {
-      this.setState({checked: !!nextProps.checked})
     }
   }
 
