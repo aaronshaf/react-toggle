@@ -22388,10 +22388,10 @@
 	  }
 	
 	  _createClass(Toggle, [{
-	    key: 'componentWillReceiveProps',
-	    value: function componentWillReceiveProps(nextProps) {
-	      if ('checked' in nextProps) {
-	        this.setState({ checked: !!nextProps.checked });
+	    key: 'componentDidUpdate',
+	    value: function componentDidUpdate(prevProps) {
+	      if (prevProps.checked !== this.props.checked) {
+	        this.setState({ checked: !!this.props.checked });
 	      }
 	    }
 	  }, {
