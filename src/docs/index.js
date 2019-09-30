@@ -9,13 +9,15 @@ import '../../style.css'
 import './style.css'
 
 const Heart = () => (
-  <div style={{
-    color: '#fff',
-    fontSize: '1.2em',
-    position: 'absolute',
-    top: '0.4em',
-  }}>
-  ❤
+  <div
+    style={{
+      color: '#fff',
+      fontSize: '1.2em',
+      position: 'absolute',
+      top: '0.4em',
+    }}
+  >
+    ❤
   </div>
 )
 
@@ -23,6 +25,7 @@ class App extends Component {
   constructor (props) {
     super(props)
     this.handleMilkChange = this.handleMilkChange.bind(this)
+    this.handleResetProps = this.handleResetProps.bind(this)
     this.handleSoupChange = this.handleChange.bind(this, 'soupIsReady')
     this.handleTofuChange = this.handleChange.bind(this, 'tofuIsReady')
     this.handleEggsChange = this.handleChange.bind(this, 'eggsAreReady')
@@ -31,10 +34,14 @@ class App extends Component {
     this.handleCheeseChange = this.handleChange.bind(this, 'cheeseIsReady')
     this.handleBiscuitChange = this.handleChange.bind(this, 'biscuitIsReady')
     this.handleBurritoChange = this.handleChange.bind(this, 'burritoIsReady')
-    this.handleAubergineChange = this.handleChange.bind(this, 'aubergineIsReady')
+    this.handleAubergineChange = this.handleChange.bind(
+      this,
+      'aubergineIsReady'
+    )
 
     this.state = {
-      aubergineIsReady: true,
+			aubergineIsReady: true,
+			checkedOverride: false,
       cheeseIsReady: false,
       baconIsReady: false,
       biscuitIsReady: false,
@@ -48,13 +55,21 @@ class App extends Component {
     }
   }
 
+  handleResetProps () {
+    this.setState({ checkedOverride: !this.state.checkedOverride })
+  }
+
   handleChange (key, event) {
     this.setState({ [key]: event.target.checked })
   }
 
   handleMilkChange () {
     const form = this.refs.breakfastForm
-    this.setState({formData: form.milkIsReady.checked ? {milkIsReady: form.milkIsReady.value} : {}})
+    this.setState({
+      formData: form.milkIsReady.checked
+        ? { milkIsReady: form.milkIsReady.value }
+        : {},
+    })
   }
 
   render () {
@@ -66,22 +81,28 @@ class App extends Component {
 
         <div className='example'>
           <div>Installation</div>
-          <pre>
-            {`npm install react-toggle --save`}
-          </pre>
+          <pre>{`npm install react-toggle --save`}</pre>
           <pre>{`import Toggle from 'react-toggle'`}</pre>
           <p>Or if you're not using the ES6 module format yet:</p>
           <pre>{`var Toggle = require('react-toggle')`}</pre>
-          <p>Include the component's <a href='https://raw.githubusercontent.com/instructure-react/react-toggle/master/style.css'>CSS</a>.</p>
+          <p>
+            Include the component's{' '}
+            <a href='https://raw.githubusercontent.com/instructure-react/react-toggle/master/style.css'>
+              CSS
+            </a>
+            .
+          </p>
         </div>
 
         {/* Bacon */}
 
         <div className='example'>
           <label>
-            <Toggle
+						<Toggle
+							checked={this.state.checkedOverride}
               defaultChecked={this.state.baconIsReady}
-              onChange={this.handleBaconChange} />
+              onChange={this.handleBaconChange}
+            />
             <span className='label-text'>Wrapper label tag</span>
           </label>
 
@@ -104,7 +125,8 @@ class App extends Component {
           <Toggle
             id='cheese-status'
             defaultChecked={this.state.cheeseIsReady}
-            onChange={this.handleCheeseChange} />
+            onChange={this.handleCheeseChange}
+          />
           <label htmlFor='cheese-status'>Adjacent label tag</label>
 
           <pre>
@@ -117,7 +139,6 @@ class App extends Component {
           <pre>
             this.state.cheeseIsReady: {JSON.stringify(this.state.cheeseIsReady)}
           </pre>
-
         </div>
 
         {/* Biscuit */}
@@ -127,8 +148,11 @@ class App extends Component {
             id='biscuit-status'
             defaultChecked={this.state.biscuitIsReady}
             aria-labelledby='biscuit-label'
-            onChange={this.handleBiscuitChange} />
-          <span id='biscuit-label' className='label-text'>Adjacent label, but not standard tag</span>
+            onChange={this.handleBiscuitChange}
+          />
+          <span id='biscuit-label' className='label-text'>
+            Adjacent label, but not standard tag
+          </span>
 
           <pre>
             {`<Toggle
@@ -139,7 +163,8 @@ class App extends Component {
 <span id='biscuit-label'>Adjacent label, but not standard tag</span>`}
           </pre>
           <pre>
-            this.state.biscuitIsReady: {JSON.stringify(this.state.biscuitIsReady)}
+            this.state.biscuitIsReady:{' '}
+            {JSON.stringify(this.state.biscuitIsReady)}
           </pre>
         </div>
 
@@ -149,7 +174,8 @@ class App extends Component {
           <Toggle
             defaultChecked={this.state.eggsAreReady}
             aria-label='No label'
-            onChange={this.handleEggsChange} />
+            onChange={this.handleEggsChange}
+          />
           <span className='label-text'>No label tag</span>
           <pre>
             {`<Toggle
@@ -182,7 +208,8 @@ class App extends Component {
               defaultChecked={!!this.state.milkIsReady}
               name='milkIsReady'
               value='yes'
-              onChange={this.handleMilkChange} />
+              onChange={this.handleMilkChange}
+            />
             <span className='label-text'>Using form data</span>
           </label>
 
@@ -192,9 +219,7 @@ class App extends Component {
   name='milkIsReady'
   value='yes' />`}
           </pre>
-          <pre>
-            formData: {JSON.stringify(this.state.formData)}
-          </pre>
+          <pre>formData: {JSON.stringify(this.state.formData)}</pre>
         </div>
 
         {/* Controlled Component */}
@@ -205,7 +230,8 @@ class App extends Component {
               type='checkbox'
               checked={this.state.burritoIsReady}
               name='burritoIsReady2'
-              onChange={this.handleBurritoChange} />
+              onChange={this.handleBurritoChange}
+            />
             <span className='label-text'> Controlled Component</span>
           </label>
 
@@ -221,7 +247,8 @@ class App extends Component {
             checked={this.state.burritoIsReady}
             name='burritoIsReady'
             value='yes'
-            onChange={this.handleBurritoChange} />
+            onChange={this.handleBurritoChange}
+          />
         </div>
 
         {/* Controlled Component without onChange */}
@@ -232,8 +259,12 @@ class App extends Component {
               type='checkbox'
               checked={this.state.toastIsReady}
               name='toastIsReady2'
-              onChange={this.handleToastChange} />
-            <span className='label-text'> Controlled Component without onChange</span>
+              onChange={this.handleToastChange}
+            />
+            <span className='label-text'>
+              {' '}
+              Controlled Component without onChange
+            </span>
           </label>
 
           <pre>
@@ -246,26 +277,23 @@ class App extends Component {
           <Toggle
             checked={this.state.toastIsReady}
             name='toastIsReady'
-            value='yes' />
+            value='yes'
+          />
         </div>
 
         {/* Disabled */}
 
         <div className='example'>
-          <div style={{marginBottom: '8px'}}>
+          <div style={{ marginBottom: '8px' }}>
             <label>
-              <Toggle
-                defaultChecked={false}
-                disabled />
+              <Toggle defaultChecked={false} disabled />
               <span className='label-text'>Diabled, Unchecked</span>
             </label>
           </div>
 
           <div>
             <label>
-              <Toggle
-                defaultChecked
-                disabled />
+              <Toggle defaultChecked disabled />
               <span className='label-text'>Disabled, Checked</span>
             </label>
           </div>
@@ -293,7 +321,8 @@ class App extends Component {
             <Toggle
               defaultChecked={this.state.aubergineIsReady}
               className='custom-classname'
-              onChange={this.handleAubergineChange} />
+              onChange={this.handleAubergineChange}
+            />
             <span className='label-text'>Custom className</span>
           </label>
 
@@ -323,7 +352,8 @@ class App extends Component {
                 checked: <Heart />,
                 unchecked: null,
               }}
-              onChange={this.handleSoupChange} />
+              onChange={this.handleSoupChange}
+            />
             <span className='label-text'>Custom icons</span>
           </label>
 
@@ -348,7 +378,8 @@ class App extends Component {
             <Toggle
               defaultChecked={this.state.tofuIsReady}
               icons={false}
-              onChange={this.handleTofuChange} />
+              onChange={this.handleTofuChange}
+            />
             <span className='label-text'>No icons</span>
           </label>
 
@@ -362,7 +393,6 @@ class App extends Component {
 </label>`}
           </pre>
         </div>
-
       </form>
     )
   }

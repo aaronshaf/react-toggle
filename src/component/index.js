@@ -21,11 +21,11 @@ export default class Toggle extends PureComponent {
     }
   }
 
-  componentWillReceiveProps (nextProps) {
-    if ('checked' in nextProps) {
-      this.setState({checked: !!nextProps.checked})
-    }
-  }
+	componentDidUpdate (prevProps) {
+		if (prevProps.checked !== this.props.checked) {
+			this.setState({ checked: !!this.props.checked });
+		}
+	}
 
   handleClick (event) {
     const checkbox = this.input
