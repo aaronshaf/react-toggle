@@ -77,12 +77,14 @@
 	var Heart = function Heart() {
 	  return _react2.default.createElement(
 	    'div',
-	    { style: {
+	    {
+	      style: {
 	        color: '#fff',
 	        fontSize: '1.2em',
 	        position: 'absolute',
 	        top: '0.4em'
-	      } },
+	      }
+	    },
 	    '\u2764'
 	  );
 	};
@@ -96,6 +98,7 @@
 	    var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
 	
 	    _this.handleMilkChange = _this.handleMilkChange.bind(_this);
+	    _this.handleResetProps = _this.handleResetProps.bind(_this);
 	    _this.handleSoupChange = _this.handleChange.bind(_this, 'soupIsReady');
 	    _this.handleTofuChange = _this.handleChange.bind(_this, 'tofuIsReady');
 	    _this.handleEggsChange = _this.handleChange.bind(_this, 'eggsAreReady');
@@ -108,6 +111,7 @@
 	
 	    _this.state = {
 	      aubergineIsReady: true,
+	      checkedOverride: false,
 	      cheeseIsReady: false,
 	      baconIsReady: false,
 	      biscuitIsReady: false,
@@ -123,6 +127,11 @@
 	  }
 	
 	  _createClass(App, [{
+	    key: 'handleResetProps',
+	    value: function handleResetProps() {
+	      this.setState({ checkedOverride: !this.state.checkedOverride });
+	    }
+	  }, {
 	    key: 'handleChange',
 	    value: function handleChange(key, event) {
 	      this.setState(_defineProperty({}, key, event.target.checked));
@@ -131,7 +140,9 @@
 	    key: 'handleMilkChange',
 	    value: function handleMilkChange() {
 	      var form = this.refs.breakfastForm;
-	      this.setState({ formData: form.milkIsReady.checked ? { milkIsReady: form.milkIsReady.value } : {} });
+	      this.setState({
+	        formData: form.milkIsReady.checked ? { milkIsReady: form.milkIsReady.value } : {}
+	      });
 	    }
 	  }, {
 	    key: 'render',
@@ -175,7 +186,8 @@
 	          _react2.default.createElement(
 	            'p',
 	            null,
-	            'Include the component\'s ',
+	            'Include the component\'s',
+	            ' ',
 	            _react2.default.createElement(
 	              'a',
 	              { href: 'https://raw.githubusercontent.com/instructure-react/react-toggle/master/style.css' },
@@ -191,8 +203,10 @@
 	            'label',
 	            null,
 	            _react2.default.createElement(_component2.default, {
+	              checked: this.state.checkedOverride,
 	              defaultChecked: this.state.baconIsReady,
-	              onChange: this.handleBaconChange }),
+	              onChange: this.handleBaconChange
+	            }),
 	            _react2.default.createElement(
 	              'span',
 	              { className: 'label-text' },
@@ -217,7 +231,8 @@
 	          _react2.default.createElement(_component2.default, {
 	            id: 'cheese-status',
 	            defaultChecked: this.state.cheeseIsReady,
-	            onChange: this.handleCheeseChange }),
+	            onChange: this.handleCheeseChange
+	          }),
 	          _react2.default.createElement(
 	            'label',
 	            { htmlFor: 'cheese-status' },
@@ -242,7 +257,8 @@
 	            id: 'biscuit-status',
 	            defaultChecked: this.state.biscuitIsReady,
 	            'aria-labelledby': 'biscuit-label',
-	            onChange: this.handleBiscuitChange }),
+	            onChange: this.handleBiscuitChange
+	          }),
 	          _react2.default.createElement(
 	            'span',
 	            { id: 'biscuit-label', className: 'label-text' },
@@ -256,7 +272,8 @@
 	          _react2.default.createElement(
 	            'pre',
 	            null,
-	            'this.state.biscuitIsReady: ',
+	            'this.state.biscuitIsReady:',
+	            ' ',
 	            JSON.stringify(this.state.biscuitIsReady)
 	          )
 	        ),
@@ -266,7 +283,8 @@
 	          _react2.default.createElement(_component2.default, {
 	            defaultChecked: this.state.eggsAreReady,
 	            'aria-label': 'No label',
-	            onChange: this.handleEggsChange }),
+	            onChange: this.handleEggsChange
+	          }),
 	          _react2.default.createElement(
 	            'span',
 	            { className: 'label-text' },
@@ -308,7 +326,8 @@
 	              defaultChecked: !!this.state.milkIsReady,
 	              name: 'milkIsReady',
 	              value: 'yes',
-	              onChange: this.handleMilkChange }),
+	              onChange: this.handleMilkChange
+	            }),
 	            _react2.default.createElement(
 	              'span',
 	              { className: 'label-text' },
@@ -337,7 +356,8 @@
 	              type: 'checkbox',
 	              checked: this.state.burritoIsReady,
 	              name: 'burritoIsReady2',
-	              onChange: this.handleBurritoChange }),
+	              onChange: this.handleBurritoChange
+	            }),
 	            _react2.default.createElement(
 	              'span',
 	              { className: 'label-text' },
@@ -353,7 +373,8 @@
 	            checked: this.state.burritoIsReady,
 	            name: 'burritoIsReady',
 	            value: 'yes',
-	            onChange: this.handleBurritoChange })
+	            onChange: this.handleBurritoChange
+	          })
 	        ),
 	        _react2.default.createElement(
 	          'div',
@@ -365,11 +386,13 @@
 	              type: 'checkbox',
 	              checked: this.state.toastIsReady,
 	              name: 'toastIsReady2',
-	              onChange: this.handleToastChange }),
+	              onChange: this.handleToastChange
+	            }),
 	            _react2.default.createElement(
 	              'span',
 	              { className: 'label-text' },
-	              ' Controlled Component without onChange'
+	              ' ',
+	              'Controlled Component without onChange'
 	            )
 	          ),
 	          _react2.default.createElement(
@@ -380,7 +403,8 @@
 	          _react2.default.createElement(_component2.default, {
 	            checked: this.state.toastIsReady,
 	            name: 'toastIsReady',
-	            value: 'yes' })
+	            value: 'yes'
+	          })
 	        ),
 	        _react2.default.createElement(
 	          'div',
@@ -391,9 +415,7 @@
 	            _react2.default.createElement(
 	              'label',
 	              null,
-	              _react2.default.createElement(_component2.default, {
-	                defaultChecked: false,
-	                disabled: true }),
+	              _react2.default.createElement(_component2.default, { defaultChecked: false, disabled: true }),
 	              _react2.default.createElement(
 	                'span',
 	                { className: 'label-text' },
@@ -407,9 +429,7 @@
 	            _react2.default.createElement(
 	              'label',
 	              null,
-	              _react2.default.createElement(_component2.default, {
-	                defaultChecked: true,
-	                disabled: true }),
+	              _react2.default.createElement(_component2.default, { defaultChecked: true, disabled: true }),
 	              _react2.default.createElement(
 	                'span',
 	                { className: 'label-text' },
@@ -432,7 +452,8 @@
 	            _react2.default.createElement(_component2.default, {
 	              defaultChecked: this.state.aubergineIsReady,
 	              className: 'custom-classname',
-	              onChange: this.handleAubergineChange }),
+	              onChange: this.handleAubergineChange
+	            }),
 	            _react2.default.createElement(
 	              'span',
 	              { className: 'label-text' },
@@ -462,7 +483,8 @@
 	                checked: _react2.default.createElement(Heart, null),
 	                unchecked: null
 	              },
-	              onChange: this.handleSoupChange }),
+	              onChange: this.handleSoupChange
+	            }),
 	            _react2.default.createElement(
 	              'span',
 	              { className: 'label-text' },
@@ -484,7 +506,8 @@
 	            _react2.default.createElement(_component2.default, {
 	              defaultChecked: this.state.tofuIsReady,
 	              icons: false,
-	              onChange: this.handleTofuChange }),
+	              onChange: this.handleTofuChange
+	            }),
 	            _react2.default.createElement(
 	              'span',
 	              { className: 'label-text' },
