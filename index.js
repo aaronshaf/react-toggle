@@ -252,7 +252,7 @@ var App = React.createClass({
               <Toggle
                 defaultChecked={false}
                 disabled={true} />
-              <span className="label-text">Diabled, Unchecked</span>
+              <span className="label-text">Disabled, Unchecked</span>
             </label>
           </div>
 
@@ -270,7 +270,7 @@ var App = React.createClass({
   <Toggle
     defaultChecked={false}
     disabled={true} />
-  <span className="label-text">Diabled, Unchecked</span>
+  <span className="label-text">Disabled, Unchecked</span>
 </label>
 <label>
   <Toggle
