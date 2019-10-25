@@ -256,4 +256,23 @@ describe('Component', () => {
     Simulate.touchEnd(toggleComp, { changedTouches: [], pageX: 30, pageY: 30 })
     expect(wrapper.find('input')).to.not.be.checked()
   })
+
+  it('does not toggle on touch when disabled', () => {
+    const wrapper = mount(<Toggle disabled defaultChecked={false} onChange={noop} />)
+    const toggleComp = findRenderedDOMComponentWithClass(
+      wrapper.node,
+      'react-toggle'
+    )
+    expect(wrapper.find('input')).to.not.be.checked()
+    Simulate.touchStart(toggleComp, {
+      changedTouches: [{ clientX: 30, clientY: 30 }],
+    })
+    Simulate.touchMove(toggleComp, {
+      changedTouches: [{ clientX: 55, clientY: 30 }],
+    })
+    Simulate.touchEnd(toggleComp, {
+      changedTouches: [{ clientX: 55, clientY: 30 }],
+    })
+    expect(wrapper.find('input')).to.not.be.checked()
+  })
 })
