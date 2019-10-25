@@ -17,6 +17,7 @@ const classNames = {
   focus: 'react-toggle--focus',
   checked: 'react-toggle--checked',
   disabled: 'react-toggle--disabled',
+  readOnly: 'react-toggle--read-only',
 }
 
 chai.use(chaiEnzyme())
@@ -124,24 +125,48 @@ describe('Component', () => {
     expect(wrapper.hasClass(classNames.focus)).to.be.false
     expect(wrapper.hasClass(classNames.checked)).to.be.false
     expect(wrapper.hasClass(classNames.disabled)).to.be.false
+    expect(wrapper.hasClass(classNames.readOnly)).to.be.false
 
     wrapper.setState({ checked: true, hasFocus: false })
     expect(wrapper.hasClass(classNames.base)).to.be.true
     expect(wrapper.hasClass(classNames.focus)).to.be.false
     expect(wrapper.hasClass(classNames.checked)).to.be.true
     expect(wrapper.hasClass(classNames.disabled)).to.be.false
+    expect(wrapper.hasClass(classNames.readOnly)).to.be.false
 
     wrapper.setState({ checked: false, hasFocus: true })
     expect(wrapper.hasClass(classNames.base)).to.be.true
     expect(wrapper.hasClass(classNames.focus)).to.be.true
     expect(wrapper.hasClass(classNames.checked)).to.be.false
     expect(wrapper.hasClass(classNames.disabled)).to.be.false
+    expect(wrapper.hasClass(classNames.readOnly)).to.be.false
 
     wrapper.setState({ checked: true, hasFocus: true })
     expect(wrapper.hasClass(classNames.base)).to.be.true
     expect(wrapper.hasClass(classNames.focus)).to.be.true
     expect(wrapper.hasClass(classNames.checked)).to.be.true
     expect(wrapper.hasClass(classNames.disabled)).to.be.false
+    expect(wrapper.hasClass(classNames.readOnly)).to.be.false
+  })
+
+  it('uses correct classNames based on props', () => {
+    wrapper = shallow(<Toggle />)
+
+    wrapper.setProps({ disabled: false, readOnly: false })
+    expect(wrapper.hasClass(classNames.disabled)).to.be.false
+    expect(wrapper.hasClass(classNames.readOnly)).to.be.false
+
+    wrapper.setProps({ disabled: true, readOnly: false })
+    expect(wrapper.hasClass(classNames.disabled)).to.be.true
+    expect(wrapper.hasClass(classNames.readOnly)).to.be.false
+
+    wrapper.setProps({ disabled: false, readOnly: true })
+    expect(wrapper.hasClass(classNames.disabled)).to.be.false
+    expect(wrapper.hasClass(classNames.readOnly)).to.be.true
+
+    wrapper.setProps({ disabled: true, readOnly: true })
+    expect(wrapper.hasClass(classNames.disabled)).to.be.true
+    expect(wrapper.hasClass(classNames.readOnly)).to.be.true
   })
 
   it('tests toggle on click', () => {
@@ -273,6 +298,33 @@ describe('Component', () => {
     Simulate.touchEnd(toggleComp, {
       changedTouches: [{ clientX: 55, clientY: 30 }],
     })
+    expect(wrapper.find('input')).to.not.be.checked()
+  })
+
+  it('does not toggle on touch when read-only', () => {
+    const wrapper = mount(<Toggle readOnly defaultChecked={false} onChange={noop} />)
+    const toggleComp = findRenderedDOMComponentWithClass(
+      wrapper.node,
+      'react-toggle'
+    )
+    expect(wrapper.find('input')).to.not.be.checked()
+    Simulate.touchStart(toggleComp, {
+      changedTouches: [{ clientX: 30, clientY: 30 }],
+    })
+    Simulate.touchMove(toggleComp, {
+      changedTouches: [{ clientX: 55, clientY: 30 }],
+    })
+    Simulate.touchEnd(toggleComp, {
+      changedTouches: [{ clientX: 55, clientY: 30 }],
+    })
+    expect(wrapper.find('input')).to.not.be.checked()
+  })
+
+  it('does not toggle on click when read-only', () => {
+    wrapper = mount(<Toggle readOnly onChange={noop} />)
+
+    expect(wrapper.find('input')).to.not.be.checked()
+    wrapper.find('.react-toggle').simulate('click')
     expect(wrapper.find('input')).to.not.be.checked()
   })
 })

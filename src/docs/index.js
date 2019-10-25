@@ -314,6 +314,39 @@ class App extends Component {
           </pre>
         </div>
 
+        {/* Read-only */}
+
+        <div className='example'>
+          <div style={{ marginBottom: '8px' }}>
+            <label>
+              <Toggle defaultChecked={false} readOnly />
+              <span className='label-text'>Read-only, Unchecked</span>
+            </label>
+          </div>
+
+          <div>
+            <label>
+              <Toggle defaultChecked readOnly />
+              <span className='label-text'>Read-only, Checked</span>
+            </label>
+          </div>
+
+          <pre>
+            {`<label>
+  <Toggle
+    defaultChecked={false}
+    readOnly={true} />
+  <span className='label-text'>Read-only, Unchecked</span>
+</label>
+<label>
+  <Toggle
+    defaultChecked={true}
+    readOnly={true} />
+  <span className='label-text'>Read-only, Checked</span>
+</label>`}
+          </pre>
+        </div>
+
         {/* Custom className */}
 
         <div className='example'>

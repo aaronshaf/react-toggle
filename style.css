@@ -30,7 +30,8 @@
   width: 1px;
 }
 
-.react-toggle--disabled {
+.react-toggle--disabled,
+.react-toggle--read-only {
   cursor: not-allowed;
   opacity: 0.5;
   -webkit-transition: opacity 0.25s;

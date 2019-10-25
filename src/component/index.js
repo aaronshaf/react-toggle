@@ -28,7 +28,7 @@ export default class Toggle extends PureComponent {
 	}
 
   handleClick (event) {
-    if (this.props.disabled) {
+    if (this.props.disabled || this.props.readOnly) {
       return
     }
     const checkbox = this.input
@@ -46,7 +46,7 @@ export default class Toggle extends PureComponent {
   }
 
   handleTouchStart (event) {
-    if (this.props.disabled) {
+    if (this.props.disabled || this.props.readOnly) {
       return
     }
     this.startX = pointerCoord(event).x
@@ -134,6 +134,7 @@ export default class Toggle extends PureComponent {
       'react-toggle--checked': this.state.checked,
       'react-toggle--focus': this.state.hasFocus,
       'react-toggle--disabled': this.props.disabled,
+      'react-toggle--read-only': this.props.readOnly,
     }, className)
 
     return (
@@ -176,6 +177,7 @@ Toggle.defaultProps = {
 Toggle.propTypes = {
   checked: PropTypes.bool,
   disabled: PropTypes.bool,
+  readOnly: PropTypes.bool,
   defaultChecked: PropTypes.bool,
   onChange: PropTypes.func,
   onFocus: PropTypes.func,
