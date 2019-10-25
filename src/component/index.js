@@ -23,6 +23,10 @@ export default class Toggle extends PureComponent {
 
   componentDidUpdate (prevProps) {
     if (prevProps.checked !== this.props.checked) {
+      // Disable linting rule here since this usage of setState inside
+      // componentDidUpdate is OK; see
+      // https://reactjs.org/docs/react-component.html#componentdidupdate
+      // eslint-disable-next-line react/no-did-update-set-state
       this.setState({ checked: !!this.props.checked })
     }
   }
