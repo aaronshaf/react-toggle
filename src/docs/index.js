@@ -287,7 +287,7 @@ class App extends Component {
           <div style={{ marginBottom: '8px' }}>
             <label>
               <Toggle defaultChecked={false} disabled />
-              <span className='label-text'>Diabled, Unchecked</span>
+              <span className='label-text'>Disabled, Unchecked</span>
             </label>
           </div>
 
@@ -303,7 +303,7 @@ class App extends Component {
   <Toggle
     defaultChecked={false}
     disabled={true} />
-  <span className='label-text'>Diabled, Unchecked</span>
+  <span className='label-text'>Disabled, Unchecked</span>
 </label>
 <label>
   <Toggle
