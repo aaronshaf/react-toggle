@@ -40,8 +40,8 @@ class App extends Component {
     )
 
     this.state = {
-			aubergineIsReady: true,
-			checkedOverride: false,
+      aubergineIsReady: true,
+      checkedOverride: false,
       cheeseIsReady: false,
       baconIsReady: false,
       biscuitIsReady: false,
@@ -98,8 +98,8 @@ class App extends Component {
 
         <div className='example'>
           <label>
-						<Toggle
-							checked={this.state.checkedOverride}
+            <Toggle
+              checked={this.state.checkedOverride}
               defaultChecked={this.state.baconIsReady}
               onChange={this.handleBaconChange}
             />
