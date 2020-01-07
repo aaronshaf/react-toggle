@@ -22380,6 +22380,8 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
+	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+	
 	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -22414,12 +22416,19 @@
 	    key: 'componentDidUpdate',
 	    value: function componentDidUpdate(prevProps) {
 	      if (prevProps.checked !== this.props.checked) {
+	        // Disable linting rule here since this usage of setState inside
+	        // componentDidUpdate is OK; see
+	        // https://reactjs.org/docs/react-component.html#componentdidupdate
+	        // eslint-disable-next-line react/no-did-update-set-state
 	        this.setState({ checked: !!this.props.checked });
 	      }
 	    }
 	  }, {
 	    key: 'handleClick',
 	    value: function handleClick(event) {
+	      if (this.props.disabled) {
+	        return;
+	      }
 	      var checkbox = this.input;
 	      if (event.target !== checkbox && !this.moved) {
 	        this.previouslyChecked = checkbox.checked;
@@ -22436,6 +22445,9 @@
 	  }, {
 	    key: 'handleTouchStart',
 	    value: function handleTouchStart(event) {
+	      if (this.props.disabled) {
+	        return;
+	      }
 	      this.startX = (0, _util.pointerCoord)(event).x;
 	      this.activated = true;
 	    }
@@ -22527,14 +22539,22 @@
 	
 	      var _props = this.props,
 	          className = _props.className,
+	          trackClassName = _props.trackClassName,
+	          thumbClassName = _props.thumbClassName,
+	          trackClassNameChecked = _props.trackClassNameChecked,
+	          thumbClassNameChecked = _props.thumbClassNameChecked,
 	          _icons = _props.icons,
-	          inputProps = _objectWithoutProperties(_props, ['className', 'icons']);
+	          inputProps = _objectWithoutProperties(_props, ['className', 'trackClassName', 'thumbClassName', 'trackClassNameChecked', 'thumbClassNameChecked', 'icons']);
 	
 	      var classes = (0, _classnames2.default)('react-toggle', {
 	        'react-toggle--checked': this.state.checked,
 	        'react-toggle--focus': this.state.hasFocus,
 	        'react-toggle--disabled': this.props.disabled
 	      }, className);
+	
+	      var trackClasses = (0, _classnames2.default)('react-toggle-track', trackClassName, _defineProperty({}, trackClassNameChecked, this.state.checked));
+	
+	      var thumbClasses = (0, _classnames2.default)('react-toggle-thumb', thumbClassName, _defineProperty({}, thumbClassNameChecked, this.state.checked));
 	
 	      return _react2.default.createElement(
 	        'div',
@@ -22545,7 +22565,7 @@
 	          onTouchEnd: this.handleTouchEnd },
 	        _react2.default.createElement(
 	          'div',
-	          { className: 'react-toggle-track' },
+	          { className: trackClasses },
 	          _react2.default.createElement(
 	            'div',
 	            { className: 'react-toggle-track-check' },
@@ -22557,7 +22577,7 @@
 	            this.getIcon('unchecked')
 	          )
 	        ),
-	        _react2.default.createElement('div', { className: 'react-toggle-thumb' }),
+	        _react2.default.createElement('div', { className: thumbClasses }),
 	        _react2.default.createElement('input', _extends({}, inputProps, {
 	          ref: function ref(_ref) {
 	            _this2.input = _ref;
@@ -22582,7 +22602,11 @@
 	  icons: {
 	    checked: _react2.default.createElement(_check2.default, null),
 	    unchecked: _react2.default.createElement(_x2.default, null)
-	  }
+	  },
+	  trackClassName: '',
+	  thumbClassName: '',
+	  trackClassNameChecked: '',
+	  thumbClassNameChecked: ''
 	};
 	
 	Toggle.propTypes = {
@@ -22601,7 +22625,11 @@
 	  icons: _propTypes2.default.oneOfType([_propTypes2.default.bool, _propTypes2.default.shape({
 	    checked: _propTypes2.default.node,
 	    unchecked: _propTypes2.default.node
-	  })])
+	  })]),
+	  trackClassName: _propTypes2.default.string,
+	  trackClassNameChecked: _propTypes2.default.string,
+	  thumbClassName: _propTypes2.default.string,
+	  thumbClassNameChecked: _propTypes2.default.string
 	};
 
 /***/ }),

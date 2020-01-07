@@ -22,6 +22,10 @@ The component takes the following props.
 | `aria-labelledby` | _string_   | The value of the `aria-labelledby` attribute of the wrapped \<input\> element |
 | `aria-label`      | _string_   | The value of the `aria-label` attribute of the wrapped \<input\> element |
 | `disabled`        | _boolean_  | If `true`, the toggle is disabled. If `false`, the toggle is enabled |
+| `trackClassName`  | _string_   | Set the className of the actual track element |
+| `trackClassNameChecked` | _string_ | Set the className of the track element when checked |
+| `thumbClassName`  | _string_   | Set the className of the actual thumb element |
+| `thumbClassNameChecked` | _string_ | Set the className of the thumb element when checked |
 
 ## Installation
 

@@ -133,12 +133,20 @@ export default class Toggle extends PureComponent {
   }
 
   render () {
-    const { className, icons: _icons, ...inputProps } = this.props
+    const { className, trackClassName, thumbClassName, trackClassNameChecked, thumbClassNameChecked, icons: _icons, ...inputProps } = this.props
     const classes = classNames('react-toggle', {
       'react-toggle--checked': this.state.checked,
       'react-toggle--focus': this.state.hasFocus,
       'react-toggle--disabled': this.props.disabled,
     }, className)
+
+    const trackClasses = classNames('react-toggle-track', trackClassName, {
+      [trackClassNameChecked]: this.state.checked,
+    })
+
+    const thumbClasses = classNames('react-toggle-thumb', thumbClassName, {
+      [thumbClassNameChecked]: this.state.checked,
+    })
 
     return (
       <div className={classes}
@@ -146,7 +154,7 @@ export default class Toggle extends PureComponent {
         onTouchStart={this.handleTouchStart}
         onTouchMove={this.handleTouchMove}
         onTouchEnd={this.handleTouchEnd}>
-        <div className='react-toggle-track'>
+        <div className={trackClasses}>
           <div className='react-toggle-track-check'>
             {this.getIcon('checked')}
           </div>
@@ -154,7 +162,7 @@ export default class Toggle extends PureComponent {
             {this.getIcon('unchecked')}
           </div>
         </div>
-        <div className='react-toggle-thumb' />
+        <div className={thumbClasses} />
 
         <input
           {...inputProps}
@@ -175,6 +183,10 @@ Toggle.defaultProps = {
     checked: <Check />,
     unchecked: <X />,
   },
+  trackClassName: '',
+  thumbClassName: '',
+  trackClassNameChecked: '',
+  thumbClassNameChecked: '',
 }
 
 Toggle.propTypes = {
@@ -197,4 +209,8 @@ Toggle.propTypes = {
       unchecked: PropTypes.node,
     }),
   ]),
+  trackClassName: PropTypes.string,
+  trackClassNameChecked: PropTypes.string,
+  thumbClassName: PropTypes.string,
+  thumbClassNameChecked: PropTypes.string,
 }

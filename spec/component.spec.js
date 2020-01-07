@@ -43,6 +43,28 @@ describe('Component', () => {
     expect(wrapper.hasClass(className)).to.be.true
   })
 
+  it('accepts a trackClassName as a prop', () => {
+    wrapper = shallow(<Toggle trackClassName={'bg-light'} />)
+    expect(wrapper.find('.react-toggle-track').hasClass('bg-light')).to.be.true
+  })
+
+  it('accepts a trackClassNameChecked as a prop and displays when checked', () => {
+    wrapper = shallow(<Toggle trackClassName={'bg-light'} trackClassNameChecked={'bg-dark'} checked />)
+    expect(wrapper.find('.react-toggle-track').hasClass('bg-light')).to.be.true
+    expect(wrapper.find('.react-toggle-track').hasClass('bg-dark')).to.be.true
+  })
+
+  it('accepts a thumbClassName as a prop', () => {
+    wrapper = shallow(<Toggle thumbClassName={'bg-light'} />)
+    expect(wrapper.find('.react-toggle-thumb').hasClass('bg-light')).to.be.true
+  })
+
+  it('accepts a thumbClassNameChecked as a prop and displays when checked', () => {
+    wrapper = shallow(<Toggle thumbClassName={'bg-light'} thumbClassNameChecked={'bg-dark'} checked />)
+    expect(wrapper.find('.react-toggle-thumb').hasClass('bg-light')).to.be.true
+    expect(wrapper.find('.react-toggle-thumb').hasClass('bg-dark')).to.be.true
+  })
+
   it('does not pass the custom className to the checkbox', () => {
     wrapper = shallow(<Toggle className={className} />)
 
@@ -150,6 +172,14 @@ describe('Component', () => {
     expect(wrapper.find('input')).to.not.be.checked()
     wrapper.find('.react-toggle').simulate('click')
     expect(wrapper.find('input')).to.be.checked()
+    wrapper.find('.react-toggle').simulate('click')
+    expect(wrapper.find('input')).to.not.be.checked()
+  })
+
+  it('tests does not toggle on click when disabled', () => {
+    wrapper = mount(<Toggle onChange={noop} disabled />)
+
+    expect(wrapper.find('input')).to.not.be.checked()
     wrapper.find('.react-toggle').simulate('click')
     expect(wrapper.find('input')).to.not.be.checked()
   })
