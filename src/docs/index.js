@@ -87,7 +87,7 @@ class App extends Component {
           <pre>{`var Toggle = require('react-toggle')`}</pre>
           <p>
             Include the component's{' '}
-            <a href='https://raw.githubusercontent.com/instructure-react/react-toggle/master/style.css'>
+            <a href='https://github.com/aaronshaf/react-toggle#usage'>
               CSS
             </a>
             .
