@@ -51,15 +51,15 @@
     "jsdom": "^9.6.0",
     "mocha": "^3.1.2",
     "nyc": "^11.0.2",
-    "react": "^15.3.1",
-    "react-dom": "^15.3.1",
     "style-loader": "^0.13.1",
     "webpack": "^1.13.2",
     "webpack-dev-server": "^1.16.0",
-    "prop-types": "^15.3.0"
+    "prop-types": "^15.3.0",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
   },
   "dependencies": {
-    "classnames": "^2.2.5"
+    "classnames": "^2.2.5"   
   },
   "peerDependencies": {
     "prop-types": "^15.3.0 || ^16.0.0",
