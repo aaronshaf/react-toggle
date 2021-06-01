@@ -6,7 +6,7 @@ import X from './x'
 import { pointerCoord } from './util'
 
 export default class Toggle extends PureComponent {
-  constructor(props) {
+  constructor (props) {
     super(props)
     this.handleClick = this.handleClick.bind(this)
     this.handleTouchStart = this.handleTouchStart.bind(this)
@@ -22,7 +22,7 @@ export default class Toggle extends PureComponent {
     }
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate (prevProps) {
     if (prevProps.checked !== this.props.checked) {
       // Disable linting rule here since this usage of setState inside
       // componentDidUpdate is OK; see
@@ -32,7 +32,7 @@ export default class Toggle extends PureComponent {
     }
   }
 
-  handleClick(event) {
+  handleClick (event) {
     if (this.props.disabled) {
       return
     }
@@ -47,10 +47,10 @@ export default class Toggle extends PureComponent {
 
     const checked = this.props.hasOwnProperty('checked') ? this.props.checked : checkbox.checked
 
-    this.setState({ checked })
+    this.setState({checked})
   }
 
-  handleTouchStart(event) {
+  handleTouchStart (event) {
     if (this.props.disabled) {
       return
     }
@@ -58,7 +58,7 @@ export default class Toggle extends PureComponent {
     this.activated = true
   }
 
-  handleTouchMove(event) {
+  handleTouchMove (event) {
     if (!this.activated) return
     this.moved = true
 
@@ -76,7 +76,7 @@ export default class Toggle extends PureComponent {
     }
   }
 
-  handleTouchEnd(event) {
+  handleTouchEnd (event) {
     if (!this.moved) return
     const checkbox = this.input
     event.preventDefault()
@@ -103,7 +103,7 @@ export default class Toggle extends PureComponent {
     }
   }
 
-  handleFocus(event) {
+  handleFocus (event) {
     const { onFocus } = this.props
 
     if (onFocus) {
@@ -113,7 +113,7 @@ export default class Toggle extends PureComponent {
     this.setState({ hasFocus: true })
   }
 
-  handleBlur(event) {
+  handleBlur (event) {
     const { onBlur } = this.props
 
     if (onBlur) {
@@ -123,7 +123,7 @@ export default class Toggle extends PureComponent {
     this.setState({ hasFocus: false })
   }
 
-  getIcon(type) {
+  getIcon (type) {
     const { icons } = this.props
     if (!icons) {
       return null
@@ -133,7 +133,7 @@ export default class Toggle extends PureComponent {
       : icons[type]
   }
 
-  render() {
+  render () {
     const { className, icons: _icons, ...inputProps } = this.props
     const classes = classNames('react-toggle', {
       'react-toggle--checked': this.state.checked,
