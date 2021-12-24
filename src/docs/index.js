@@ -52,9 +52,12 @@ class App extends Component {
       burritoIsReady: false,
       toastIsReady: false,
       formData: {},
+      loading: false,
     }
   }
-
+  handleTogglechange () {
+    this.setState({ loading: !this.state.loading })
+  };
   handleResetProps () {
     this.setState({ checkedOverride: !this.state.checkedOverride })
   }
@@ -140,7 +143,21 @@ class App extends Component {
             this.state.cheeseIsReady: {JSON.stringify(this.state.cheeseIsReady)}
           </pre>
         </div>
+        {/* disable example */}
+        <div className='example'>
+          <Toggle disabled={this.state.loading} onChange={this.handleTogglechange} />
+          <label htmlFor='cheese-status'>Desable example</label>
 
+          <pre>
+            {`<Toggle 
+  disabled={this.state.loading} 
+  onChange={this.handleTogglechange} />`}
+          </pre>
+          <pre>
+            this.state.loading:{' '}
+            {JSON.stringify(this.state.loading)}
+          </pre>
+        </div>
         {/* Biscuit */}
 
         <div className='example'>
