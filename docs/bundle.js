@@ -419,7 +419,7 @@
 	              _react2.default.createElement(
 	                'span',
 	                { className: 'label-text' },
-	                'Diabled, Unchecked'
+	                'Disabled, Unchecked'
 	              )
 	            )
 	          ),
@@ -440,7 +440,7 @@
 	          _react2.default.createElement(
 	            'pre',
 	            null,
-	            '<label>\n  <Toggle\n    defaultChecked={false}\n    disabled={true} />\n  <span className=\'label-text\'>Diabled, Unchecked</span>\n</label>\n<label>\n  <Toggle\n    defaultChecked={true}\n    disabled={true} />\n  <span className=\'label-text\'>Disabled, Checked</span>\n</label>'
+	            '<label>\n  <Toggle\n    defaultChecked={false}\n    disabled={true} />\n  <span className=\'label-text\'>Disabled, Unchecked</span>\n</label>\n<label>\n  <Toggle\n    defaultChecked={true}\n    disabled={true} />\n  <span className=\'label-text\'>Disabled, Checked</span>\n</label>'
 	          )
 	        ),
 	        _react2.default.createElement(
@@ -22414,12 +22414,19 @@
 	    key: 'componentDidUpdate',
 	    value: function componentDidUpdate(prevProps) {
 	      if (prevProps.checked !== this.props.checked) {
+	        // Disable linting rule here since this usage of setState inside
+	        // componentDidUpdate is OK; see
+	        // https://reactjs.org/docs/react-component.html#componentdidupdate
+	        // eslint-disable-next-line react/no-did-update-set-state
 	        this.setState({ checked: !!this.props.checked });
 	      }
 	    }
 	  }, {
 	    key: 'handleClick',
 	    value: function handleClick(event) {
+	      if (this.props.disabled) {
+	        return;
+	      }
 	      var checkbox = this.input;
 	      if (event.target !== checkbox && !this.moved) {
 	        this.previouslyChecked = checkbox.checked;
@@ -22436,6 +22443,9 @@
 	  }, {
 	    key: 'handleTouchStart',
 	    value: function handleTouchStart(event) {
+	      if (this.props.disabled) {
+	        return;
+	      }
 	      this.startX = (0, _util.pointerCoord)(event).x;
 	      this.activated = true;
 	    }
@@ -22777,11 +22787,6 @@
 	  return _react2.default.createElement(
 	    'svg',
 	    { width: '14', height: '11', viewBox: '0 0 14 11' },
-	    _react2.default.createElement(
-	      'title',
-	      null,
-	      'switch-check'
-	    ),
 	    _react2.default.createElement('path', { d: 'M11.264 0L5.26 6.004 2.103 2.847 0 4.95l5.26 5.26 8.108-8.107L11.264 0', fill: '#fff', fillRule: 'evenodd' })
 	  );
 	};
@@ -22806,11 +22811,6 @@
 	  return _react2.default.createElement(
 	    'svg',
 	    { width: '10', height: '10', viewBox: '0 0 10 10' },
-	    _react2.default.createElement(
-	      'title',
-	      null,
-	      'switch-x'
-	    ),
 	    _react2.default.createElement('path', { d: 'M9.9 2.12L7.78 0 4.95 2.828 2.12 0 0 2.12l2.83 2.83L0 7.776 2.123 9.9 4.95 7.07 7.78 9.9 9.9 7.776 7.072 4.95 9.9 2.12', fill: '#fff', fillRule: 'evenodd' })
 	  );
 	};
