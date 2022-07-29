@@ -5,7 +5,11 @@ import Check from './check'
 import X from './x'
 import { pointerCoord } from './util'
 
-export default class Toggle extends PureComponent {
+export default React.forwardRef((props, ref) => <Toggle 
+  innerRef={ref} {...props}
+/>);
+
+export class Toggle extends PureComponent {
   constructor (props) {
     super(props)
     this.handleClick = this.handleClick.bind(this)
@@ -35,7 +39,7 @@ export default class Toggle extends PureComponent {
     if (this.props.disabled) {
       return
     }
-    const checkbox = this.input
+    const checkbox = this.props.innerRef && this.props.innerRef.current || this.input
     if (event.target !== checkbox && !this.moved) {
       this.previouslyChecked = checkbox.checked
       event.preventDefault()
@@ -158,7 +162,7 @@ export default class Toggle extends PureComponent {
 
         <input
           {...inputProps}
-          ref={ref => { this.input = ref }}
+          ref={this.props.innerRef || (ref => { this.input = ref })}
           onFocus={this.handleFocus}
           onBlur={this.handleBlur}
           className='react-toggle-screenreader-only'
