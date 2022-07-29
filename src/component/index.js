@@ -103,13 +103,9 @@ export default class Toggle extends PureComponent {
   }
 
   handleFocus (event) {
-    const { onFocus } = this.props
-
-    if (onFocus) {
-      onFocus(event)
-    }
-
-    this.setState({ hasFocus: true })
+    this.props.onFocus(event)
+    this.setState({ ...this.state, hasFocus: true })
+    console.log('event: ', event)
   }
 
   handleBlur (event) {
