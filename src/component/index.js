@@ -15,6 +15,7 @@ export default class Toggle extends PureComponent {
     this.handleFocus = this.handleFocus.bind(this)
     this.handleBlur = this.handleBlur.bind(this)
     this.previouslyChecked = !!(props.checked || props.defaultChecked)
+    this.label = props.label
     this.state = {
       checked: !!(props.checked || props.defaultChecked),
       hasFocus: false,
@@ -159,6 +160,7 @@ export default class Toggle extends PureComponent {
         <input
           {...inputProps}
           ref={ref => { this.input = ref }}
+          label={this.label}
           onFocus={this.handleFocus}
           onBlur={this.handleBlur}
           className='react-toggle-screenreader-only'
@@ -187,6 +189,7 @@ Toggle.propTypes = {
   className: PropTypes.string,
   name: PropTypes.string,
   value: PropTypes.string,
+  label: PropTypes.string,
   id: PropTypes.string,
   'aria-labelledby': PropTypes.string,
   'aria-label': PropTypes.string,
