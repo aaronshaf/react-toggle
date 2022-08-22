@@ -20,6 +20,7 @@ The component takes the following props.
 | `aria-labelledby` | _string_   | The value of the `aria-labelledby` attribute of the wrapped \<input\> element |
 | `aria-label`      | _string_   | The value of the `aria-label` attribute of the wrapped \<input\> element |
 | `disabled`        | _boolean_  | If `true`, the toggle is disabled. If `false`, the toggle is enabled |
+| `divProps`        | _object_  | An object of properties to apply to the wrapping \<div\> element instead of the \<input\> element. |
 
 ## Installation
 
