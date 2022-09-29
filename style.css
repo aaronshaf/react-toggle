@@ -43,6 +43,7 @@
   padding: 0;
   border-radius: 30px;
   background-color: #4D4D4D;
+  position: relative;
   -webkit-transition: all 0.2s ease;
   -moz-transition: all 0.2s ease;
   transition: all 0.2s ease;
