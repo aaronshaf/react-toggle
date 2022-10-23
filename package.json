@@ -5,7 +5,7 @@
   "main": "dist/component/index.js",
   "style": "src/style.css",
   "scripts": {
-    "prepublish": "npm run build && cp -rv dist/docs/* docs/",
+    "prepublish": "npm run build",
     "build-component": "babel src/component --out-dir dist/component",
     "build-docs": "webpack",
     "build": "npm run build-component && npm run build-docs",
@@ -29,6 +29,10 @@
     "url": "https://github.com/aaronshaf/react-toggle/issues"
   },
   "license": "MIT",
+  "files": [
+    "dist",
+    "style.css"
+  ],
   "devDependencies": {
     "babel-cli": "^6.14.0",
     "babel-core": "^6.14.0",
