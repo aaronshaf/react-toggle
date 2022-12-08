@@ -139,3 +139,7 @@
   -moz-box-shadow: 0px 0px 5px 5px #0099E0;
   box-shadow: 0px 0px 5px 5px #0099E0;
 }
+
+.react-toggle--default-cursor {
+  cursor: default;
+}

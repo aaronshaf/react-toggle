@@ -49,6 +49,20 @@ describe('Component', () => {
     expect(wrapper.find('input').hasClass(className)).to.be.false
   })
 
+  it('allows to be set as loading', () => {
+    wrapper = shallow(<Toggle loading />)
+
+    expect(wrapper.state('loading')).to.be.true
+    expect(wrapper.find('.react-toggle--loading')).to.not.be.empty
+  })
+
+  it('defaults the value of `loading` to false', () => {
+    wrapper = shallow(<Toggle />)
+
+    expect(wrapper.state('loading')).to.be.false
+    expect(wrapper.find('.react-toggle--loading')).to.be.empty
+  })
+
   it('defaults to the value of `defaultChecked`', () => {
     wrapper = shallow(<Toggle defaultChecked={false} />)
 
@@ -80,6 +94,13 @@ describe('Component', () => {
 
     expect(wrapper.find('.react-toggle-track-check')).to.be.contain(checked)
     expect(wrapper.find('.react-toggle-track-x')).to.be.contain(unchecked)
+  })
+
+  it('takes loading custom icons', () => {
+    const loading = <div>loading</div>
+    wrapper = shallow(<Toggle loading icons={{ loading }} />)
+
+    expect(wrapper.find('.react-toggle--loading')).to.be.contain(loading)
   })
 
   it('defaults to the regular icon if only one is supplied', () => {

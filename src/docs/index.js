@@ -21,6 +21,25 @@ const Heart = () => (
   </div>
 )
 
+const LoadingText = () => (
+  <div>
+    <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32' fill='#ff0000'>
+      <circle transform='translate(8 0)' cx='0' cy='16' r='0'>
+        <animate attributeName='r' values='0; 4; 0; 0' dur='1.2s' repeatCount='indefinite' begin='0'
+          keytimes='0;0.2;0.7;1' keySplines='0.2 0.2 0.4 0.8;0.2 0.6 0.4 0.8;0.2 0.6 0.4 0.8' calcMode='spline' />
+      </circle>
+      <circle transform='translate(16 0)' cx='0' cy='16' r='0'>
+        <animate attributeName='r' values='0; 4; 0; 0' dur='1.2s' repeatCount='indefinite' begin='0.3'
+          keytimes='0;0.2;0.7;1' keySplines='0.2 0.2 0.4 0.8;0.2 0.6 0.4 0.8;0.2 0.6 0.4 0.8' calcMode='spline' />
+      </circle>
+      <circle transform='translate(24 0)' cx='0' cy='16' r='0'>
+        <animate attributeName='r' values='0; 4; 0; 0' dur='1.2s' repeatCount='indefinite' begin='0.6'
+          keytimes='0;0.2;0.7;1' keySplines='0.2 0.2 0.4 0.8;0.2 0.6 0.4 0.8;0.2 0.6 0.4 0.8' calcMode='spline' />
+      </circle>
+    </svg>
+  </div>
+)
+
 class App extends Component {
   constructor (props) {
     super(props)
@@ -314,6 +333,27 @@ class App extends Component {
           </pre>
         </div>
 
+        {/* Loading */}
+
+        <div className='example'>
+          <div style={{marginBottom: '8px'}}>
+            <label>
+              <Toggle
+                loading
+                className='custom-classname' />
+              <span className='label-text'>Loading</span>
+            </label>
+          </div>
+
+          <pre>
+            {`<label>
+  <Toggle
+    loading={true} />
+  <span className='label-text'>Loading</span>
+</label>`}
+          </pre>
+        </div>
+
         {/* Custom className */}
 
         <div className='example'>
@@ -366,7 +406,31 @@ class App extends Component {
       unchecked: null,
     }}
     onChange={this.handleSoupChange} />
-  <span>Custom icons</span>
+    <span>Custom icons</span>
+</label>`}
+          </pre>
+        </div>
+
+        {/* Loading Custom icon */}
+
+        <div className='example'>
+          <label>
+            <Toggle
+              loading
+              icons={{
+                loading: <LoadingText />,
+              }} />
+            <span className='label-text'>Loading Custom icon</span>
+          </label>
+
+          <pre>
+            {`<label>
+  <Toggle
+  loading={true}
+    icons={{
+      checked: <LoadingText />,
+    }} />
+  <span>Loading Custom icon</span>
 </label>`}
           </pre>
         </div>
