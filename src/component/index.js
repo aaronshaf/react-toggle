@@ -3,7 +3,7 @@ import classNames from 'classnames'
 import PropTypes from 'prop-types'
 import Check from './check'
 import X from './x'
-import { pointerCoord } from './util'
+import { checkForLabel, pointerCoord } from './util'
 
 export default class Toggle extends PureComponent {
   constructor (props) {
@@ -29,6 +29,10 @@ export default class Toggle extends PureComponent {
       // eslint-disable-next-line react/no-did-update-set-state
       this.setState({ checked: !!this.props.checked })
     }
+  }
+
+  componentDidMount () {
+    checkForLabel(this.toggleContainer, this.input)
   }
 
   handleClick (event) {
@@ -145,7 +149,8 @@ export default class Toggle extends PureComponent {
         onClick={this.handleClick}
         onTouchStart={this.handleTouchStart}
         onTouchMove={this.handleTouchMove}
-        onTouchEnd={this.handleTouchEnd}>
+        onTouchEnd={this.handleTouchEnd}
+        ref={ref => { this.toggleContainer = ref }}>
         <div className='react-toggle-track'>
           <div className='react-toggle-track-check'>
             {this.getIcon('checked')}
