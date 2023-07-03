@@ -155,7 +155,11 @@ export default class Toggle extends PureComponent {
           </div>
         </div>
         <div className='react-toggle-thumb' />
-
+        {inputProps.id && (
+          <label className='react-toggle-screenreader-only' htmlFor={inputProps.id}>
+            React-toggle checkbox. Screenreader only
+          </label>
+        )}
         <input
           {...inputProps}
           ref={ref => { this.input = ref }}
